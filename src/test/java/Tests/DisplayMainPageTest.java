@@ -8,15 +8,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
+
+
 import static org.junit.Assert.assertEquals;
 
 public class DisplayMainPageTest {
+
+
 
 //    private  WebDriver driver;
 //
 //    @BeforeClass
 //    public static void pathSetup() {
-//        System.setProperty("webdriver.chrome.driver", "./resources/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 //    }
 //
 //    @Before
