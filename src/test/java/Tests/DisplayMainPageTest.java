@@ -16,23 +16,22 @@ public class DisplayMainPageTest {
 
 
 
-//    private  WebDriver driver;
-//
-//    @BeforeClass
-//    public static void pathSetup() {
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//    }
-//
-//    @Before
-//    public void setup(){
-//        this.driver = new ChromeDriver();
-//    }
-//
-//    @After
-//    public void CloseBrowser(){
-//        this.driver.quit();
-//    }
-//    @Test
+   private  WebDriver driver;
+
+    @BeforeClass
+    public static void pathSetup() {
+       System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    }
+
+   @Before
+   public void setup(){
+        this.driver = new ChromeDriver();
+    }
+    @After
+    public void CloseBrowser(){
+        this.driver.quit();
+    }
+    @Test
 
 
 }
