@@ -14,11 +14,14 @@ import static org.junit.Assert.assertEquals;
 
 public class DisplayMainPageTest {
 
+    private  WebDriver driver;
 
-
-//    private  WebDriver driver;
+    @BeforeClass
+    public static void pathSetup() {
+        System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
+    }
 //
-//    @BeforeClass
+
 //    public static void pathSetup() {
 //        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 //    }
@@ -33,6 +36,14 @@ public class DisplayMainPageTest {
 //        this.driver.quit();
 //    }
 //    @Test
+    public void givenThatPageOpens() {
+        this.driver.get("http://demoqa.com/registration/");
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
