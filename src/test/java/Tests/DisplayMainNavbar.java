@@ -94,27 +94,6 @@ public class DisplayMainNavbar {
         e.printStackTrace();
     }
     //DELAY-END
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
