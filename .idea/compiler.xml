@@ -14,7 +14,6 @@
     <bytecodeTargetLevel>
       <module name="AC_phptravels" target="1.5" />
       <module name="Angry Cats" target="1.5" />
-      <module name="phptravels-AC" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
