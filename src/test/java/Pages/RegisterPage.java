@@ -19,10 +19,4 @@ public class RegisterPage {
     @FindBy(xpath ="//*[@id=\"headersignupform\"]/div[9]/button")
     WebElement submit;
 
-
-
-
-
-
-
 }
