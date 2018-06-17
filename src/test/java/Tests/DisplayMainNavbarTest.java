@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.Assert.assertEquals;
 
-public class DisplayMainNavbar {
+public class DisplayMainNavbarTest {
 
     private  WebDriver driver;
 

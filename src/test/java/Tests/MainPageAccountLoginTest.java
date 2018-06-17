@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
 
-public class MainPageAccountLogin {
+public class MainPageAccountLoginTest {
     private WebDriver driver;
 
     @BeforeClass
@@ -38,10 +38,10 @@ public class MainPageAccountLogin {
         //Strona logowania
         driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/li[1]/ul/li[1]/a")).click();
 
-        //Enter E-mail address:
-        this.driver.findElement(By.name("username")).sendKeys("j2187262@nwytg.com");
-        //enter Password
-        this.driver.findElement(By.name("password")).sendKeys("Qwert32!");
+//        //Enter E-mail address:
+//        this.driver.findElement(By.name("username")).sendKeys("j2187262@nwytg.com");
+//        //enter Password
+//        this.driver.findElement(By.name("password")).sendKeys("Qwert32!");
         try {
             Thread.sleep(1300);
         } catch (InterruptedException e) {
@@ -51,14 +51,13 @@ public class MainPageAccountLogin {
         //Sign up
         this.driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[1]/form/div[2]/div[1]/a")).click();
 
-
         //REGISTER USER
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymordeńka");
+        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy3455");
+        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
         this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("email")).sendKeys("j2187262@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t4!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t4!");
+        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
+        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
+        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
@@ -68,8 +67,8 @@ public class MainPageAccountLogin {
         this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
 
 
-
-
+//j3686875@nwytg.com
+//Mail: "GerwazyMaciej@protonmail.com" M4ki3t4!
 
 
         //DELAY Until closing
