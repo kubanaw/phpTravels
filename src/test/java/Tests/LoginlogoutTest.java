@@ -49,9 +49,9 @@ public class LoginlogoutTest {
         }
 
         //Enter E-mail address:
-        this.driver.findElement(By.name("username")).sendKeys("GerwazyMaciej@protonmail.com");
+        this.driver.findElement(By.name("username")).sendKeys("user@phptravels.com");
         //enter Password
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t4!");
+        this.driver.findElement(By.name("password")).sendKeys("demouser");
         //SUMBIT
         this.driver.findElement(new By.ByCssSelector("button.btn:nth-child(2)")).click();
 
