@@ -110,6 +110,30 @@ public class RegisterOptionsTest {
 
     @Test
     public void whenUserPasswordFieldNotFillThenUserShouldNotRegister(){
+        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
+        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
+        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
+        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
+
+        try {
+            Thread.sleep(1100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
+
+        try {
+            Thread.sleep(1100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String message = this.driver.findElement(By.className("alert-danger")).getText();
+        System.out.println(message);
+        Assert.assertEquals(message, "The Password field is required.\nThe Password field is required.");
+        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
+
 
     }
 }
