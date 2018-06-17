@@ -14,7 +14,7 @@ public class MainPageAccountLoginTest {
     @BeforeClass
     public static void pathSetup() {
         //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
-        System.setProperty("webdriver.chrome.driver", "C:\\Github\\jdqzl1-materialy\\jdqzl1-selenium\\src\\test\\java\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
     }
 
     @Before
