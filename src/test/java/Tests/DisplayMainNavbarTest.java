@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
 
-
 import static org.junit.Assert.assertEquals;
 
 public class DisplayMainNavbarTest {
