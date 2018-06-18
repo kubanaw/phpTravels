@@ -24,9 +24,9 @@ public class LoginlogoutTest {
     }
 
     @After
-//    public void CloseBrowser() {
-//        this.driver.quit();
-    //}
+    public void CloseBrowser() {
+        this.driver.quit();
+    }
 
     @Test
     public void GivenThatIWantTologinLogOut() {

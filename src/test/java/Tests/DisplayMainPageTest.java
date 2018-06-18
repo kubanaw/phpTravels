@@ -26,16 +26,16 @@ public class DisplayMainPageTest {
 //        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 //    }
 //
-//    @Before
-//    public void setup(){
-//        this.driver = new ChromeDriver();
-//    }
+    @Before
+    public void setup(){
+        this.driver = new ChromeDriver();
+    }
 //
-//    @After
-//    public void CloseBrowser(){
-//        this.driver.quit();
-//    }
-//    @Test
+    @After
+    public void CloseBrowser(){
+        this.driver.quit();
+    }
+    @Test
     public void givenThatPageOpens() {
         this.driver.get("http://demoqa.com/registration/");
 
