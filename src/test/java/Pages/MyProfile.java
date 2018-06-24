@@ -52,11 +52,11 @@ public class MyProfile {
 
     //methods
 
-    public void fillFirstName (String name){
-        firstNameInput.sendKeys(name);
+    public void clearFirstName (){
+        firstNameInput.clear();
     }
-    public void fillLastName (String lastName){
-        lastNameInput.sendKeys(lastName);
+    public void clearLastName (){
+        lastNameInput.clear();
     }
     public void fillPhonenumber (String phone){
         phoneNumberInput.sendKeys(phone);
@@ -86,6 +86,13 @@ public class MyProfile {
     }
     public void fillZipCode (String zip){
         zipCodeInput.sendKeys(zip);
+    }
+    public void submitMyProfileUpdate (){
+        submitUpdateProfileButton.submit();
+    }
+    public void selectCountry (String country) {
+        countryListInput.click();
+
     }
 
 

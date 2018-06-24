@@ -35,7 +35,7 @@ public class NavbarHeader {
     //MY ACCOUNT
     @FindBy(xpath = "//*[@id=\"li_myaccount\"]/a")
     WebElement myAccountDropdown;
-    @FindBy(xpath = "//*[@id="li_myaccount"]/ul/li[1]/a")
+    @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[1]/a")
     WebElement loginFromMyAccountDropdown;
     @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[2]/a")
     WebElement signFromMyAccountDropdown;
