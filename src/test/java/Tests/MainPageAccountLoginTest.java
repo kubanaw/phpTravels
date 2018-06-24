@@ -7,15 +7,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
+import util.ChromeDrvPathHelper;
 
 public class MainPageAccountLoginTest {
     private WebDriver driver;
 
     @BeforeClass
-    public static void pathSetup() {
-        //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
-        System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
+    public static void ustawSciezke() {
+        //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
+        ChromeDrvPathHelper.setChromeDrvPath();
     }
+
 
     @Before
     public void setup() {
