@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.Select;
+import util.ChromeDrvPathHelper;
 
 public class LoginlogoutTest {
 
@@ -15,7 +16,7 @@ public class LoginlogoutTest {
     @BeforeClass
     public static void usawSciezke() {
     //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
-    System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
+        ChromeDrvPathHelper.setChromeDrvPath();
     }
 
     @Before
