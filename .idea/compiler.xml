@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AC_phptravels" />
         <module name="Angry Cats" />
+        <module name="jdqzl1-AC-phpTravels" />
         <module name="phptravels-AC" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AC_phptravels" target="1.5" />
       <module name="Angry Cats" target="1.5" />
+      <module name="jdqzl1-AC-phpTravels" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
