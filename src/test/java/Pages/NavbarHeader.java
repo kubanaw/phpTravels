@@ -76,6 +76,43 @@ public class NavbarHeader {
     @FindBy(xpath = "//*[@id=\"en\"]")
     WebElement EnglishLanguage;
 
+//METHODS for elements:
+    public void pickHomeElement() {
+        home.click();
+    }
+    public void pickHotelsElement() {
+        hotels.click();
+    }
+    public void pickFlightsElement() {
+        flights.click();
+    }
+    public void pickToursElement(){
+        tours.click();
+    }
+    public void pickCarsElement() {
+        cars.click();
+    }
+    public void pickVisaElement() {
+        visa.click();
+    }
+    public void pickHOffersElement() {
+        offers.click();
+    }
+    public void pickBlogElement() {
+        blog.click();
+    }
+
+   // METHODS for accountDropdown
+   public void loginToMyAccount() {
+        myAccountDropdown.click();
+        loginFromMyAccountDropdown.click();
+   }
+    public void SignInMyAccount() {
+        myAccountDropdown.click();
+        signFromMyAccountDropdown.click();
+    }
+    //METHODS for currency
+//przerwalam tworzenie, metody rozwijania z listy beda dodane
 
 
 }
