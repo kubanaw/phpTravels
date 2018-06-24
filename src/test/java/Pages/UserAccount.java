@@ -39,13 +39,62 @@ public class UserAccount {
     @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/h3[1]")
     private WebElement greetingHeader;
 
-    @FindBy (xpath = "//*[@id=\"bookings\"]/div[2]/div[4]/a")
-    private WebElement invoiceButton;
+    @FindBy (xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[1]/a")
+    private WebElement nameHeader;
+
+//    @FindBy (xpath = "//*[@id=\"bookings\"]/div[2]/div[4]/a")
+//    private WebElement invoiceButton;
 
     @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]/div[1]")
     private WebElement timeBar;
 
+    @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]")
+    private WebElement dateBar;
+
+    //methods
+
+    public void goToBooking  (){
+
+        bookings.click();
+    }
+
+    public void goToMyProfile (){
+
+        myProfile.click();
+    }
+
+    public void goToWishlist (){
+        wishlist.click();
+    }
+
+    public void goToNewsletter (){
+        newsletter.click();
+    }
+
+//    public void goToInvoice (){
+//        invoiceButton.click();
+//    }
+
+    //getters
 
 
+    public WebElement getProfileImage() {
+        return profileImage;
+    }
 
+    public WebElement getGreetingHeader() {
+        return greetingHeader;
+    }
+
+    public WebElement getNameHeader() {
+        return nameHeader;
+    }
+
+    public WebElement getTimeBar() {
+        return timeBar;
+    }
+
+    public WebElement getDateBar() {
+        return dateBar;
+    }
 }
