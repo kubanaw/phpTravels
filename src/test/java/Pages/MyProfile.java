@@ -31,7 +31,7 @@ public class MyProfile {
     private WebElement zipCodeInput;
     @FindBy(name = "country")
     private WebElement countryListInput;
-    @FindBy(name = "updateprofile")
+    @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
 
     public MyProfile(WebDriver driver) {
@@ -83,7 +83,7 @@ public class MyProfile {
     }
 
     public void submitMyProfileUpdate() {
-        submitUpdateProfileButton.submit();
+        submitUpdateProfileButton.click();
     }
 
     public void selectCountry(String country) {

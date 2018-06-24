@@ -5,6 +5,7 @@ import Pages.HomePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -36,7 +37,7 @@ public class DisplayFooterElementTest {
     @Test
     public void addEmailToNewsletterList() {
         this.driver.get("https://www.phptravels.net/");
-footer.
+//footer.
 
     }
 
