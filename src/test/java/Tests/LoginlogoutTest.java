@@ -14,8 +14,8 @@ public class LoginlogoutTest {
     private WebDriver driver;
 
     @BeforeClass
-    public static void usawSciezke() {
-    //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
+    public static void ustawSciezke() {
+    //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
         ChromeDrvPathHelper.setChromeDrvPath();
     }
 

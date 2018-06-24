@@ -4,15 +4,16 @@ import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import util.ChromeDrvPathHelper;
 
 public class RegisterOptionsTest {
 
     private WebDriver driver;
 
     @BeforeClass
-    public static void pathSetup() {
-        //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
-        System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
+    public static void ustawSciezke() {
+        //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
+        ChromeDrvPathHelper.setChromeDrvPath();
     }
 
     @Before
