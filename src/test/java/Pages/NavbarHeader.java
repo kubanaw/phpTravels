@@ -13,16 +13,22 @@ public class NavbarHeader {
 //ELEMENTS:
     @FindBy(className ="navbar-brand")
     WebElement logoButton;
-    @FindBy(xpath = "*[@id=\"collapse\"]/ul[1]/li[1]/a")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[1]/a")
     WebElement home;
-    @FindBy(xpath = "*[@id=\"collapse\"]/ul[1]/li[2]/a")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[2]/a")
     WebElement hotels;
-    @FindBy(xpath = "*[@id=\"collapse\"]/ul[1]/li[3]/a")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[3]/a")
     WebElement flights;
-    @FindBy(xpath = "*[@id=\"collapse\"]/ul[1]/li[4]/a")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[4]/a")
     WebElement tours;
-    @FindBy(xpath ="*[@id=\"collapse\"]/ul[1]/li[5]/a")
+    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[5]/a")
     WebElement cars;
+    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[6]/a")
+    WebElement visa;
+    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[7]/a")
+    WebElement offers;
+    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[8]/a")
+    WebElement blog;
 }
 
 
