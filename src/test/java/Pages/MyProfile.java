@@ -41,12 +41,6 @@ public class MyProfile {
 
     //methods
 
-    //    public void clearFirstName (){
-//        firstNameInput.clear();
-//    }
-//    public void clearLastName (){
-//        lastNameInput.clear();
-//    }
     public void fillPhonenumber(String phone) {
         phoneNumberInput.sendKeys(phone);
     }

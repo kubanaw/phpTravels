@@ -77,6 +77,7 @@ public class UpdateUsersProfileDataTest {
 
     @Test
     public void userShouldNotBeAllowedToChangeLastNameField() {
+        //TODO ask is that good solution
         String lastName = myProfile.getLastNameInput().getAttribute("value");
         myProfile.getLastNameInput().sendKeys("Kowalska");
         String changeName = myProfile.getLastNameInput().getAttribute("value");
