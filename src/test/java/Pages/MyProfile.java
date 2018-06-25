@@ -13,7 +13,8 @@ public class MyProfile {
     private WebElement lastNameInput;
     @FindBy(name = "phone")
     private WebElement phoneNumberInput;
-    @FindBy(name = "email")
+    //there was a problem with find email field by name ="email"
+    @FindBy(xpath = "/html[1]/body[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[2]/div[2]/div[1]/div[2]/input[1]")
     private WebElement emailInput;
     @FindBy(name = "password")
     private WebElement passwordInput;
@@ -127,5 +128,49 @@ public class MyProfile {
 
     public WebElement getConfirmPasswordInput() {
         return confirmPasswordInput;
+    }
+
+    public WebElement getFirstNameInput() {
+        return firstNameInput;
+    }
+
+    public WebElement getLastNameInput() {
+        return lastNameInput;
+    }
+
+    public WebElement getPhoneNumberInput() {
+        return phoneNumberInput;
+    }
+
+    public WebElement getEmailInput() {
+        return emailInput;
+    }
+
+    public WebElement getFirstAddressInput() {
+        return firstAddressInput;
+    }
+
+    public WebElement getSecondAddressInput() {
+        return secondAddressInput;
+    }
+
+    public WebElement getCityInput() {
+        return cityInput;
+    }
+
+    public WebElement getStateInput() {
+        return stateInput;
+    }
+
+    public WebElement getZipCodeInput() {
+        return zipCodeInput;
+    }
+
+    public WebElement getCountryListInput() {
+        return countryListInput;
+    }
+
+    public WebElement getSubmitUpdateProfileButton() {
+        return submitUpdateProfileButton;
     }
 }

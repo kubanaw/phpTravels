@@ -36,7 +36,7 @@ public class LoginPage {
     }
 
 
-    public void loginDemo (){
+    public void loginDemoUser(){
         fillUserEmailField("user@phptravels.com");
         fillUsersPassword("demouser");
         driver.manage().timeouts().implicitlyWait(1,TimeUnit.SECONDS);
