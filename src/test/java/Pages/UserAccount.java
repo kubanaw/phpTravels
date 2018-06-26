@@ -1,14 +1,18 @@
 package Pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserAccount {
 
     //fields
 
-    WebDriver driver;
+    private WebDriver driver;
+    private WebDriverWait waitTime;
 
     //constructor
 
@@ -60,7 +64,13 @@ public class UserAccount {
 
     public void goToMyProfile (){
 
-        myProfile.click();
+        waitTime = new WebDriverWait(driver, 2);
+        try {
+            waitTime.until(ExpectedConditions.elementToBeClickable(myProfile));
+            myProfile.click();
+        } catch (TimeoutException toe) {
+//            System.out.println(toe);
+        }
     }
 
     public void goToWishlist (){

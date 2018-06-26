@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +16,7 @@ public class RegisterOptionsTest {
 
     private WebDriver driver;
     private RegisterPage registerPage;
+    private WebDriverWait waitTime;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -24,8 +27,11 @@ public class RegisterOptionsTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
+        this.waitTime = new WebDriverWait(driver, 2);
         this.registerPage = PageFactory.initElements(this.driver, RegisterPage.class);
         this.driver.get("https://www.phptravels.net/register");
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
 //    @After
@@ -40,17 +46,12 @@ public class RegisterOptionsTest {
 
         registerPage.fillFirstname("Gerwazy");
         registerPage.fillLastName("Moczymorda");
-        registerPage.fillEmailAdress("j3686875776@nwytg.com");
+        registerPage.fillEmailAdress("j3776@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
+        //is any way to make it better?
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
@@ -69,11 +70,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j368687577116@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -92,11 +88,6 @@ public class RegisterOptionsTest {
 
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field is required.\nThe Password field is required.\nThe Password field is required." +
                 "\nThe First name field is required.\nThe Last Name field is required.");
@@ -112,11 +103,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j368687577116@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -138,11 +124,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j368687577116@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -164,11 +145,6 @@ public class RegisterOptionsTest {
         registerPage.fillMobileNumber("440086544");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -189,11 +165,6 @@ public class RegisterOptionsTest {
         registerPage.fillLastName("Moczymorda");
         registerPage.fillMobileNumber("440086544");
         registerPage.fillEmailAdress("j368687577116@nwytg.com");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -204,7 +175,6 @@ public class RegisterOptionsTest {
         String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Password field is required.\nThe Password field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
@@ -218,11 +188,7 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j3686875776nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //TODO catch TimeoutException to logger
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -244,11 +210,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress(" j3686875776@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -270,11 +231,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j3686875776@nwytg.com ");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3t9!");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -298,11 +254,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j3686875776@nwytg.com");
         registerPage.fillPassword("M4ki3");
         registerPage.fillConfirmPassword("M4ki3");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -324,11 +275,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j3675776@nwytg.com");
         registerPage.fillPassword("M4ki3t");
         registerPage.fillConfirmPassword("M4ki3t");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
@@ -348,11 +294,6 @@ public class RegisterOptionsTest {
         registerPage.fillEmailAdress("j3686875776@nwytg.com");
         registerPage.fillPassword("M4ki3t9!");
         registerPage.fillConfirmPassword("M4ki3");
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Assert.assertTrue(registerPage.getSubmit().isEnabled());
         registerPage.clickSubmit();
         try {
