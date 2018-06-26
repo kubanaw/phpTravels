@@ -18,7 +18,6 @@ public class MainPageAccountLoginTest {
         ChromeDrvPathHelper.setChromeDrvPath();
     }
 
-
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
