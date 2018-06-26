@@ -1,14 +1,19 @@
 package Tests;
 
+import Pages.RegisterPage;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
+
+import java.util.concurrent.TimeUnit;
 
 public class RegisterOptionsTest {
 
     private WebDriver driver;
+    private RegisterPage registerPage;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -19,39 +24,38 @@ public class RegisterOptionsTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
+        this.registerPage = PageFactory.initElements(this.driver, RegisterPage.class);
         this.driver.get("https://www.phptravels.net/register");
     }
 
-    @After
-    public void CloseBrowser() {
-        this.driver.quit();
-    }
+//    @After
+//    public void CloseBrowser() {
+//        this.driver.quit();
+//    }
 
     //positive cases:
 
     @Test
     public void whenAllNecessaryFieldsAreFilledThenUserShouldRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3686875776@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/account/");
 
     }
@@ -59,163 +63,145 @@ public class RegisterOptionsTest {
     @Test
     public void whenAllFieldsAreFilledThenUserShouldRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillMobileNumber("440086544");
+        registerPage.fillEmailAdress("j368687577116@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/account/");
 
     }
-
 
     //negative cases:
 
     @Test
     public void whenAllFieldsAreNotFilledThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field is required.\nThe Password field is required.\nThe Password field is required." +
                 "\nThe First name field is required.\nThe Last Name field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
     @Test
     public void whenUserFirstNameFieldIsNotFillThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillMobileNumber("440086544");
+        registerPage.fillEmailAdress("j368687577116@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The First name field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
     @Test
     public void whenUserLastNameFieldIsNotFillThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillMobileNumber("440086544");
+        registerPage.fillEmailAdress("j368687577116@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Last Name field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
     @Test
     public void whenUserEmailFieldIsNotFillThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillMobileNumber("440086544");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
     @Test
     public void whenUserPasswordFieldNotFillThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("phone")).sendKeys("0048664111332");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillMobileNumber("440086544");
+        registerPage.fillEmailAdress("j368687577116@nwytg.com");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Password field is required.\nThe Password field is required.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
 
@@ -225,91 +211,78 @@ public class RegisterOptionsTest {
     //e-mail field validation
 
     @Test
-
     public void whenEmailFieldHasInvalidValueThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3686875776nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field must contain a valid email address.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
-
 
     }
 
     @Test
-
     public void whenEmailFieldHasWhiteSpaceBeforeThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys(" j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress(" j3686875776@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field must contain a valid email address.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
 
     }
 
     @Test
-
     public void whenEmailFieldHasWhiteSpaceAfterThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com ");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t9!");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3686875776@nwytg.com ");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3t9!");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Email field must contain a valid email address.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
 
@@ -318,53 +291,46 @@ public class RegisterOptionsTest {
     //password field validation:
 
     @Test
-
     public void whenPasswordHasLessThanSixCharThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3686875776@nwytg.com");
+        registerPage.fillPassword("M4ki3");
+        registerPage.fillConfirmPassword("M4ki3");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "The Password field must be at least 6 characters in length.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
 
     }
 
     @Test
-
     public void whenPasswordHasSixCharThenUserShouldRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3675776@nwytg.com");
+        registerPage.fillPassword("M4ki3t");
+        registerPage.fillConfirmPassword("M4ki3t");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
@@ -373,37 +339,32 @@ public class RegisterOptionsTest {
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/account/");
 
     }
-    @Test
 
+    @Test
     public void whenConfirmPasswordIsInaccurateThenUserShouldNotRegister() {
 
-        this.driver.findElement(By.name("firstname")).sendKeys("Gerwazy");
-        this.driver.findElement(By.name("lastname")).sendKeys("Moczymorda");
-        this.driver.findElement(By.name("email")).sendKeys("j3686875@nwytg.com");
-        this.driver.findElement(By.name("password")).sendKeys("M4ki3t9!");
-        this.driver.findElement(By.name("confirmpassword")).sendKeys("M4ki3t");
-
+        registerPage.fillFirstname("Gerwazy");
+        registerPage.fillLastName("Moczymorda");
+        registerPage.fillEmailAdress("j3686875776@nwytg.com");
+        registerPage.fillPassword("M4ki3t9!");
+        registerPage.fillConfirmPassword("M4ki3");
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        this.driver.findElement(By.xpath("/html/body/div[4]/section/div/div/div/div/div[2]/div/form/div[9]/button")).click();
-
+        Assert.assertTrue(registerPage.getSubmit().isEnabled());
+        registerPage.clickSubmit();
         try {
             Thread.sleep(1100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String message = this.driver.findElement(By.className("alert-danger")).getText();
-//        System.out.println(message);
+        String message = registerPage.getAlert().getText();
         Assert.assertEquals(message, "Password not matching with confirm password.");
         Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/register");
 
     }
-
-
 
 
 }
