@@ -37,6 +37,7 @@ public class LoginPage {
     public void fillUsersPassword (String pass) {
         password.sendKeys(pass);
     }
+    //TODO remember to create a method for checkbox with loop and boolean isSelected()
     public void checkRememberMe (){
         rememberMeCheckBox.click();
     }
