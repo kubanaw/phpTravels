@@ -1,25 +1,31 @@
 package Pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+
 public class LoginPage {
-    WebDriver driver;
+    private WebDriver driver;
+    //declare WebDriverWait variable to create explicit waits:
+    private WebDriverWait waitTime;
     @FindBy (name = "username")
-    WebElement userName;
+    private WebElement userName;
     @FindBy (name = "password")
-    WebElement password;
+    private WebElement password;
     @FindBy (name = "remember")
-    WebElement rememberMeCheckBox;
+    private WebElement rememberMeCheckBox;
     @FindBy (className = "loginbtn")
-    WebElement loginButton;
+    private WebElement loginButton;
     @FindBy (linkText = "Sign Up")
-    WebElement signUpButton;
+    private WebElement signUpButton;
     @FindBy (linkText = "Forget Password")
-    WebElement forgetPasswordButton;
+    private WebElement forgetPasswordButton;
 
     public LoginPage (WebDriver driver){
         this.driver =driver;
@@ -31,6 +37,7 @@ public class LoginPage {
     public void fillUsersPassword (String pass) {
         password.sendKeys(pass);
     }
+    //TODO remember to create a method for checkbox with loop and boolean isSelected()
     public void checkRememberMe (){
         rememberMeCheckBox.click();
     }
@@ -39,8 +46,14 @@ public class LoginPage {
     public void loginDemoUser(){
         fillUserEmailField("user@phptravels.com");
         fillUsersPassword("demouser");
-        driver.manage().timeouts().implicitlyWait(1,TimeUnit.SECONDS);
-        loginButton.click();
+        this.waitTime = new WebDriverWait(driver, 2);
+        //ExpectedConditions class is necessary for WebDriverWait.until() method
+        try {
+            waitTime.until(ExpectedConditions.elementToBeClickable(loginButton));
+            loginButton.click();
+        } catch (TimeoutException toe) {
+//            System.out.println(toe);
+        }
     }
 
 

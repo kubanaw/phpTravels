@@ -1,11 +1,15 @@
 package Pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage {
     private WebDriver driver;
+    private WebDriverWait waitTime;
     //ELEMENTS:
     @FindBy(name = "firstname")
     private WebElement firstName;
@@ -54,7 +58,13 @@ public class RegisterPage {
     }
 
     public void clickSubmit() {
-        submit.click();
+        this.waitTime = new WebDriverWait(driver, 2);
+        try {
+            waitTime.until(ExpectedConditions.elementToBeClickable(submit));
+            submit.click();
+        } catch (TimeoutException toe) {
+            //System.out.println(toe);
+        }
     }
     //GETTERS
 
