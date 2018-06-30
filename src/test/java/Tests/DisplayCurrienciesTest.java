@@ -29,7 +29,9 @@ public class DisplayCurrienciesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-    }
+        this.driver.get("https://www.phptravels.net/");
+        }
+
 
 //    @After
 //    public void CloseBrowser() {
@@ -54,10 +56,6 @@ public class DisplayCurrienciesTest {
         String resultSAR = this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")).getText();
         Assert.assertEquals("SAR", resultSAR);
         this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")).click();
-
-
-
-
 
         //DELAY Until closing
         try {
