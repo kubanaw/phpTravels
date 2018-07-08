@@ -4,12 +4,16 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage {
+    //TODO refactor (change xpath to another type)
+
     private WebDriver driver;
     private WebDriverWait waitTime;
+    private final String url = "https://www.phptravels.net/register";
     //ELEMENTS:
     @FindBy(name = "firstname")
     private WebElement firstName;
@@ -29,6 +33,7 @@ public class RegisterPage {
     private WebElement alert;
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     //METHODS:
@@ -65,6 +70,10 @@ public class RegisterPage {
         } catch (TimeoutException toe) {
             //System.out.println(toe);
         }
+    }
+
+    public void goToRegisterPage (){
+        driver.get(url);
     }
     //GETTERS
 

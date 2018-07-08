@@ -36,12 +36,13 @@ public class UpdateUsersProfileDataTest {
     public void setup() {
         this.driver = new ChromeDriver();
         this.waitTime = new WebDriverWait(this.driver, 2);
-        this.driver.get("https://www.phptravels.net/login");
-        this.myProfile = PageFactory.initElements(this.driver, MyProfile.class);
-        this.loginPage = PageFactory.initElements(this.driver, LoginPage.class);
-        this.userAccount = PageFactory.initElements(this.driver, UserAccount.class);
+        this.myProfile = new MyProfile(driver);
+        this.loginPage = new LoginPage(driver);
+        this.userAccount = new UserAccount(driver);
+        loginPage.goToLoginPage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+
         loginPage.loginDemoUser();
         userAccount.goToMyProfile();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);

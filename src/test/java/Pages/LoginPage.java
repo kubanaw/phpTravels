@@ -4,6 +4,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,9 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 
 public class LoginPage {
+    //TODO refactor ()
+
     private WebDriver driver;
     //declare WebDriverWait variable to create explicit waits:
     private WebDriverWait waitTime;
+    private final String url = "https://www.phptravels.net/login";
     @FindBy (name = "username")
     private WebElement userName;
     @FindBy (name = "password")
@@ -29,8 +33,11 @@ public class LoginPage {
 
     public LoginPage (WebDriver driver){
         this.driver =driver;
+        PageFactory.initElements(driver, this);
     }
-
+    public void goToLoginPage (){
+        driver.get(url);
+    }
     public void fillUserEmailField (String userEmail){
         userName.sendKeys(userEmail);
     }

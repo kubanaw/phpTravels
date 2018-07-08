@@ -13,6 +13,8 @@ import util.ChromeDrvPathHelper;
 import java.util.concurrent.TimeUnit;
 
 public class RegisterOptionsTest {
+    //TODO refactor (create DDT)
+
 
     private WebDriver driver;
     private RegisterPage registerPage;
@@ -28,16 +30,16 @@ public class RegisterOptionsTest {
     public void setup() {
         this.driver = new ChromeDriver();
         this.waitTime = new WebDriverWait(driver, 2);
-        this.registerPage = PageFactory.initElements(this.driver, RegisterPage.class);
-        this.driver.get("https://www.phptravels.net/register");
+        this.registerPage = new RegisterPage(driver);
+        registerPage.goToRegisterPage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
-//    @After
-//    public void CloseBrowser() {
-//        this.driver.quit();
-//    }
+    @After
+    public void CloseBrowser() {
+        this.driver.quit();
+    }
 
     //positive cases:
 
