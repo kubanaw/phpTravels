@@ -15,7 +15,7 @@ import util.ChromeDrvPathHelper;
 import java.util.concurrent.TimeUnit;
 
 public class MyProfileTest {
-    //TODO change assertions to AssertJ
+    //TODO change assertions to AssertJ and loggers
 
     private WebDriver driver;
     private MyProfile myProfile;

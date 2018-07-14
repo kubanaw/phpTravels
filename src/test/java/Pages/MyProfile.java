@@ -17,8 +17,7 @@ public class MyProfile {
     @FindBy(name = "phone")
     private WebElement phoneNumberInput;
     //there was a problem with find email field by name ="email"
-    @FindBy (css ="input.form-control[name='email']")
-    //(xpath = "/html[1]/body[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[2]/div[2]/div[1]/div[2]/input[1]")
+    @FindBy(css = "input.form-control[name='email']")
     private WebElement emailInput;
     @FindBy(name = "password")
     private WebElement passwordInput;
@@ -46,52 +45,63 @@ public class MyProfile {
 
     //methods
 
-    public void fillFirstName (String firstname){
+    public void fillFirstName(String firstname) {
         firstNameInput.sendKeys(firstname);
     }
 
-    public void fillLastName (String lastname){
+    public void fillLastName(String lastname) {
         lastNameInput.sendKeys(lastname);
     }
 
     public void fillPhonenumber(String phone) {
+        clearPhonenumberField();
         phoneNumberInput.sendKeys(phone);
     }
 
     public void fillEmail(String email) {
+        clearEmailField();
         emailInput.sendKeys(email);
     }
 
     public void fillPassword(String password) {
+        clearPasswordField();
         passwordInput.sendKeys(password);
     }
 
     public void fillConfirmPassword(String confirmPassword) {
+        clearConfirmPasswordField();
         confirmPasswordInput.sendKeys(confirmPassword);
     }
 
     public void fillFirstAddress(String address1) {
+        clearFirstAddressField();
         firstAddressInput.sendKeys(address1);
     }
 
     public void fillSecondAddress(String address2) {
+        clearSecondAddressField();
         secondAddressInput.sendKeys(address2);
     }
 
     public void fillCity(String city) {
+        clearCityField();
         cityInput.sendKeys(city);
     }
 
     public void fillState(String state) {
+
+        clearStateField();
         stateInput.sendKeys(state);
     }
 
     public void fillZipCode(String zip) {
+        clearZipCodeField();
         zipCodeInput.sendKeys(zip);
     }
 
     public void submitMyProfileUpdate() {
-        submitUpdateProfileButton.click();
+        if (submitUpdateProfileButton.isEnabled())
+            submitUpdateProfileButton.click();
     }
 
     public void selectCountry(String country) {
@@ -127,7 +137,14 @@ public class MyProfile {
         zipCodeInput.clear();
     }
 
-    //getters
+    public void clearPasswordField() {
+        passwordInput.clear();
+    }
+
+    public void clearConfirmPasswordField() {
+        confirmPasswordInput.clear();
+    }
+
 
     public WebElement getPasswordInput() {
         return passwordInput;

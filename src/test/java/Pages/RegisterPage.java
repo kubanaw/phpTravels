@@ -9,12 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage {
-    //TODO refactor (change xpath to another type)
+
 
     private final String url = "https://www.phptravels.net/register";
     private WebDriver driver;
     private WebDriverWait wait;
-    //ELEMENTS:
     @FindBy(name = "firstname")
     private WebElement firstName;
     @FindBy(name = "lastname")
