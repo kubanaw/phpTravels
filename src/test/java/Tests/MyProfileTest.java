@@ -7,23 +7,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
 
-public class UpdateUsersProfileDataTest {
+public class MyProfileTest {
+    //TODO change assertions to AssertJ
 
     private WebDriver driver;
     private MyProfile myProfile;
     private LoginPage loginPage;
     private UserAccount userAccount;
-    private WebDriverWait waitTime;
+    private WebDriverWait wait;
 
 
     @BeforeClass
@@ -35,14 +33,13 @@ public class UpdateUsersProfileDataTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.waitTime = new WebDriverWait(this.driver, 2);
+        driver.manage().window().maximize();
+        this.wait = new WebDriverWait(this.driver, 2);
         this.myProfile = new MyProfile(driver);
         this.loginPage = new LoginPage(driver);
         this.userAccount = new UserAccount(driver);
         loginPage.goToLoginPage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-
         loginPage.loginDemoUser();
         userAccount.goToMyProfile();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -55,7 +52,7 @@ public class UpdateUsersProfileDataTest {
 
     @Test
     public void allProfilesFormFieldsShouldBeDisplayed() {
-        //TODO catch NoSuchElementException to logger
+        //TODO catch NoSuchElementException to logger or remove this test
             Assert.assertTrue(myProfile.getFirstNameInput().isDisplayed());
             Assert.assertTrue(myProfile.getLastNameInput().isDisplayed());
             Assert.assertTrue(myProfile.getPhoneNumberInput().isDisplayed());
@@ -74,7 +71,7 @@ public class UpdateUsersProfileDataTest {
     @Test
     public void userShouldNotBeAllowedToChangeFirstNameField() {
         String firstName = myProfile.getFirstNameInput().getAttribute("value");
-        myProfile.getFirstNameInput().sendKeys("Natalia");
+        myProfile.fillFirstName("Natalia");
         String changeName = myProfile.getFirstNameInput().getAttribute("value");
         Assert.assertEquals(firstName, "Johny");
         Assert.assertNotEquals(firstName, "Natalia");
@@ -85,7 +82,7 @@ public class UpdateUsersProfileDataTest {
     public void userShouldNotBeAllowedToChangeLastNameField() {
         //TODO ask is that good solution
         String lastName = myProfile.getLastNameInput().getAttribute("value");
-        myProfile.getLastNameInput().sendKeys("Kowalska");
+        myProfile.fillLastName("Kowalska");
         String changeName = myProfile.getLastNameInput().getAttribute("value");
         Assert.assertEquals(lastName, "Smith");
         Assert.assertNotEquals(lastName, "Kowalska");
@@ -98,6 +95,8 @@ public class UpdateUsersProfileDataTest {
         myProfile.selectCountry("Brazil");
         myProfile.submitMyProfileUpdate();
     }
+
+    //TODO create more options tests
 
 
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 public class MyProfile {
     //TODO refactor (change xpath to another type)
     WebDriver driver;
+
     @FindBy(name = "firstname")
     private WebElement firstNameInput;
     @FindBy(name = "lastname")
@@ -16,7 +17,8 @@ public class MyProfile {
     @FindBy(name = "phone")
     private WebElement phoneNumberInput;
     //there was a problem with find email field by name ="email"
-    @FindBy(xpath = "/html[1]/body[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[2]/div[2]/div[1]/div[2]/input[1]")
+    @FindBy (css ="input.form-control[name='email']")
+    //(xpath = "/html[1]/body[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[2]/div[2]/div[1]/div[2]/input[1]")
     private WebElement emailInput;
     @FindBy(name = "password")
     private WebElement passwordInput;
@@ -44,6 +46,14 @@ public class MyProfile {
 
     //methods
 
+    public void fillFirstName (String firstname){
+        firstNameInput.sendKeys(firstname);
+    }
+
+    public void fillLastName (String lastname){
+        lastNameInput.sendKeys(lastname);
+    }
+
     public void fillPhonenumber(String phone) {
         phoneNumberInput.sendKeys(phone);
     }
@@ -53,7 +63,7 @@ public class MyProfile {
     }
 
     public void fillPassword(String password) {
-        passwordInput.sendKeys();
+        passwordInput.sendKeys(password);
     }
 
     public void fillConfirmPassword(String confirmPassword) {

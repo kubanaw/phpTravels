@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class RegisterOptionsTest {
     //TODO refactor (create DDT)
+    //TODO change assertions to AssertJ
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
