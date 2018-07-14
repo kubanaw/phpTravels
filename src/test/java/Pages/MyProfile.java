@@ -7,16 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class MyProfile {
-    //TODO refactor (change xpath to another type)
-    WebDriver driver;
 
+    private WebDriver driver;
     @FindBy(name = "firstname")
     private WebElement firstNameInput;
     @FindBy(name = "lastname")
     private WebElement lastNameInput;
     @FindBy(name = "phone")
     private WebElement phoneNumberInput;
-    //there was a problem with find email field by name ="email"
     @FindBy(css = "input.form-control[name='email']")
     private WebElement emailInput;
     @FindBy(name = "password")
