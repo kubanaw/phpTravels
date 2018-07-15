@@ -47,8 +47,8 @@ public class RegisterOptionsPositiveTests {
 
     public static Collection<Object[]> dataForBMI() {
         return Arrays.asList(new Object[][]{
-                {"Gerwazy", "Moczymorda", "788990333", "j3776@nwytg.com", "M4ki3t9!", "M4ki3t9!"},
-                {"Gerwazy", "Moczymorda", "", "j377689@nwytg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "j36@nwytgfg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "", "j3779@nwytgfffg.com", "M4ki3t9!", "M4ki3t9!"},
         });
     }
 
@@ -62,7 +62,7 @@ public class RegisterOptionsPositiveTests {
     public void setup() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 10);
         registerPage = new RegisterPage(driver);
         userAccount = new UserAccount(driver);
         registerPage.goToRegisterPage();
@@ -83,7 +83,8 @@ public class RegisterOptionsPositiveTests {
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
-        assertThat(registerPage.showCurrentUrl())
+        wait.until(ExpectedConditions.visibilityOf(userAccount.getGreetingHeader()));
+        assertThat(userAccount.showCurrentUrl())
                 .isEqualTo(userAccount.getUrl());
 
 

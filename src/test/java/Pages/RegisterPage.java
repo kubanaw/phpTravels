@@ -8,13 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.logging.Logger;
+
 public class RegisterPage {
 
 
     private final String url = "https://www.phptravels.net/register";
     private WebDriver driver;
-
     private WebDriverWait wait;
+    private static final Logger LOGGER =Logger.getLogger(RegisterPage.class.getName());
 
     @FindBy(name = "firstname")
     private WebElement firstName;
@@ -40,7 +42,6 @@ public class RegisterPage {
     }
 
     public void fillFirstName(String typeName) {
-
         firstName.clear();
         firstName.sendKeys(typeName);
     }
@@ -61,7 +62,6 @@ public class RegisterPage {
     }
 
     public void fillPassword(String typePassword) {
-
         password.clear();
         password.sendKeys(typePassword);
     }
@@ -85,11 +85,15 @@ public class RegisterPage {
     }
 
     public String getAlertMessage() {
-        return alert.getText();
+        String alertMessage = alert.getText();
+        LOGGER.info("Current alert: "+alertMessage);
+        return alertMessage;
     }
 
     public String showCurrentUrl (){
-        return driver.getCurrentUrl();
+        String currentURL = driver.getCurrentUrl();
+        LOGGER.info("Current URL of Register Page: "+currentURL);
+        return currentURL;
     }
 
 
