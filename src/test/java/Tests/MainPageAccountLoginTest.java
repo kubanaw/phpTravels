@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import util.ChromeDrvPathHelper;
 
 public class MainPageAccountLoginTest {
+    //TODO create abstract class
     private WebDriver driver;
 
     @BeforeClass
