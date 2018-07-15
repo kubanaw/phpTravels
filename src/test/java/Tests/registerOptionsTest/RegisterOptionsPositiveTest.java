@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @RunWith(Parameterized.class)
-public class RegisterOptionsPositiveTests {
+public class RegisterOptionsPositiveTest {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
@@ -45,7 +45,7 @@ public class RegisterOptionsPositiveTests {
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}")
 
-    public static Collection<Object[]> dataForBMI() {
+    public static Collection<Object[]> dataForRegisterOption() {
         return Arrays.asList(new Object[][]{
                 {"Gerwazy", "Moczymord", "788990333", "j36@nwytgfg.com", "M4ki3t9!", "M4ki3t9!"},
                 {"Gerwazy", "Moczymord", "", "j3779@nwytgfffg.com", "M4ki3t9!", "M4ki3t9!"},
