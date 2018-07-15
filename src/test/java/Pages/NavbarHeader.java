@@ -67,7 +67,7 @@ public class NavbarHeader {
 
     //LANGUAGE OPTIONS
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
-    WebElement language
+    WebElement language;
 //    @FindBy(xpath = "//*[@id=\"ar\"]")
 //    WebElement ArabicLanguage;
 //    @FindBy(xpath = "//*[@id=\"tr\"]")

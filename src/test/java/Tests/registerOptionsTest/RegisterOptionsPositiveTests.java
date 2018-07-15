@@ -1,18 +1,24 @@
 package Tests.registerOptionsTest;
 import Pages.RegisterPage;
-import org.junit.*;
+import Pages.UserAccount;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-import org.junit.runners.Parameterized.Parameter;
 
 
 
@@ -21,6 +27,7 @@ public class RegisterOptionsPositiveTests {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
+    private UserAccount userAccount;
 
     @Parameter()
     public String firstName;
@@ -55,8 +62,9 @@ public class RegisterOptionsPositiveTests {
     public void setup() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-        this.wait = new WebDriverWait(driver, 5);
-        this.registerPage = new RegisterPage(driver);
+        wait = new WebDriverWait(driver, 5);
+        registerPage = new RegisterPage(driver);
+        userAccount = new UserAccount(driver);
         registerPage.goToRegisterPage();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -68,6 +76,19 @@ public class RegisterOptionsPositiveTests {
 
     @Test
     public void whenNecessaryFieldAreFilledThenShouldRegister (){
+        registerPage.fillFirstName(firstName);
+        registerPage.fillLastName(lastName);
+        registerPage.fillMobileNumber(phone);
+        registerPage.fillEmailAdress(email);
+        registerPage.fillPassword(password);
+        registerPage.fillConfirmPassword(confirmPassword);
+        registerPage.clickSubmit();
+        assertThat(registerPage.showCurrentUrl())
+                .isEqualTo(userAccount.getUrl());
+
+
+
+
 
     }
 
