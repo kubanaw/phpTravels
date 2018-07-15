@@ -115,29 +115,29 @@ public class DisplayMainNavbarTest {
 
     }
 
-    @Test
-    public void GivenThahtFlightsPageExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String resultFlights = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[3]/a")).getText();
-        Assert.assertEquals(resultFlights, "FLIGHTS");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[3]/a")).click();
-        this.driver.get("https://www.phptravels.net/");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/flights");
-        this.driver.get("https://www.phptravels.net/");
-        //DELAY Until closing
-        try {
-            Thread.sleep(2700);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //DELAY-END
-
-
-    }
+//    @Test
+//    public void GivenThahtFlightsPageExist() {
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultFlights = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[3]/a")).getText();
+//        Assert.assertEquals(resultFlights, "FLIGHTS");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[3]/a")).click();
+//        this.driver.get("https://www.phptravels.net/");
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/flights");
+//        this.driver.get("https://www.phptravels.net/");
+//        //DELAY Until closing
+//        try {
+//            Thread.sleep(2700);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        //DELAY-END
+//
+//
+//    }
 
 }

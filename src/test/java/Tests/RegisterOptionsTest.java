@@ -43,7 +43,6 @@ public class RegisterOptionsTest {
 
     @Test
     public void whenAllNecessaryFieldsAreFilledThenUserShouldRegister() {
-
         registerPage.fillFirstname("Gerwazy");
         registerPage.fillLastName("Moczymorda");
         registerPage.fillEmailAdress("j3776@nwytg.com");
