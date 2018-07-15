@@ -20,9 +20,9 @@ public class RegisterPage {
     private WebElement lastName;
     @FindBy(name = "phone")
     private WebElement mobileNumber;
-    @FindBy(name="email")
+    @FindBy(name = "email")
     private WebElement emailAdress;
-    @FindBy(name="password")
+    @FindBy(name = "password")
     private WebElement password;
     @FindBy(name = "confirmpassword")
     private WebElement confirmPassword;
@@ -33,38 +33,45 @@ public class RegisterPage {
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 3);
+        this.wait = new WebDriverWait(driver, 5);
         PageFactory.initElements(driver, this);
     }
 
 
     public void fillFirstName(String typeName) {
+        firstName.clear();
         firstName.sendKeys(typeName);
     }
 
     public void fillLastName(String typeLastName) {
+        lastName.clear();
         lastName.sendKeys(typeLastName);
     }
 
     public void fillMobileNumber(String typeMobileNumber) {
+        mobileNumber.clear();
         mobileNumber.sendKeys(typeMobileNumber);
     }
 
     public void fillEmailAdress(String typeEmail) {
+        emailAdress.clear();
         emailAdress.sendKeys(typeEmail);
     }
 
     public void fillPassword(String typePassword) {
+
+        password.clear();
         password.sendKeys(typePassword);
     }
 
     public void fillConfirmPassword(String typeConfirmPassword) {
+        confirmPassword.clear();
         confirmPassword.sendKeys(typeConfirmPassword);
     }
 
     public void clickSubmit() {
-            wait.until(ExpectedConditions.elementToBeClickable(submit));
-            submit.click();
+        wait.until(ExpectedConditions.elementToBeClickable(submit));
+        submit.click();
     }
 
     public void goToRegisterPage() {
