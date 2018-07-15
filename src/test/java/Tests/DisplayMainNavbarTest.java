@@ -85,10 +85,28 @@ public class DisplayMainNavbarTest {
         this.driver.get("https://www.phptravels.net/");
 
 //Assert BLOG link on navbar exist. This assertion checks test, and tries to click object if working, it continues
+    }
+      @Test
+        public void GivenThatBlogPageExist(){
+            this.driver.get("https://www.phptravels.net/");
+
         String resultBlog = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).getText();
         Assert.assertEquals(resultBlog, "BLOG");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).click();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         this.driver.get("https://www.phptravels.net/");
+            Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/blog");
+            this.driver.get("https://www.phptravels.net/");
+            //DELAY Until closing
+            try {
+                Thread.sleep(2700);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
     }
 
     @Test
@@ -111,7 +129,6 @@ public class DisplayMainNavbarTest {
             e.printStackTrace();
         }
         //DELAY-END
-
 
     }
 
