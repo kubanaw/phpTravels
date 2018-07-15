@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class RegisterPage {
     private WebDriver driver;
     private WebDriverWait waitTime;
+
+
     //ELEMENTS:
     @FindBy(name = "firstname")
     private WebElement firstName;
@@ -32,6 +34,9 @@ public class RegisterPage {
     }
 
     //METHODS:
+
+
+
 
     public void fillFirstname(String typeName) {
         firstName.sendKeys(typeName);

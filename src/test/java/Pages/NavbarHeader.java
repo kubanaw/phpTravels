@@ -3,7 +3,9 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
+import java.util.logging.Level;
 import java.util.logging.XMLFormatter;
 
 public class NavbarHeader {
@@ -12,69 +14,72 @@ public class NavbarHeader {
       this.driver = driver;
     }
 
-//ELEMENTS:
+
+
     @FindBy(className ="navbar-brand")
     WebElement logoButton;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[1]/a")
+    @FindBy(linkText = "")
     WebElement home;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[2]/a")
+    @FindBy(css = ".loader title=Hotels")
     WebElement hotels;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[3]/a")
+    @FindBy(css = ".loader title=Flights")
     WebElement flights;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[4]/a")
+    @FindBy(css = ".loader title=Tours")
     WebElement tours;
-    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[5]/a")
+    @FindBy(css =".loader title=Cars")
     WebElement cars;
-    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[6]/a")
+    @FindBy(css =".loader title=Ivisa")
     WebElement visa;
-    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[7]/a")
+    @FindBy(xpath =".loader title=Offers")
     WebElement offers;
-    @FindBy(xpath ="//*[@id=\"collapse\"]/ul[1]/li[8]/a")
+    @FindBy(xpath =".loader title=Blog")
     WebElement blog;
 
     //MY ACCOUNT
-    @FindBy(xpath = "//*[@id=\"li_myaccount\"]/a")
+    @FindBy(id = "li_myaccount")
     WebElement myAccountDropdown;
-    @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[1]/a")
+    @FindBy(linkText = "Login")
     WebElement loginFromMyAccountDropdown;
-    @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[2]/a")
+    @FindBy(linkText = "Sign Up")
     WebElement signFromMyAccountDropdown;
 
     //CURRENCY
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[1]/a")
-    WebElement currencyUSD;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
-    WebElement currencyGBP;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")
-    WebElement currencySAR;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[4]/a")
-    WebElement currencyEUR;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[5]/a")
-    WebElement currencyPKR;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[6]/a")
-    WebElement currencyKWD;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[7]/a")
-    WebElement currencyJPY;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[8]/a")
-    WebElement currencyINR;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[9]/a")
-    WebElement currencyCNY;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[10]/a")
-    WebElement currencyTRY;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
+    WebElement currency;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
+//    WebElement currencyGBP;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")
+//    WebElement currencySAR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[4]/a")
+//    WebElement currencyEUR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[5]/a")
+//    WebElement currencyPKR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[6]/a")
+//    WebElement currencyKWD;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[7]/a")
+//    WebElement currencyJPY;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[8]/a")
+//    WebElement currencyINR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[9]/a")
+//    WebElement currencyCNY;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[10]/a")
+//    WebElement currencyTRY;
 
     //LANGUAGE OPTIONS
-    @FindBy(xpath = "//*[@id=\"ar\"]")
-    WebElement ArabicLanguage;
-    @FindBy(xpath = "//*[@id=\"tr\"]")
-    WebElement TurkishLanguage;
-    @FindBy(xpath = "//*[@id=\"fr\"]")
-    WebElement FrenchLanguage;
-    @FindBy(xpath = "//*[@id=\"es\"]")
-    WebElement SpanishLanguage;
-    @FindBy(xpath = "//*[@id=\"ru\"]")
-    WebElement RussianLanguage;
-    @FindBy(xpath = "//*[@id=\"en\"]")
-    WebElement EnglishLanguage;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
+    WebElement language
+//    @FindBy(xpath = "//*[@id=\"ar\"]")
+//    WebElement ArabicLanguage;
+//    @FindBy(xpath = "//*[@id=\"tr\"]")
+//    WebElement TurkishLanguage;
+//    @FindBy(xpath = "//*[@id=\"fr\"]")
+//    WebElement FrenchLanguage;
+//    @FindBy(xpath = "//*[@id=\"es\"]")
+//    WebElement SpanishLanguage;
+//    @FindBy(xpath = "//*[@id=\"ru\"]")
+//    WebElement RussianLanguage;
+//    @FindBy(xpath = "//*[@id=\"en\"]")
+//    WebElement EnglishLanguage;
 
 //METHODS for elements:
     public void pickHomeElement() {
@@ -106,12 +111,22 @@ public class NavbarHeader {
    public void loginToMyAccount() {
         myAccountDropdown.click();
         loginFromMyAccountDropdown.click();
+
    }
     public void SignInMyAccount() {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
     //METHODS for currency
+    public String pickCurrency(String text) {
+        Select currencyList = new Select(currency());
+        currencyList.selectByValue(text);
+
+        LOGGER.info("Currency chosen" + text);
+        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+        return currency.getAttribute("value");
+    }
+
 //przerwalam tworzenie, metody rozwijania z listy beda dodane
 
 
