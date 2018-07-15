@@ -47,7 +47,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultHome, "HOME");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[1]/a")).click();
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultHotels, "HOTELS");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[2]/a")).click();
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -77,7 +77,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultFlights, "FLIGHTS");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[3]/a")).click();
          try {
-             Thread.sleep(1750);
+             Thread.sleep(1550);
          } catch (InterruptedException e) {
              e.printStackTrace();
          }
@@ -92,7 +92,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultTours, "TOURS");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[4]/a")).click();
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -107,7 +107,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultCars, "CARS");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[5]/a")).click();
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultVisa, "VISA");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[6]/a")).click();
        try {
-           Thread.sleep(1750);
+           Thread.sleep(1550);
        } catch (InterruptedException e) {
            e.printStackTrace();
        }
@@ -137,7 +137,7 @@ public class DisplayMainNavbarTest {
          Assert.assertEquals(resultOffers, "OFFERS");
          this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[7]/a")).click();
          try {
-             Thread.sleep(1750);
+             Thread.sleep(1550);
          } catch (InterruptedException e) {
              e.printStackTrace();
          }
@@ -153,7 +153,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(resultBlog, "BLOG");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).click();
             try {
-                Thread.sleep(1750);
+                Thread.sleep(1550);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -161,7 +161,7 @@ public class DisplayMainNavbarTest {
             this.driver.get("https://www.phptravels.net/");
             //DELAY Until closing
             try {
-                Thread.sleep(1750);
+                Thread.sleep(1550);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -173,7 +173,7 @@ public class DisplayMainNavbarTest {
         Assert.assertEquals(assertHotels, "HOTELS");
         this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[2]/a")).click();
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -181,11 +181,10 @@ public class DisplayMainNavbarTest {
         this.driver.get("https://www.phptravels.net/");
         //DELAY Until closing
         try {
-            Thread.sleep(1750);
+            Thread.sleep(1550);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         //DELAY-END
-
     }
 }
