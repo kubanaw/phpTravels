@@ -3,10 +3,6 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
-
-import java.util.logging.Level;
-import java.util.logging.XMLFormatter;
 
 public class NavbarHeader {
     WebDriver driver;
@@ -18,7 +14,7 @@ public class NavbarHeader {
 
     @FindBy(className ="navbar-brand")
     WebElement logoButton;
-    @FindBy(linkText = "")
+    @FindBy(xpath = "//a[text()='Home']")
     WebElement home;
     @FindBy(css = ".loader title=Hotels")
     WebElement hotels;
@@ -67,7 +63,7 @@ public class NavbarHeader {
 
     //LANGUAGE OPTIONS
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
-    WebElement language
+    WebElement language;
 //    @FindBy(xpath = "//*[@id=\"ar\"]")
 //    WebElement ArabicLanguage;
 //    @FindBy(xpath = "//*[@id=\"tr\"]")
@@ -82,6 +78,9 @@ public class NavbarHeader {
 //    WebElement EnglishLanguage;
 
 //METHODS for elements:
+    public void openMainPage() {
+        driver.get("https://www.phptravels.net/");
+    }
     public void pickHomeElement() {
         home.click();
     }
@@ -117,17 +116,17 @@ public class NavbarHeader {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
-    //METHODS for currency
-    public String pickCurrency(String text) {
-        Select currencyList = new Select(currency());
-        currencyList.selectByValue(text);
+//    //METHODS for currency, not sure it works
+//    public String pickCurrency(String text) {
+//        Select currencyList = new Select(currency);
+//        currencyList.selectByValue(text);
+//
+//        LOGGER.info("Currency chosen" + text);
+//        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+//        return currency.getAttribute("value");
+   // }
 
-        LOGGER.info("Currency chosen" + text);
-        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
-        return currency.getAttribute("value");
-    }
 
-//przerwalam tworzenie, metody rozwijania z listy beda dodane
 
 
 }

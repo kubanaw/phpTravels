@@ -1,20 +1,18 @@
 package Tests;
 
+import Pages.NavbarHeader;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.support.ui.Select;
 import util.ChromeDrvPathHelper;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DisplayMainNavbarTest {
 
     private WebDriver driver;
+    private NavbarHeader navbarHeader;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -25,7 +23,9 @@ public class DisplayMainNavbarTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.driver.get("https://www.phptravels.net/");
+       // this.driver.get("https://www.phptravels.net/");
+        navbarHeader = new NavbarHeader(driver);
+        navbarHeader.openMainPage();
     }
 
     @After
@@ -40,23 +40,28 @@ public class DisplayMainNavbarTest {
 //    Assert.assertEquals(result1, "navbar-");
 
 //Assert Home on navbar exist. This assertion checks test, and tries to click object if working, it continues
-    @Test
+    //TODO fix test, give wait
+@Test
     public void givenThatHomePageLinkExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String resultHome = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[1]/a")).getText();
-        Assert.assertEquals(resultHome, "HOME");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[1]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(),"https://www.phptravels.net/");
-        this.driver.get("https://www.phptravels.net/");
+        navbarHeader.pickHomeElement();
+        assertThat(driver.getCurrentUrl()).isEqualTo("https://www.phptravels.net/");
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultHome = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[1]/a")).getText();
+//        Assert.assertEquals(resultHome, "HOME");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[1]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(),"https://www.phptravels.net/");
+//        this.driver.get("https://www.phptravels.net/");
     }
 //Assert HOTELS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
+
     @Test
     public void givenThatHotelsLinkExist(){
+
         this.driver.get("https://www.phptravels.net/");
         String resultHotels = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[2]/a")).getText();
         Assert.assertEquals(resultHotels, "HOTELS");
