@@ -13,7 +13,9 @@ public class RegisterPage {
 
     private final String url = "https://www.phptravels.net/register";
     private WebDriver driver;
+
     private WebDriverWait wait;
+
     @FindBy(name = "firstname")
     private WebElement firstName;
     @FindBy(name = "lastname")
@@ -37,8 +39,8 @@ public class RegisterPage {
         PageFactory.initElements(driver, this);
     }
 
-
     public void fillFirstName(String typeName) {
+
         firstName.clear();
         firstName.sendKeys(typeName);
     }
