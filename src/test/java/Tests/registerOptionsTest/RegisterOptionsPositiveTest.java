@@ -48,6 +48,7 @@ public class RegisterOptionsPositiveTest {
     public static Collection<Object[]> dataForRegisterOption() {
         return Arrays.asList(new Object[][]{
                 {"Gerwazy", "Moczymord", "788990333", "j36@nwytgfg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "j36rty@nwytgfg.com", "M4ki3t", "M4ki3t"},
                 {"Gerwazy", "Moczymord", "", "j3779@nwytgfffg.com", "M4ki3t9!", "M4ki3t9!"},
         });
     }
@@ -84,7 +85,7 @@ public class RegisterOptionsPositiveTest {
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
         wait.until(ExpectedConditions.visibilityOf(userAccount.getGreetingHeader()));
-        assertThat(userAccount.showCurrentUrl())
+        assertThat(registerPage.showCurrentUrl())
                 .isEqualTo(userAccount.getUrl());
 
 

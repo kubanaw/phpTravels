@@ -84,6 +84,10 @@ public class RegisterPage {
         return url;
     }
 
+    public WebElement getAlert() {
+        return alert;
+    }
+
     public String getAlertMessage() {
         String alertMessage = alert.getText();
         LOGGER.info("Current alert: "+alertMessage);
