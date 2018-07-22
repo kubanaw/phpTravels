@@ -14,4 +14,4 @@ public class BlogPage {
         return driver.getCurrentUrl();
     }
 }
-}
+

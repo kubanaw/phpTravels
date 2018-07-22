@@ -14,4 +14,4 @@ public class VisaPage {
         return driver.getCurrentUrl();
     }
 }
-}
+

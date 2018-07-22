@@ -1,8 +1,10 @@
 package Tests;
 
 import Pages.*;
-import org.junit.*;
-import org.openqa.selenium.By;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import util.ChromeDrvPathHelper;
@@ -19,6 +21,10 @@ public class DisplayMainNavbarTest {
     private HomePage homePage;
     private FlightsPage flightsPage;
     private ToursPage toursPage;
+    private VisaPage visaPage;
+    private CarsPage carsPage;
+    private OffersPage offersPage;
+    private BlogPage blogPage;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -36,6 +42,10 @@ public class DisplayMainNavbarTest {
         homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
         toursPage = new ToursPage(driver);
+        visaPage = new VisaPage(driver);
+        carsPage = new CarsPage(driver);
+        offersPage = new OffersPage(driver);
+        blogPage = new BlogPage(driver);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -129,94 +139,105 @@ public class DisplayMainNavbarTest {
     //Assert CARS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatCarsLinkExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String resultCars = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[5]/a")).getText();
-        Assert.assertEquals(resultCars, "CARS");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[5]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/cars");
-        this.driver.get("https://www.phptravels.net/");
+        navbarHeader.pickCarsElement();
+        assertThat(carsPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/cars");
+
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultCars = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[5]/a")).getText();
+//        Assert.assertEquals(resultCars, "CARS");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[5]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/cars");
+//        this.driver.get("https://www.phptravels.net/");
     }
 
     //Assert VISA link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatVisaLinkExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String resultVisa = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[6]/a")).getText();
-        Assert.assertEquals(resultVisa, "VISA");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[6]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/ivisa");
-        this.driver.get("https://www.phptravels.net/");
+        navbarHeader.pickVisaElement();
+        assertThat(visaPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/ivisa");
+
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultVisa = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[6]/a")).getText();
+//        Assert.assertEquals(resultVisa, "VISA");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[6]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/ivisa");
+//        this.driver.get("https://www.phptravels.net/");
     }
 
     //Assert Offers link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatOffersPageExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String resultOffers = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[7]/a")).getText();
-        Assert.assertEquals(resultOffers, "OFFERS");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[7]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/offers");
-        this.driver.get("https://www.phptravels.net/");
+        navbarHeader.pickHOffersElement();
+        assertThat(offersPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/offers");
+
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultOffers = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[7]/a")).getText();
+//        Assert.assertEquals(resultOffers, "OFFERS");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[7]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/offers");
+//        this.driver.get("https://www.phptravels.net/");
     }
 
     //Assert BLOG link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatBlogPageExist() {
-        this.driver.get("https://www.phptravels.net/");
+        navbarHeader.pickBlogElement();
+        assertThat(blogPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/blog");
 
-        String resultBlog = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).getText();
-        Assert.assertEquals(resultBlog, "BLOG");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/blog");
-        this.driver.get("https://www.phptravels.net/");
-        //DELAY Until closing
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        this.driver.get("https://www.phptravels.net/");
+//        String resultBlog = this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).getText();
+//        Assert.assertEquals(resultBlog, "BLOG");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[8]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/blog");
+//        this.driver.get("https://www.phptravels.net/");
+//        //DELAY Until closing
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
-    @Test
-    public void givenThahtHotelsPageExist() {
-        this.driver.get("https://www.phptravels.net/");
-        String assertHotels = this.driver.findElement(By.cssSelector("li.main-lnk:nth-child(2) > a:nth-child(1)")).getText();
-        Assert.assertEquals(assertHotels, "HOTELS");
-        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[2]/a")).click();
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/hotels");
-        this.driver.get("https://www.phptravels.net/");
-        //DELAY Until closing
-        try {
-            Thread.sleep(1750);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //DELAY-END
+//    @Test
+//    public void givenThahtHotelsPageExist() {
+//        this.driver.get("https://www.phptravels.net/");
+//        String assertHotels = this.driver.findElement(By.cssSelector("li.main-lnk:nth-child(2) > a:nth-child(1)")).getText();
+//        Assert.assertEquals(assertHotels, "HOTELS");
+//        this.driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[1]/li[2]/a")).click();
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        Assert.assertEquals(this.driver.getCurrentUrl(), "https://www.phptravels.net/hotels");
+//        this.driver.get("https://www.phptravels.net/");
+//        //DELAY Until closing
+//        try {
+//            Thread.sleep(1750);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        //DELAY-END
 
     }
-}
+

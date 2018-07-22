@@ -14,4 +14,4 @@ public class OffersPage {
         return driver.getCurrentUrl();
     }
 }
-}
+

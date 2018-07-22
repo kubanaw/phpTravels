@@ -14,4 +14,4 @@ public class CarsPage {
         return driver.getCurrentUrl();
     }
 }
-}
+
