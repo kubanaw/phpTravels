@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class NavbarHeader {
     WebDriver driver;
+
     public NavbarHeader(WebDriver driver) {
-      this.driver = driver;
+        this.driver = driver;
     }
 
 
-
-    @FindBy(className ="navbar-brand")
+    @FindBy(className = "navbar-brand")
     WebElement logoButton;
     @FindBy(xpath = "//a[text()='Home']")
     WebElement home;
@@ -22,13 +22,13 @@ public class NavbarHeader {
     WebElement flights;
     @FindBy(css = ".loader title=Tours")
     WebElement tours;
-    @FindBy(css =".loader title=Cars")
+    @FindBy(css = ".loader title=Cars")
     WebElement cars;
-    @FindBy(css =".loader title=Ivisa")
+    @FindBy(css = ".loader title=Ivisa")
     WebElement visa;
-    @FindBy(xpath =".loader title=Offers")
+    @FindBy(xpath = ".loader title=Offers")
     WebElement offers;
-    @FindBy(xpath =".loader title=Blog")
+    @FindBy(xpath = ".loader title=Blog")
     WebElement blog;
 
     //MY ACCOUNT
@@ -77,45 +77,58 @@ public class NavbarHeader {
 //    @FindBy(xpath = "//*[@id=\"en\"]")
 //    WebElement EnglishLanguage;
 
+<<<<<<< HEAD
 //METHODS for elements:
     public void openMainPage() {
         driver.get("https://www.phptravels.net/");
     }
+=======
+    //METHODS for elements:
+>>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
     public void pickHomeElement() {
         home.click();
     }
+
     public void pickHotelsElement() {
         hotels.click();
     }
+
     public void pickFlightsElement() {
         flights.click();
     }
-    public void pickToursElement(){
+
+    public void pickToursElement() {
         tours.click();
     }
+
     public void pickCarsElement() {
         cars.click();
     }
+
     public void pickVisaElement() {
         visa.click();
     }
+
     public void pickHOffersElement() {
         offers.click();
     }
+
     public void pickBlogElement() {
         blog.click();
     }
 
-   // METHODS for accountDropdown
-   public void loginToMyAccount() {
+    // METHODS for accountDropdown
+    public void loginToMyAccount() {
         myAccountDropdown.click();
         loginFromMyAccountDropdown.click();
 
-   }
+    }
+
     public void SignInMyAccount() {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
+<<<<<<< HEAD
 //    //METHODS for currency, not sure it works
 //    public String pickCurrency(String text) {
 //        Select currencyList = new Select(currency);
@@ -127,8 +140,21 @@ public class NavbarHeader {
    // }
 
 
+=======
+    //METHODS for currency
+//    public String pickCurrency(String text) {
+//        Select currencyList = new Select(currency());
+//        currencyList.selectByValue(text);
 
+//        LOGGER.info("Currency chosen" + text);
+//        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+//        return currency.getAttribute("value");
+//    }
 
+//przerwalam tworzenie, metody rozwijania z listy beda dodane
 }
+>>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
+
 
 

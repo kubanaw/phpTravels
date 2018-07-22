@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @RunWith(Parameterized.class)
-public class RegisterOptionsPositiveTests {
+public class RegisterOptionsPositiveTest {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
@@ -45,10 +45,11 @@ public class RegisterOptionsPositiveTests {
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}")
 
-    public static Collection<Object[]> dataForBMI() {
+    public static Collection<Object[]> dataForRegisterOption() {
         return Arrays.asList(new Object[][]{
-                {"Gerwazy", "Moczymorda", "788990333", "j3776@nwytg.com", "M4ki3t9!", "M4ki3t9!"},
-                {"Gerwazy", "Moczymorda", "", "j377689@nwytg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "j36@nwytgfg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "j36rty@nwytgfg.com", "M4ki3t", "M4ki3t"},
+                {"Gerwazy", "Moczymord", "", "j3779@nwytgfffg.com", "M4ki3t9!", "M4ki3t9!"},
         });
     }
 
@@ -62,7 +63,11 @@ public class RegisterOptionsPositiveTests {
     public void setup() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
+<<<<<<< HEAD:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTests.java
         wait = new WebDriverWait(driver, 5);
+=======
+        wait = new WebDriverWait(driver, 10);
+>>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTest.java
         registerPage = new RegisterPage(driver);
         userAccount = new UserAccount(driver);
         registerPage.goToRegisterPage();
@@ -83,6 +88,10 @@ public class RegisterOptionsPositiveTests {
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
+<<<<<<< HEAD:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTests.java
+=======
+        wait.until(ExpectedConditions.visibilityOf(userAccount.getGreetingHeader()));
+>>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTest.java
         assertThat(registerPage.showCurrentUrl())
                 .isEqualTo(userAccount.getUrl());
 
