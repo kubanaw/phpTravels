@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class NavbarHeader {
+public class NavbarHeader extends BasePage {
     WebDriver driver;
 
     public NavbarHeader(WebDriver driver) {
@@ -83,7 +83,10 @@ public class NavbarHeader {
     public void openMainPage() {
         driver.get("https://www.phptravels.net/");
     }
-
+//public static void testLogLevels() {
+//    LOGGER.log(Level.WARNING, "warning message");
+//    LOGGER.log(Level.INFO, "info message");
+//}
 
     public void pickHomeElement() {
         home.click();

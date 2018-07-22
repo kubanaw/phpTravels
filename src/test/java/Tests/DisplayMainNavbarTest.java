@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DisplayMainNavbarTest {
+public class DisplayMainNavbarTest  {
 
     private WebDriver driver;
     private NavbarHeader navbarHeader;
@@ -38,6 +38,8 @@ public class DisplayMainNavbarTest {
         // this.driver.get("https://www.phptravels.net/");
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
+       //TODO find solution for loggers in abstractclass
+        // navbarHeader.testLogLevels();
         hotelspage = new HotelsPage(driver);
         homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
@@ -217,6 +219,8 @@ public class DisplayMainNavbarTest {
 //            e.printStackTrace();
 //        }
     }
+
+
 
 //    @Test
 //    public void givenThahtHotelsPageExist() {
