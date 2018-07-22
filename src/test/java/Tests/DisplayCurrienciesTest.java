@@ -52,20 +52,59 @@ public class DisplayCurrienciesTest {
         //1. wchodze na strone phptravels
         this.driver.get("https://www.phptravels.net/");
 
-        //2. sprawdzam domyslna walute
+       // 2. sprawdzam domyslna walute
 
-//        Assert.assertEquals("USD",homePage.getCurrentCurrency().getText());
+          Assert.assertEquals("USD",homePage.getCurrentCurrency().getText());
 
         //3. klikam na liste w celu rozwiniecia
-//        this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
+        this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
 
-        //4. zmieniam na walute GBP
+        //4. zmieniam na walute GBP STARA METODA
 //        Assert.assertEquals("GBP", homePage.getGBPCurrency().getText());
 
-        //ZAJECIA SIE KONCZA WIEC POZOSTAJE NARAZIE TAKA PROWIZORKA
-        //4. zmieniam na walute SAR
+        //4. zmieniam na walute GBP
+        homePage.setCurrency("GBP");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "GBP"));
+        Assert.assertEquals("GBP",homePage.getCurrentCurrency().getText());
+
+        //5. zmieniam na walute SAR
         homePage.setCurrency("SAR");
         wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "ريال"));
         Assert.assertEquals("ريال",homePage.getCurrentCurrency().getText());
+
+        //6. zmieniam na walute EUR
+        homePage.setCurrency("EUR");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "EUR"));
+        Assert.assertEquals("EUR",homePage.getCurrentCurrency().getText());
+
+        //7. zmieniam na walute PKR
+        homePage.setCurrency("PKR");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "RS"));
+        Assert.assertEquals("RS",homePage.getCurrentCurrency().getText());
+
+        //8. zmieniam na walute KWD
+        homePage.setCurrency("KWD");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "KWD"));
+        Assert.assertEquals("KWD",homePage.getCurrentCurrency().getText());
+
+        //9. zmieniam na walute JPY
+        homePage.setCurrency("JPY");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "JPY"));
+        Assert.assertEquals("JPY",homePage.getCurrentCurrency().getText());
+
+        //9. zmieniam na walute INR
+        homePage.setCurrency("INR");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "INR"));
+        Assert.assertEquals("INR",homePage.getCurrentCurrency().getText());
+
+        //10. zmieniam na walute CNY
+        homePage.setCurrency("CNY");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "CNY"));
+        Assert.assertEquals("CNY",homePage.getCurrentCurrency().getText());
+
+        //11. zmieniam na walute TRY
+        homePage.setCurrency("TRY");
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "TURKISH"));
+        Assert.assertEquals("TURKISH",homePage.getCurrentCurrency().getText());
     }
 }
