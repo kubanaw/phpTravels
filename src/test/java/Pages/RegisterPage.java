@@ -88,5 +88,9 @@ public class RegisterPage {
         return alert.getText();
     }
 
+    public String showCurrentUrl (){
+        return driver.getCurrentUrl();
+    }
+
 
 }

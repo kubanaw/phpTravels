@@ -16,6 +16,7 @@ public class UserAccount {
 
     private WebDriver driver;
     private WebDriverWait waitTime;
+    private final String url = "https://www.phptravels.net/account/";
 
     //constructor
 
@@ -58,6 +59,7 @@ public class UserAccount {
 
     @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]")
     private WebElement dateBar;
+
 
     //methods
 
@@ -110,5 +112,15 @@ public class UserAccount {
 
     public WebElement getDateBar() {
         return dateBar;
+    }
+
+
+    public String getUrl (){
+
+        return url;
+    }
+
+    public String showCurrentUrl (){
+        return driver.getCurrentUrl();
     }
 }
