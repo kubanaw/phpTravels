@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import util.ChromeDrvPathHelper;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DisplayMainNavbarTest {
@@ -26,6 +28,7 @@ public class DisplayMainNavbarTest {
        // this.driver.get("https://www.phptravels.net/");
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After

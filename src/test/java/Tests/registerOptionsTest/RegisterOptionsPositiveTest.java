@@ -14,11 +14,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
-import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -63,11 +64,10 @@ public class RegisterOptionsPositiveTest {
     public void setup() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-<<<<<<< HEAD:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTests.java
+
         wait = new WebDriverWait(driver, 5);
-=======
-        wait = new WebDriverWait(driver, 10);
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTest.java
+
+
         registerPage = new RegisterPage(driver);
         userAccount = new UserAccount(driver);
         registerPage.goToRegisterPage();
@@ -88,10 +88,7 @@ public class RegisterOptionsPositiveTest {
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
-<<<<<<< HEAD:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTests.java
-=======
         wait.until(ExpectedConditions.visibilityOf(userAccount.getGreetingHeader()));
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9:src/test/java/Tests/registerOptionsTest/RegisterOptionsPositiveTest.java
         assertThat(registerPage.showCurrentUrl())
                 .isEqualTo(userAccount.getUrl());
 

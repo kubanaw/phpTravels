@@ -77,14 +77,12 @@ public class NavbarHeader {
 //    @FindBy(xpath = "//*[@id=\"en\"]")
 //    WebElement EnglishLanguage;
 
-<<<<<<< HEAD
 //METHODS for elements:
     public void openMainPage() {
         driver.get("https://www.phptravels.net/");
     }
-=======
-    //METHODS for elements:
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
+
     public void pickHomeElement() {
         home.click();
     }
@@ -128,7 +126,6 @@ public class NavbarHeader {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
-<<<<<<< HEAD
 //    //METHODS for currency, not sure it works
 //    public String pickCurrency(String text) {
 //        Select currencyList = new Select(currency);
@@ -140,7 +137,6 @@ public class NavbarHeader {
    // }
 
 
-=======
     //METHODS for currency
 //    public String pickCurrency(String text) {
 //        Select currencyList = new Select(currency());
@@ -153,7 +149,7 @@ public class NavbarHeader {
 
 //przerwalam tworzenie, metody rozwijania z listy beda dodane
 }
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
 
 
 
