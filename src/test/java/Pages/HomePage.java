@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
     //TODO create abstract class
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     private WebDriver driver;
@@ -34,5 +36,9 @@ public class HomePage {
 
     public WebElement getGBPCurrency() {
         return GBPCurrency;
+    }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 }

@@ -20,17 +20,17 @@ public class NavbarHeader {
     WebElement home;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[2]/a")
     WebElement hotels;
-    @FindBy(css = ".loader title=Flights")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[3]/a")
     WebElement flights;
-    @FindBy(css = ".loader title=Tours")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[4]/a")
     WebElement tours;
-    @FindBy(css = ".loader title=Cars")
+    @FindBy(xpath = ".//*[@id=\"collapse\"]/ul[1]/li[5]/a")
     WebElement cars;
-    @FindBy(css = ".loader title=Ivisa")
+    @FindBy(xpath = ".//*[@id=\"collapse\"]/ul[1]/li[6]/a")
     WebElement visa;
-    @FindBy(xpath = ".loader title=Offers")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[7]/a")
     WebElement offers;
-    @FindBy(xpath = ".loader title=Blog")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[8]/a")
     WebElement blog;
 
     //MY ACCOUNT
