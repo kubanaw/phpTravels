@@ -124,6 +124,8 @@ public class UserAccount {
     }
 
     public String showCurrentUrl (){
+
         return driver.getCurrentUrl();
+
     }
 }
