@@ -3,12 +3,14 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class NavbarHeader {
     WebDriver driver;
 
     public NavbarHeader(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -16,7 +18,7 @@ public class NavbarHeader {
     WebElement logoButton;
     @FindBy(xpath = "//a[text()='Home']")
     WebElement home;
-    @FindBy(css = ".loader title=Hotels")
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[2]/a")
     WebElement hotels;
     @FindBy(css = ".loader title=Flights")
     WebElement flights;

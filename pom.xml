@@ -12,7 +12,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    <dependencies>
+
+<dependencies>
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
@@ -24,9 +25,8 @@
         <artifactId>junit</artifactId>
         <version>4.12</version>
         <scope>test</scope>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    </dependency>         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -34,16 +34,9 @@
             <scope>test</scope>
         </dependency>
 
-=======
-    </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.10.0</version>
-            <scope>test</scope>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
