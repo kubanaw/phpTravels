@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage {
+    //TODO create abstract class
 
     public HomePage(WebDriver driver) {
         this.driver = driver;

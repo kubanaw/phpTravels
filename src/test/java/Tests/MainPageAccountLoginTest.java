@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import util.ChromeDrvPathHelper;
 
 public class MainPageAccountLoginTest {
+    //TODO create abstract class
     private WebDriver driver;
 
     @BeforeClass
@@ -17,7 +18,6 @@ public class MainPageAccountLoginTest {
         //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
         ChromeDrvPathHelper.setChromeDrvPath();
     }
-
 
     @Before
     public void setup() {

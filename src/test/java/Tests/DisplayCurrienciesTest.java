@@ -106,5 +106,12 @@ public class DisplayCurrienciesTest {
         homePage.setCurrency("TRY");
         wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "TURKISH"));
         Assert.assertEquals("TURKISH",homePage.getCurrentCurrency().getText());
+
+        //DELAY Until closing
+        try {
+            Thread.sleep(2700);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
