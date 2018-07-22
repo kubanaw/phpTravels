@@ -19,10 +19,8 @@ public class UserAccount {
     private WebDriver driver;
     private WebDriverWait waitTime;
     private final String url = "https://www.phptravels.net/account/";
-<<<<<<< HEAD
-=======
     private static final Logger LOGGER = Logger.getLogger(UserAccount.class.getName());
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
 
     //constructor
 
@@ -127,12 +125,10 @@ public class UserAccount {
     }
 
     public String showCurrentUrl (){
-<<<<<<< HEAD
-        return driver.getCurrentUrl();
-=======
+
         String currentURL = driver.getCurrentUrl();
         LOGGER.info("Current URL of User Account Page: "+currentURL);
         return currentURL;
->>>>>>> a35a9b464663d4e2bca24b845e1558637dcbd8d9
+
     }
 }
