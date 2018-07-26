@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.logging.Logger;
+
 public class UserAccount {
     //TODO refactor (change xpath to another type)
 
@@ -16,6 +18,8 @@ public class UserAccount {
 
     private WebDriver driver;
     private WebDriverWait waitTime;
+    private final String url = "https://www.phptravels.net/account/";
+    private static final Logger LOGGER = Logger.getLogger(UserAccount.class.getName());
 
     //constructor
 
@@ -44,7 +48,7 @@ public class UserAccount {
 
     private WebElement profileImage;
 
-    @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/h3[1]")
+    @FindBy (css="h3.RTL")
     private WebElement greetingHeader;
 
     @FindBy (xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[1]/a")
@@ -58,6 +62,7 @@ public class UserAccount {
 
     @FindBy (xpath = "/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]")
     private WebElement dateBar;
+
 
     //methods
 
@@ -110,5 +115,17 @@ public class UserAccount {
 
     public WebElement getDateBar() {
         return dateBar;
+    }
+
+
+    public String getUrl (){
+
+        return url;
+    }
+
+    public String showCurrentUrl (){
+
+        return driver.getCurrentUrl();
+
     }
 }
