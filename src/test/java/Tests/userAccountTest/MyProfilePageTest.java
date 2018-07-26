@@ -1,8 +1,8 @@
-package Tests;
+package Tests.userAccountTest;
 
-import Pages.LoginPage;
-import Pages.MyProfile;
-import Pages.UserAccount;
+import Pages.navbarTabs.LoginPage;
+import Pages.account.MyProfilePage;
+import Pages.account.UserAccountPage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -14,13 +14,13 @@ import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
 
-public class MyProfileTest {
+public class MyProfilePageTest {
     //TODO change assertions to AssertJ and loggers
 
     private WebDriver driver;
-    private MyProfile myProfile;
+    private MyProfilePage myProfilePage;
     private LoginPage loginPage;
-    private UserAccount userAccount;
+    private UserAccountPage userAccountPage;
     private WebDriverWait wait;
 
 
@@ -35,13 +35,13 @@ public class MyProfileTest {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         this.wait = new WebDriverWait(this.driver, 2);
-        this.myProfile = new MyProfile(driver);
+        this.myProfilePage = new MyProfilePage(driver);
         this.loginPage = new LoginPage(driver);
-        this.userAccount = new UserAccount(driver);
+        this.userAccountPage = new UserAccountPage(driver);
         loginPage.goToLoginPage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         loginPage.loginDemoUser();
-        userAccount.goToMyProfile();
+        userAccountPage.goToMyProfile();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
@@ -53,26 +53,26 @@ public class MyProfileTest {
     @Test
     public void allProfilesFormFieldsShouldBeDisplayed() {
         //TODO catch NoSuchElementException to logger or remove this test
-            Assert.assertTrue(myProfile.getFirstNameInput().isDisplayed());
-            Assert.assertTrue(myProfile.getLastNameInput().isDisplayed());
-            Assert.assertTrue(myProfile.getPhoneNumberInput().isDisplayed());
-            Assert.assertTrue(myProfile.getEmailInput().isDisplayed());
-            Assert.assertTrue(myProfile.getPasswordInput().isDisplayed());
-            Assert.assertTrue(myProfile.getConfirmPasswordInput().isDisplayed());
-            Assert.assertTrue(myProfile.getFirstAddressInput().isDisplayed());
-            Assert.assertTrue(myProfile.getSecondAddressInput().isDisplayed());
-            Assert.assertTrue(myProfile.getCityInput().isDisplayed());
-            Assert.assertTrue(myProfile.getStateInput().isDisplayed());
-            Assert.assertTrue(myProfile.getZipCodeInput().isDisplayed());
-            Assert.assertTrue(myProfile.getCountryListInput().isDisplayed());
-            Assert.assertTrue(myProfile.getSubmitUpdateProfileButton().isDisplayed());
+            Assert.assertTrue(myProfilePage.getFirstNameInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getLastNameInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getPhoneNumberInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getEmailInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getPasswordInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getConfirmPasswordInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getFirstAddressInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getSecondAddressInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getCityInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getStateInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getZipCodeInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getCountryListInput().isDisplayed());
+            Assert.assertTrue(myProfilePage.getSubmitUpdateProfileButton().isDisplayed());
     }
 
     @Test
     public void userShouldNotBeAllowedToChangeFirstNameField() {
-        String firstName = myProfile.getFirstNameInput().getAttribute("value");
-        myProfile.fillFirstName("Natalia");
-        String changeName = myProfile.getFirstNameInput().getAttribute("value");
+        String firstName = myProfilePage.getFirstNameInput().getAttribute("value");
+        myProfilePage.fillFirstName("Natalia");
+        String changeName = myProfilePage.getFirstNameInput().getAttribute("value");
         Assert.assertEquals(firstName, "Johny");
         Assert.assertNotEquals(firstName, "Natalia");
         Assert.assertEquals(firstName, changeName);
@@ -81,9 +81,9 @@ public class MyProfileTest {
     @Test
     public void userShouldNotBeAllowedToChangeLastNameField() {
         //TODO ask is that good solution
-        String lastName = myProfile.getLastNameInput().getAttribute("value");
-        myProfile.fillLastName("Kowalska");
-        String changeName = myProfile.getLastNameInput().getAttribute("value");
+        String lastName = myProfilePage.getLastNameInput().getAttribute("value");
+        myProfilePage.fillLastName("Kowalska");
+        String changeName = myProfilePage.getLastNameInput().getAttribute("value");
         Assert.assertEquals(lastName, "Smith");
         Assert.assertNotEquals(lastName, "Kowalska");
         Assert.assertEquals(lastName, changeName);
@@ -92,8 +92,8 @@ public class MyProfileTest {
     @Test
     public void userShouldChangeCountry() {
         //TODO create assertions -confirm country name and get correct string message
-        myProfile.selectCountry("Brazil");
-        myProfile.submitMyProfileUpdate();
+        myProfilePage.selectCountry("Brazil");
+        myProfilePage.submitMyProfileUpdate();
     }
 
     //TODO create more options tests

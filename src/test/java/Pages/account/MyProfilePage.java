@@ -1,4 +1,4 @@
-package Pages;
+package Pages.account;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class MyProfile {
+public class MyProfilePage {
 
     private WebDriver driver;
     @FindBy(name = "firstname")
@@ -36,7 +36,7 @@ public class MyProfile {
     @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
 
-    public MyProfile(WebDriver driver) {
+    public MyProfilePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

@@ -1,6 +1,8 @@
-package Tests;
+package Tests.navbarTest;
 
 import Pages.*;
+import Pages.mainPage.NavbarHeader;
+import Pages.navbarTabs.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

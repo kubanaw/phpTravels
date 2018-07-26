@@ -1,6 +1,6 @@
 package Tests.registerOptionsTest;
-import Pages.RegisterPage;
-import Pages.UserAccount;
+import Pages.navbarTabs.RegisterPage;
+import Pages.account.UserAccountPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -28,7 +28,7 @@ public class RegisterOptionsPositiveTest {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
-    private UserAccount userAccount;
+    private UserAccountPage userAccountPage;
 
     @Parameter()
     public String firstName;
@@ -69,7 +69,7 @@ public class RegisterOptionsPositiveTest {
 
 
         registerPage = new RegisterPage(driver);
-        userAccount = new UserAccount(driver);
+        userAccountPage = new UserAccountPage(driver);
         registerPage.goToRegisterPage();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -88,9 +88,9 @@ public class RegisterOptionsPositiveTest {
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
-        wait.until(ExpectedConditions.visibilityOf(userAccount.getGreetingHeader()));
+        wait.until(ExpectedConditions.visibilityOf(userAccountPage.getGreetingHeader()));
         assertThat(registerPage.showCurrentUrl())
-                .isEqualTo(userAccount.getUrl());
+                .isEqualTo(userAccountPage.getUrl());
 
 
 

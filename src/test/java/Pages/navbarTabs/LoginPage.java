@@ -1,4 +1,4 @@
-package Pages;
+package Pages.navbarTabs;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class LoginPage {
-    //TODO refactor ()
+    //TODO refactor (AssertJ +  method clear() before fill the credential + signup/forget)
 
     private WebDriver driver;
     //declare WebDriverWait variable to create explicit waits:

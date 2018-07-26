@@ -1,4 +1,4 @@
-package Pages;
+package Pages.account;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.logging.Logger;
 
-public class UserAccount {
+public class UserAccountPage {
     //TODO refactor (change xpath to another type)
 
 
@@ -19,11 +19,11 @@ public class UserAccount {
     private WebDriver driver;
     private WebDriverWait waitTime;
     private final String url = "https://www.phptravels.net/account/";
-    private static final Logger LOGGER = Logger.getLogger(UserAccount.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UserAccountPage.class.getName());
 
     //constructor
 
-    public UserAccount (WebDriver driver) {
+    public UserAccountPage(WebDriver driver) {
 
         this.driver = driver;
         PageFactory.initElements(driver, this);

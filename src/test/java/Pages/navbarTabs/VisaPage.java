@@ -1,12 +1,12 @@
-package Pages;
+package Pages.navbarTabs;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class FlightsPage {
+public class VisaPage {
     WebDriver driver;
 
-    public FlightsPage (WebDriver driver){
+    public VisaPage (WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -14,3 +14,4 @@ public class FlightsPage {
         return driver.getCurrentUrl();
     }
 }
+
