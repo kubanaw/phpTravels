@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 
 public class LoginPage {
+    //TODO create login options tests
 
     private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     private final String url = "https://www.phptravels.net/login";
@@ -76,7 +77,7 @@ public class LoginPage {
         forgetPasswordButton.click();
     }
 
-    public void sendEmailToPasswordReset(String email) {
+    public void fillEmailToPasswordReset(String email) {
         resetPasswordField.clear();
         resetPasswordField.sendKeys(email);
 

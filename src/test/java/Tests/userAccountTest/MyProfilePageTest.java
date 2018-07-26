@@ -41,7 +41,7 @@ public class MyProfilePageTest {
         loginPage.goToLoginPage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         loginPage.loginDemoUser();
-        userAccountPage.goToMyProfile();
+        userAccountPage.goToMyProfileTab();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 

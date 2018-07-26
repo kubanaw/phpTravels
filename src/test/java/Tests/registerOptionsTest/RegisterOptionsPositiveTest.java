@@ -84,7 +84,7 @@ public class RegisterOptionsPositiveTest {
         registerPage.fillFirstName(firstName);
         registerPage.fillLastName(lastName);
         registerPage.fillMobileNumber(phone);
-        registerPage.fillEmailAdress(email);
+        registerPage.fillEmailAddress(email);
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();

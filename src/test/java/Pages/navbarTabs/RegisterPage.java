@@ -12,12 +12,10 @@ import java.util.logging.Logger;
 
 public class RegisterPage {
 
-
+    private static final Logger LOGGER = Logger.getLogger(RegisterPage.class.getName());
     private final String url = "https://www.phptravels.net/register";
     private WebDriver driver;
     private WebDriverWait wait;
-    private static final Logger LOGGER =Logger.getLogger(RegisterPage.class.getName());
-
     @FindBy(name = "firstname")
     private WebElement firstName;
     @FindBy(name = "lastname")
@@ -25,7 +23,7 @@ public class RegisterPage {
     @FindBy(name = "phone")
     private WebElement mobileNumber;
     @FindBy(name = "email")
-    private WebElement emailAdress;
+    private WebElement emailAddress;
     @FindBy(name = "password")
     private WebElement password;
     @FindBy(name = "confirmpassword")
@@ -56,9 +54,9 @@ public class RegisterPage {
         mobileNumber.sendKeys(typeMobileNumber);
     }
 
-    public void fillEmailAdress(String typeEmail) {
-        emailAdress.clear();
-        emailAdress.sendKeys(typeEmail);
+    public void fillEmailAddress(String typeEmail) {
+        emailAddress.clear();
+        emailAddress.sendKeys(typeEmail);
     }
 
     public void fillPassword(String typePassword) {
@@ -75,8 +73,8 @@ public class RegisterPage {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(submit));
             submit.click();
-        } catch (TimeoutException toe){
-            LOGGER.info("Submit button is not clickable "+toe);
+        } catch (TimeoutException toe) {
+            LOGGER.info("Submit button is not clickable " + toe);
         }
     }
 
@@ -94,16 +92,15 @@ public class RegisterPage {
 
     public String getAlertMessage() {
         String alertMessage = alert.getText();
-        LOGGER.info("Current alert: "+alertMessage);
+        LOGGER.info("Current alert: " + alertMessage);
         return alertMessage;
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         String currentURL = driver.getCurrentUrl();
-        LOGGER.info("Current URL of Register Page: "+currentURL);
+        LOGGER.info("Current URL of Register Page: " + currentURL);
         return currentURL;
     }
-
 
 
 }
