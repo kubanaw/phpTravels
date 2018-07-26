@@ -86,7 +86,7 @@ public class RegisterOptionsNegativeTest {
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
-        assertThat(registerPage.showCurrentUrl())
+        assertThat(registerPage.getCurrentUrl())
                 .isEqualTo(registerPage.getUrl());
         wait.until(ExpectedConditions.visibilityOf(registerPage.getAlert()));
         assertThat(registerPage.getAlertMessage())

@@ -89,7 +89,7 @@ public class RegisterOptionsPositiveTest {
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
         wait.until(ExpectedConditions.visibilityOf(userAccountPage.getGreetingHeader()));
-        assertThat(registerPage.showCurrentUrl())
+        assertThat(registerPage.getCurrentUrl())
                 .isEqualTo(userAccountPage.getUrl());
 
 

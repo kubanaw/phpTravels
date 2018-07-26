@@ -1,5 +1,6 @@
 package Pages.navbarTabs;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -71,8 +72,12 @@ public class RegisterPage {
     }
 
     public void clickSubmit() {
-        wait.until(ExpectedConditions.elementToBeClickable(submit));
-        submit.click();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(submit));
+            submit.click();
+        } catch (TimeoutException toe){
+            LOGGER.info("Submit button is not clickable "+toe);
+        }
     }
 
     public void goToRegisterPage() {
@@ -93,7 +98,7 @@ public class RegisterPage {
         return alertMessage;
     }
 
-    public String showCurrentUrl (){
+    public String getCurrentUrl(){
         String currentURL = driver.getCurrentUrl();
         LOGGER.info("Current URL of Register Page: "+currentURL);
         return currentURL;

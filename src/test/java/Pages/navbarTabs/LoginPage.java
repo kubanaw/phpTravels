@@ -8,62 +8,102 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 
 public class LoginPage {
-    //TODO refactor (AssertJ +  method clear() before fill the credential + signup/forget)
 
-    private WebDriver driver;
-    //declare WebDriverWait variable to create explicit waits:
-    private WebDriverWait waitTime;
+    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     private final String url = "https://www.phptravels.net/login";
-    @FindBy (name = "username")
-    private WebElement userName;
-    @FindBy (name = "password")
-    private WebElement password;
-    @FindBy (name = "remember")
-    private WebElement rememberMeCheckBox;
-    @FindBy (className = "loginbtn")
-    private WebElement loginButton;
-    @FindBy (linkText = "Sign Up")
-    private WebElement signUpButton;
-    @FindBy (linkText = "Forget Password")
-    private WebElement forgetPasswordButton;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
-    public LoginPage (WebDriver driver){
-        this.driver =driver;
+    @FindBy(name = "username")
+    private WebElement userName;
+    @FindBy(name = "password")
+    private WebElement password;
+    @FindBy(name = "remember")
+    private WebElement rememberMeCheckBox;
+    @FindBy(className = "loginbtn")
+    private WebElement loginButton;
+    @FindBy(linkText = "Sign Up")
+    private WebElement signUpButton;
+    @FindBy(linkText = "Forget Password")
+    private WebElement forgetPasswordButton;
+    @FindBy(id = "resetemail")
+    private WebElement resetPasswordField;
+    @FindBy(css = "button.btn.btn-primary.resetbtn")
+    private WebElement resetButton;
+    @FindBy(css = " div.alert.alert-danger")
+    private WebElement resetAlertText;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, 5);
         PageFactory.initElements(driver, this);
     }
-    public void goToLoginPage (){
+
+    public void goToLoginPage() {
         driver.get(url);
     }
-    public void fillUserEmailField (String userEmail){
+
+    public String getCurrentUrl() {
+        String currentURL = driver.getCurrentUrl();
+        LOGGER.info("Current URL of Login Page: " + currentURL);
+        return currentURL;
+    }
+
+    public void fillUserEmailField(String userEmail) {
+        userName.clear();
         userName.sendKeys(userEmail);
     }
-    public void fillUsersPassword (String pass) {
+
+    public void fillUsersPassword(String pass) {
+        password.clear();
         password.sendKeys(pass);
     }
-    //TODO remember to create a method for checkbox with loop and boolean isSelected()
-    public void checkRememberMe (){
-        rememberMeCheckBox.click();
+
+    public void checkRememberMe() {
+        if (!rememberMeCheckBox.isSelected())
+            rememberMeCheckBox.click();
+    }
+
+    public void clickSignUp() {
+        signUpButton.click();
+    }
+
+    public void clickForgetPassword() {
+        forgetPasswordButton.click();
+    }
+
+    public void sendEmailToPasswordReset(String email) {
+        resetPasswordField.clear();
+        resetPasswordField.sendKeys(email);
+
+    }
+
+    public void resetPassword() {
+        forgetPasswordButton.click();
+    }
+
+    public String getResetAlertMessage() {
+        String alertMessage = resetAlertText.getText();
+        LOGGER.info("Current reset alert: " + alertMessage);
+        return alertMessage;
     }
 
 
-    public void loginDemoUser(){
+    public void loginDemoUser() {
         fillUserEmailField("user@phptravels.com");
         fillUsersPassword("demouser");
-        this.waitTime = new WebDriverWait(driver, 2);
-        //ExpectedConditions class is necessary for WebDriverWait.until() method
         try {
-            waitTime.until(ExpectedConditions.elementToBeClickable(loginButton));
+            wait.until(ExpectedConditions.elementToBeClickable(loginButton));
             loginButton.click();
         } catch (TimeoutException toe) {
-//            System.out.println(toe);
+            LOGGER.info("Login button is not clickable " + toe);
+
         }
     }
-
-
 
 
 }
