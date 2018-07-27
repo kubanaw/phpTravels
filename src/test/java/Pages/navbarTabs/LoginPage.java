@@ -19,6 +19,8 @@ public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    @FindBy (xpath = "//div[@class='wow fadeIn animated']")
+    private WebElement loginPanel;
     @FindBy(name = "username")
     private WebElement userName;
     @FindBy(name = "password")
@@ -52,6 +54,10 @@ public class LoginPage {
         String currentURL = driver.getCurrentUrl();
         LOGGER.info("Current URL of Login Page: " + currentURL);
         return currentURL;
+    }
+
+    public WebElement getLoginPanel() {
+        return loginPanel;
     }
 
     public void fillUserEmailField(String userEmail) {

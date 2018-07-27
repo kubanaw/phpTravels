@@ -29,6 +29,8 @@ public class UserAccountPage {
     private WebElement profileImage;
     @FindBy(css = "h3.RTL")
     private WebElement greetingHeader;
+    @FindBy (css ="div.pull-left>h4")
+    private WebElement newsletterSubscribeHeader;
 
     public UserAccountPage(WebDriver driver) {
         this.driver = driver;
@@ -61,6 +63,10 @@ public class UserAccountPage {
 
     public WebElement getGreetingHeader() {
         return greetingHeader;
+    }
+
+    public WebElement getNewsletterSubscribeHeader(){
+        return newsletterSubscribeHeader;
     }
 
 
