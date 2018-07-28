@@ -82,7 +82,7 @@ public class ProfileTabsTest {
     }
 
     @Test
-    public void userShouldGoToBookingsTab (){
+    public void userShouldGoToBookingsTab() {
         userAccountPage.goToBookingTab();
         assertThat(userAccountPage.getCurrentActiveTabHref())
                 .isEqualTo("https://www.phptravels.net/account/#bookings");
@@ -96,7 +96,7 @@ public class ProfileTabsTest {
     }
 
     @Test
-    public void userShouldGoToWishlistTab (){
+    public void userShouldGoToWishlistTab() {
         userAccountPage.goToWishlistTab();
         assertThat(userAccountPage.getCurrentActiveTabHref())
                 .isEqualTo("https://www.phptravels.net/account/#wishlist");
@@ -104,6 +104,8 @@ public class ProfileTabsTest {
         String valueAsHex = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
                 .isNotEqualTo(valueAsHex);
+        assertThat(userAccountPage.getWishlistFavorites().toString())
+                .containsSequence("Hotel");
     }
 
 

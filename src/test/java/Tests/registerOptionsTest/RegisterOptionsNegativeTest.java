@@ -112,11 +112,6 @@ public class RegisterOptionsNegativeTest {
         if (email.startsWith(" ") || email.endsWith(" "))
             assertThat(registerPage.getAlertMessage())
                     .isEqualTo("The Email field must contain a valid email address.");
-//        if (password.length() < 6) {
-//            if (!password.isEmpty())
-//                assertThat(registerPage.getAlertMessage())
-//                        .isEqualTo("The Password field must be at least 6 characters in length.");
-//        }
         if (!password.isEmpty()) {
             if (password.length() < 6) {
                 assertThat(registerPage.getAlertMessage())

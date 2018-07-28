@@ -30,7 +30,7 @@ public class UserAccountPage {
     @FindBy(css = "a[href='#newsletter']")
     private WebElement newsletter;
     //active tab icon:
-    @FindBy (css = "ul.profile-tabs>li.active>a")
+    @FindBy(css = "ul.profile-tabs>li.active>a")
     private WebElement activeTab;
     //user greeting panel:
     @FindBy(css = "img.img-thumbnail")
@@ -43,6 +43,9 @@ public class UserAccountPage {
     //elements from bookings tab:
     @FindBy(css = "div.col-md-3>span")
     private List<WebElement> bookingDetails;
+    //elements from wishlist tab:
+    @FindBy(css = "div[id*='wishlist']")
+    private List<WebElement> wishlistFavoritesList;
 
 
     public UserAccountPage(WebDriver driver) {
@@ -53,12 +56,10 @@ public class UserAccountPage {
 
 
     public void goToBookingTab() {
-
         bookings.click();
     }
 
     public void goToMyProfileTab() {
-
         myProfile.click();
     }
 
@@ -86,16 +87,13 @@ public class UserAccountPage {
 
 
     public String getUrl() {
-
         return url;
     }
 
     public String getCurrentUrl() {
-
         String currentURL = driver.getCurrentUrl();
         LOGGER.info("Current URL of User Account Page: " + currentURL);
         return currentURL;
-
     }
 
     public String getMyProfileTabCSSStyle(String style) {
@@ -132,15 +130,24 @@ public class UserAccountPage {
         return details;
     }
 
-    public String getCurrentActiveTabHref(){
+    public List<String> getWishlistFavorites() {
+        List<String> details = new ArrayList<>();
+        for (WebElement webElement : wishlistFavoritesList) {
+            details.add(webElement.getText());
+        }
+//        LOGGER.info("wishlist favorites" +details);
+        return details;
+    }
+
+    public String getCurrentActiveTabHref() {
         String currentTab = activeTab.getAttribute("href");
-        LOGGER.info("Active tab is: "+currentTab);
+        LOGGER.info("Active tab is: " + currentTab);
         return currentTab;
     }
 
-    public String getActiveTabCSSStyle (String style){
+    public String getActiveTabCSSStyle(String style) {
         String value = activeTab.getCssValue(style);
-        LOGGER.info("Current value of "+style+" is: "+value);
+        LOGGER.info("Current value of " + style + " is: " + value);
         return value;
     }
 
