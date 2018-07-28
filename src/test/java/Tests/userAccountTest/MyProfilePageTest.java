@@ -50,51 +50,51 @@ public class MyProfilePageTest {
 //        this.driver.quit();
 //    }
 
-    @Test
-    public void allProfilesFormFieldsShouldBeDisplayed() {
-        //TODO catch NoSuchElementException to logger or remove this test
-            Assert.assertTrue(myProfilePage.getFirstNameInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getLastNameInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getPhoneNumberInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getEmailInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getPasswordInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getConfirmPasswordInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getFirstAddressInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getSecondAddressInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getCityInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getStateInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getZipCodeInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getCountryListInput().isDisplayed());
-            Assert.assertTrue(myProfilePage.getSubmitUpdateProfileButton().isDisplayed());
-    }
-
-    @Test
-    public void userShouldNotBeAllowedToChangeFirstNameField() {
-        String firstName = myProfilePage.getFirstNameInput().getAttribute("value");
-        myProfilePage.fillFirstName("Natalia");
-        String changeName = myProfilePage.getFirstNameInput().getAttribute("value");
-        Assert.assertEquals(firstName, "Johny");
-        Assert.assertNotEquals(firstName, "Natalia");
-        Assert.assertEquals(firstName, changeName);
-    }
-
-    @Test
-    public void userShouldNotBeAllowedToChangeLastNameField() {
-        //TODO ask is that good solution
-        String lastName = myProfilePage.getLastNameInput().getAttribute("value");
-        myProfilePage.fillLastName("Kowalska");
-        String changeName = myProfilePage.getLastNameInput().getAttribute("value");
-        Assert.assertEquals(lastName, "Smith");
-        Assert.assertNotEquals(lastName, "Kowalska");
-        Assert.assertEquals(lastName, changeName);
-    }
-
-    @Test
-    public void userShouldChangeCountry() {
-        //TODO create assertions -confirm country name and get correct string message
-        myProfilePage.selectCountry("Brazil");
-        myProfilePage.submitMyProfileUpdate();
-    }
+//    @Test
+//    public void allProfilesFormFieldsShouldBeDisplayed() {
+//        //TODO catch NoSuchElementException to logger or remove this test
+//            Assert.assertTrue(myProfilePage.getFirstNameInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getLastNameInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getPhoneNumberInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getEmailInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getPasswordInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getConfirmPasswordInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getFirstAddressInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getSecondAddressInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getCityInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getStateInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getZipCodeInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getCountryListInput().isDisplayed());
+//            Assert.assertTrue(myProfilePage.getSubmitUpdateProfileButton().isDisplayed());
+//    }
+//
+//    @Test
+//    public void userShouldNotBeAllowedToChangeFirstNameField() {
+//        String firstName = myProfilePage.getFirstNameInput().getAttribute("value");
+//        myProfilePage.fillFirstName("Natalia");
+//        String changeName = myProfilePage.getFirstNameInput().getAttribute("value");
+//        Assert.assertEquals(firstName, "Johny");
+//        Assert.assertNotEquals(firstName, "Natalia");
+//        Assert.assertEquals(firstName, changeName);
+//    }
+//
+//    @Test
+//    public void userShouldNotBeAllowedToChangeLastNameField() {
+//        //TODO ask is that good solution
+//        String lastName = myProfilePage.getLastNameInput().getAttribute("value");
+//        myProfilePage.fillLastName("Kowalska");
+//        String changeName = myProfilePage.getLastNameInput().getAttribute("value");
+//        Assert.assertEquals(lastName, "Smith");
+//        Assert.assertNotEquals(lastName, "Kowalska");
+//        Assert.assertEquals(lastName, changeName);
+//    }
+//
+//    @Test
+//    public void userShouldChangeCountry() {
+//        //TODO create assertions -confirm country name and get correct string message
+//        myProfilePage.selectCountry("Brazil");
+//        myProfilePage.submitMyProfileUpdate();
+//    }
 
     //TODO create more options tests
 

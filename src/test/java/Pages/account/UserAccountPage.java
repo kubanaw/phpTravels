@@ -3,11 +3,14 @@ package Pages.account;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class UserAccountPage {
@@ -17,6 +20,7 @@ public class UserAccountPage {
     private final String url = "https://www.phptravels.net/account/";
     private WebDriver driver;
     private WebDriverWait wait;
+    //tabs icons
     @FindBy(css = "a[href='#bookings']")
     private WebElement bookings;
     @FindBy(css = "a[href='#profile']")
@@ -25,12 +29,21 @@ public class UserAccountPage {
     private WebElement wishlist;
     @FindBy(css = "a[href='#newsletter']")
     private WebElement newsletter;
+    //active tab icon:
+    @FindBy (css = "ul.profile-tabs>li.active>a")
+    private WebElement activeTab;
+    //user greeting panel:
     @FindBy(css = "img.img-thumbnail")
     private WebElement profileImage;
     @FindBy(css = "h3.RTL")
     private WebElement greetingHeader;
-    @FindBy (css ="div.pull-left>h4")
+    //elements from newsletter tab:
+    @FindBy(css = "div.pull-left>h4")
     private WebElement newsletterSubscribeHeader;
+    //elements from bookings tab:
+    @FindBy(css = "div.col-md-3>span")
+    private List<WebElement> bookingDetails;
+
 
     public UserAccountPage(WebDriver driver) {
         this.driver = driver;
@@ -65,8 +78,10 @@ public class UserAccountPage {
         return greetingHeader;
     }
 
-    public WebElement getNewsletterSubscribeHeader(){
-        return newsletterSubscribeHeader;
+    public String getNewsletterSubscribeHeader() {
+        String subscribe = newsletterSubscribeHeader.getText();
+        LOGGER.info("Subscribe header: " + subscribe);
+        return subscribe;
     }
 
 
@@ -82,4 +97,52 @@ public class UserAccountPage {
         return currentURL;
 
     }
+
+    public String getMyProfileTabCSSStyle(String style) {
+        String value = myProfile.getCssValue(style);
+        LOGGER.info("Current value of " + style + " is: " + value);
+        return value;
+    }
+
+
+    public String getNewsletterTabCSSStyle(String style) {
+        String value = newsletter.getCssValue(style);
+        LOGGER.info("Current value of " + style + " is: " + value);
+        return value;
+    }
+
+    public String getWishlistTabCSSStyle(String style) {
+        String value = wishlist.getCssValue(style);
+        LOGGER.info("Current value of " + style + " is: " + value);
+        return value;
+    }
+
+    public String getBookingsTabCSSStyle(String style) {
+        String value = bookings.getCssValue(style);
+        LOGGER.info("Current value of " + style + " is: " + value);
+        return value;
+    }
+
+    public List<String> getBookingDetails() {
+        List<String> details = new ArrayList<>();
+
+        for (WebElement webElement : bookingDetails) {
+            details.add(webElement.getText());
+        }
+        return details;
+    }
+
+    public String getCurrentActiveTabHref(){
+        String currentTab = activeTab.getAttribute("href");
+        LOGGER.info("Active tab is: "+currentTab);
+        return currentTab;
+    }
+
+    public String getActiveTabCSSStyle (String style){
+        String value = activeTab.getCssValue(style);
+        LOGGER.info("Current value of "+style+" is: "+value);
+        return value;
+    }
+
+
 }
