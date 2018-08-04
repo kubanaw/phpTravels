@@ -63,8 +63,8 @@ public class DisplayMainNavbarTest  {
 //    Assert.assertEquals(result1, "navbar-");
 
     //Assert Home on navbar exist. This assertion checks test, and tries to click object if working, it continues
-    //TODO fix test
-    @Test
+    //Fixed removed leading dot "." before xpath pointer - worked.
+
     public void givenThatHomePageLinkExist() {
         navbarHeader.pickHomeElement();
         assertThat(homePage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/");
