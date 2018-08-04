@@ -83,10 +83,8 @@ public class NavbarHeader extends BasePage {
     public void openMainPage() {
         driver.get("https://www.phptravels.net/");
     }
-//public static void testLogLevels() {
-//    LOGGER.log(Level.WARNING, "warning message");
-//    LOGGER.log(Level.INFO, "info message");
-//}
+
+
 
     public void pickHomeElement() {
         home.click();

@@ -39,7 +39,7 @@ public class DisplayMainNavbarTest  {
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
        //TODO find solution for loggers in abstractclass
-        // navbarHeader.testLogLevels();
+        //navbarHeader.LOGGER.log("logger message");
         hotelspage = new HotelsPage(driver);
         homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
