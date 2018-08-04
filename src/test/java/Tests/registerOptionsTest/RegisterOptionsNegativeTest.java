@@ -1,7 +1,6 @@
 package Tests.registerOptionsTest;
 
-import Pages.RegisterPage;
-import Pages.UserAccount;
+import Pages.navbarTabs.RegisterPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -83,11 +82,11 @@ public class RegisterOptionsNegativeTest {
         registerPage.fillFirstName(firstName);
         registerPage.fillLastName(lastName);
         registerPage.fillMobileNumber(phone);
-        registerPage.fillEmailAdress(email);
+        registerPage.fillEmailAddress(email);
         registerPage.fillPassword(password);
         registerPage.fillConfirmPassword(confirmPassword);
         registerPage.clickSubmit();
-        assertThat(registerPage.showCurrentUrl())
+        assertThat(registerPage.getCurrentUrl())
                 .isEqualTo(registerPage.getUrl());
         wait.until(ExpectedConditions.visibilityOf(registerPage.getAlert()));
         assertThat(registerPage.getAlertMessage())
@@ -113,11 +112,6 @@ public class RegisterOptionsNegativeTest {
         if (email.startsWith(" ") || email.endsWith(" "))
             assertThat(registerPage.getAlertMessage())
                     .isEqualTo("The Email field must contain a valid email address.");
-//        if (password.length() < 6) {
-//            if (!password.isEmpty())
-//                assertThat(registerPage.getAlertMessage())
-//                        .isEqualTo("The Password field must be at least 6 characters in length.");
-//        }
         if (!password.isEmpty()) {
             if (password.length() < 6) {
                 assertThat(registerPage.getAlertMessage())

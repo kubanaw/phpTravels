@@ -1,4 +1,4 @@
-package Tests;
+package Tests.navbarTest;
 
 import Pages.HomePage;
 import org.junit.*;
@@ -60,7 +60,7 @@ public class DisplayCurrienciesTest {
         this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
 
         //4. zmieniam na walute GBP STARA METODA
-//        Assert.assertEquals("GBP", homePage.getGBPCurrency().getText());
+//        Assert.assertEquals("GBP", mainPage.getGBPCurrency().getText());
 
         //4. zmieniam na walute GBP
         homePage.setCurrency("GBP");
