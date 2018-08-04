@@ -1,4 +1,4 @@
-package Pages;
+package Pages.account;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,9 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class MyProfile {
+import java.util.logging.Logger;
+
+public class MyProfilePage {
 
     private WebDriver driver;
+    private static final Logger LOGGER = Logger.getLogger(MyProfilePage.class.getName());
+
+    @FindBy (css = "div.form-horizontal")
+    private WebElement myProfileForm;
+    @FindBy (css = "div.panel-default:nth-child(1) div.panel-heading > h3.panel-title.go-text-right")
+    private WebElement personalDetailsHeader;
     @FindBy(name = "firstname")
     private WebElement firstNameInput;
     @FindBy(name = "lastname")
@@ -36,7 +44,7 @@ public class MyProfile {
     @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
 
-    public MyProfile(WebDriver driver) {
+    public MyProfilePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -44,56 +52,58 @@ public class MyProfile {
     //methods
 
     public void fillFirstName(String firstname) {
+        firstNameInput.clear();
         firstNameInput.sendKeys(firstname);
     }
 
     public void fillLastName(String lastname) {
+        lastNameInput.clear();
         lastNameInput.sendKeys(lastname);
     }
 
     public void fillPhonenumber(String phone) {
-        clearPhonenumberField();
+        phoneNumberInput.clear();
         phoneNumberInput.sendKeys(phone);
     }
 
     public void fillEmail(String email) {
-        clearEmailField();
+       emailInput.clear();
         emailInput.sendKeys(email);
     }
 
     public void fillPassword(String password) {
-        clearPasswordField();
+       passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void fillConfirmPassword(String confirmPassword) {
-        clearConfirmPasswordField();
+        confirmPasswordInput.clear();
         confirmPasswordInput.sendKeys(confirmPassword);
     }
 
     public void fillFirstAddress(String address1) {
-        clearFirstAddressField();
+        firstAddressInput.clear();
         firstAddressInput.sendKeys(address1);
     }
 
     public void fillSecondAddress(String address2) {
-        clearSecondAddressField();
+        secondAddressInput.clear();
         secondAddressInput.sendKeys(address2);
     }
 
     public void fillCity(String city) {
-        clearCityField();
+        cityInput.clear();
         cityInput.sendKeys(city);
     }
 
     public void fillState(String state) {
 
-        clearStateField();
+        stateInput.clear();
         stateInput.sendKeys(state);
     }
 
     public void fillZipCode(String zip) {
-        clearZipCodeField();
+        zipCodeInput.clear();
         zipCodeInput.sendKeys(zip);
     }
 
@@ -107,50 +117,6 @@ public class MyProfile {
         selectCountry.selectByVisibleText(country);
     }
 
-    public void clearPhonenumberField() {
-        phoneNumberInput.clear();
-    }
-
-    public void clearEmailField() {
-        emailInput.clear();
-    }
-
-    public void clearFirstAddressField() {
-        firstAddressInput.clear();
-    }
-
-    public void clearSecondAddressField() {
-        secondAddressInput.clear();
-    }
-
-    public void clearCityField() {
-        cityInput.clear();
-    }
-
-    public void clearStateField() {
-        stateInput.clear();
-    }
-
-    public void clearZipCodeField() {
-        zipCodeInput.clear();
-    }
-
-    public void clearPasswordField() {
-        passwordInput.clear();
-    }
-
-    public void clearConfirmPasswordField() {
-        confirmPasswordInput.clear();
-    }
-
-
-    public WebElement getPasswordInput() {
-        return passwordInput;
-    }
-
-    public WebElement getConfirmPasswordInput() {
-        return confirmPasswordInput;
-    }
 
     public WebElement getFirstNameInput() {
         return firstNameInput;
@@ -192,7 +158,13 @@ public class MyProfile {
         return countryListInput;
     }
 
-    public WebElement getSubmitUpdateProfileButton() {
-        return submitUpdateProfileButton;
+    public WebElement getMyProfileForm() {
+        return myProfileForm;
+    }
+
+    public String getPersonalDetailHeaderText (){
+        String header = personalDetailsHeader.getText();
+        LOGGER.info("Current personal details header is: "+header);
+        return header;
     }
 }

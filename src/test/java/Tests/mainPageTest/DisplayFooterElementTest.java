@@ -1,6 +1,6 @@
-package Tests;
+package Tests.mainPageTest;
 
-import Pages.Footer;
+import Pages.mainPage.Footer;
 import Pages.HomePage;
 import org.junit.After;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package Pages;
+package Pages.mainPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +26,8 @@ public class NavbarHeader extends BasePage {
     WebElement tours;
     @FindBy(xpath = ".//*[@id=\"collapse\"]/ul[1]/li[5]/a")
     WebElement cars;
-    @FindBy(xpath = ".//*[@id=\"collapse\"]/ul[1]/li[6]/a")
+    //TODO changed from ".// to "//*[@id=\"collapse\"]/ul[1]/li[6]/a" - cars test works
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[6]/a")
     WebElement visa;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[7]/a")
     WebElement offers;
