@@ -1,7 +1,7 @@
 package Tests.mainPageTest;
 
-import Pages.mainPage.Footer;
-import Pages.HomePage;
+import Pages.commonPages.Footer;
+import Pages.homePage.HomePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

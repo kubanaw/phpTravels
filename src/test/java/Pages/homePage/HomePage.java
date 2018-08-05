@@ -1,4 +1,4 @@
-package Pages;
+package Pages.homePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    //TODO REMOVE THIS CLASS! Is the same as NavbarHeader -Kuba You must refactor your DisplayCurrenciesTest
+    //TODO refactor (input homepage) THIS CLASS! Is the same as NavbarHeader -Kuba You must refactor your DisplayCurrenciesTest
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
