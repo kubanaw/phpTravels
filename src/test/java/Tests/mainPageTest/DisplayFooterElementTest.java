@@ -6,20 +6,22 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class DisplayFooterElementTest {
     //ilona tutaj pisze
@@ -56,7 +58,7 @@ public class DisplayFooterElementTest {
         System.out.println(subscribedSuccessfullyAlert);
         assertEquals("SUBSCRIBED SUCCESSFULLY", subscribedSuccessfullyAlert);
 
-        //      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
+//      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
 //        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
 //        System.out.println(subscribedSuccessfullyAlert);
 //        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
@@ -64,15 +66,16 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatCONTACTLinkExist() {
             this.driver.get("https://www.phptravels.net/");
+            this.footer.getEmailField().click();
+            driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             //TODO find method to navigate to:   @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
             //    WebElement contactLink;  - currently this fails:
             //    this.footer.pickContactElement()
-
-            this.footer.getDoDna();
-
+            //TODO - WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+            this.footer.getContactLink().click();
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            
         }
-
-
 
 }

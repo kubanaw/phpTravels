@@ -21,6 +21,7 @@ public class Footer {
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
     WebElement contactLink;
 
+
     //METHODS:
 //napisac metode do wpisania maila i submita
 
@@ -32,7 +33,7 @@ public class Footer {
         return submitNewsletterButton;
     }
 
-    public WebElement pickContactElement() {
+    public WebElement getContactLink() {
         return contactLink;
     }
 
