@@ -16,6 +16,14 @@ public class Footer {
     WebElement submitNewsletterButton;
 
     //METHODS:
+//napisac metode do wpisania maila i submita
 
-    //napisac metode do wpisania maila i submita
+    public WebElement getEmailField() {
+        return emailField;
+    }
+
+    public WebElement getSubmitNewsletterButton() {
+        return submitNewsletterButton;
+    }
+
 }

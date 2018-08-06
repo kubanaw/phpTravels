@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
 
+import java.util.concurrent.TimeUnit;
+
 public class DisplayFooterElementTest {
     //ilona tutaj pisze
     private WebDriver driver;
@@ -37,6 +39,10 @@ public class DisplayFooterElementTest {
     @Test
     public void addEmailToNewsletterList() {
         this.driver.get("https://www.phptravels.net/");
+        this.footer.getEmailField().sendKeys("testqwerty3210@gmail.com");
+        this.footer.getSubmitNewsletterButton().click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 //footer.
 
     }
