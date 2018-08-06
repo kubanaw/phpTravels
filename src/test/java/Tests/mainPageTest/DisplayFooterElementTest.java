@@ -55,6 +55,8 @@ public class DisplayFooterElementTest {
         String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
         System.out.println(subscribedSuccessfullyAlert);
         assertEquals("SUBSCRIBED SUCCESSFULLY", subscribedSuccessfullyAlert);
+
+        //      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
 //        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
 //        System.out.println(subscribedSuccessfullyAlert);
 //        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
