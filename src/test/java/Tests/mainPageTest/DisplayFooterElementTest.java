@@ -79,7 +79,7 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatAboutUsLinkExist() {
             this.driver.get("https://www.phptravels.net/");
-            //Trick to show footer - go to email field
+        //Trick to show footer - go to email field
             this.footer.getEmailField().click();
         //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
             driver.manage().window().maximize();
@@ -94,11 +94,8 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatHowToBookLinkExist() {
             this.driver.get("https://www.phptravels.net/");
-        //Trick to show footer - go to email field
             this.footer.getEmailField().click();
-        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
             driver.manage().window().maximize();
-        //Now links are visible
             this.footer.getHowToBook().click();
             String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")).getText();
             System.out.println(subscribedSuccessfullyAlert);
@@ -108,11 +105,8 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatBookingTipsLinkExist() {
             this.driver.get("https://www.phptravels.net/");
-        //Trick to show footer - go to email field
             this.footer.getEmailField().click();
-        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
             driver.manage().window().maximize();
-        //Now links are visible
             this.footer.getBookingTips().click();
             String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")).getText();
             System.out.println(subscribedSuccessfullyAlert);
