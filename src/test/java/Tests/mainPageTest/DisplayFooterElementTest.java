@@ -7,13 +7,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -45,7 +49,7 @@ public class DisplayFooterElementTest {
     @Test
     public void addEmailToNewsletterList() {
         this.driver.get("https://www.phptravels.net/");
-        this.footer.getEmailField().sendKeys("abactestqwerty3210@gmail.com");
+        this.footer.getEmailField().sendKeys("testqwerty3210@gmail.com");
         this.footer.getSubmitNewsletterButton().click();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
@@ -54,9 +58,19 @@ public class DisplayFooterElementTest {
 //        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
 //        System.out.println(subscribedSuccessfullyAlert);
 //        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
-
-
-
     }
+        @Test
+        public void givenThatCONTACTLinkExist() {
+            this.driver.get("https://www.phptravels.net/");
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            //TODO find method to navigate to:   @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
+            //    WebElement contactLink;  - currently this fails:
+            //    this.footer.pickContactElement()
+
+            this.footer.getDoDna();
+
+        }
+
+
 
 }
