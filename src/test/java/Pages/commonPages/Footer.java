@@ -22,6 +22,10 @@ public class Footer {
     WebElement contactLink;
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")
     WebElement aboutUS;
+    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")
+    WebElement howToBook;
+    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")
+    WebElement bookingTips;
 
     //METHODS:
 //napisac metode do wpisania maila i submita
@@ -40,6 +44,14 @@ public class Footer {
 
     public WebElement getAboutUS() {
         return aboutUS;
+    }
+
+    public WebElement getHowToBook() {
+        return howToBook;
+    }
+
+    public WebElement getBookingTips() {
+        return bookingTips;
     }
 
     public WebElement getDoDna() {

@@ -14,10 +14,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -64,35 +62,63 @@ public class DisplayFooterElementTest {
 //        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
     }
         @Test
-        public void givenThatCONTACTLinkExist() {
+        public void givenThatContactLinkExist() {
             this.driver.get("https://www.phptravels.net/");
-           //Trick to show footer - go to email field
+        //Trick to show footer - go to email field
             this.footer.getEmailField().click();
-            //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            //Now links are visible
+        //Now links are visible
             this.footer.getContactLink().click();
             String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")).getText();
             System.out.println(subscribedSuccessfullyAlert);
             assertEquals("CONTACT", subscribedSuccessfullyAlert);
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
         }
-    @Test
-    public void givenThatAboutUsLinkExist() {
-        this.driver.get("https://www.phptravels.net/");
-        //Trick to show footer - go to email field
-        this.footer.getEmailField().click();
-        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        //Now links are visible
-        this.footer.getAboutUS().click();
-        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")).getText();
-        System.out.println(subscribedSuccessfullyAlert);
-        assertEquals("ABOUT US", subscribedSuccessfullyAlert);
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
+        @Test
+        public void givenThatAboutUsLinkExist() {
+            this.driver.get("https://www.phptravels.net/");
+            //Trick to show footer - go to email field
+            this.footer.getEmailField().click();
+        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+            driver.manage().window().maximize();
+        //Now links are visible
+            this.footer.getAboutUS().click();
+            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")).getText();
+            System.out.println(subscribedSuccessfullyAlert);
+            assertEquals("ABOUT US", subscribedSuccessfullyAlert);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        }
+
+        @Test
+        public void givenThatHowToBookLinkExist() {
+            this.driver.get("https://www.phptravels.net/");
+        //Trick to show footer - go to email field
+            this.footer.getEmailField().click();
+        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+            driver.manage().window().maximize();
+        //Now links are visible
+            this.footer.getHowToBook().click();
+            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")).getText();
+            System.out.println(subscribedSuccessfullyAlert);
+            assertEquals("HOW TO BOOK", subscribedSuccessfullyAlert);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
+        @Test
+        public void givenThatBookingTipsLinkExist() {
+            this.driver.get("https://www.phptravels.net/");
+        //Trick to show footer - go to email field
+            this.footer.getEmailField().click();
+        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+            driver.manage().window().maximize();
+        //Now links are visible
+            this.footer.getBookingTips().click();
+            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")).getText();
+            System.out.println(subscribedSuccessfullyAlert);
+            assertEquals("BOOKING TIPS", subscribedSuccessfullyAlert);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        }
+
+
 }
