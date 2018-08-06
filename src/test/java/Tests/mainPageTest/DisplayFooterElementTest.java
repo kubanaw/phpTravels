@@ -66,16 +66,18 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatCONTACTLinkExist() {
             this.driver.get("https://www.phptravels.net/");
+           //Trick to show footer - go to email field
             this.footer.getEmailField().click();
+            //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            //TODO find method to navigate to:   @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
-            //    WebElement contactLink;  - currently this fails:
-            //    this.footer.pickContactElement()
-            //TODO - WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+            //Now links are visible
             this.footer.getContactLink().click();
+            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")).getText();
+            System.out.println(subscribedSuccessfullyAlert);
+            assertEquals("CONTACT", subscribedSuccessfullyAlert);
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            
+
         }
 
 }
