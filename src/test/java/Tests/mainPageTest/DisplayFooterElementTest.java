@@ -119,6 +119,19 @@ public class DisplayFooterElementTest {
             assertEquals("BOOKING TIPS", subscribedSuccessfullyAlert);
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         }
+        @Test
+        public void givenThatOurPartnersLinkExist() {
+            this.driver.get("https://www.phptravels.net/");
+            this.footer.getEmailField().click();
+            driver.manage().window().maximize();
+            this.footer.getOurPartners().click();
+            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")).getText();
+            System.out.println(subscribedSuccessfullyAlert);
+            assertEquals("OUR PARTNERS", subscribedSuccessfullyAlert);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
+        }
+
+        //TODO - in analogy to Tests above it is needed to create test for other links and also create metods and Getters in commonPages/Footer.java
 
 }
