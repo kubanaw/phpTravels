@@ -79,5 +79,20 @@ public class DisplayFooterElementTest {
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         }
+    @Test
+    public void givenThatAboutUsLinkExist() {
+        this.driver.get("https://www.phptravels.net/");
+        //Trick to show footer - go to email field
+        this.footer.getEmailField().click();
+        //WARNING FOOTER IS NOT LOADED WHEN PAGE IS SQUEEZED TO TABLET MODE
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        //Now links are visible
+        this.footer.getAboutUS().click();
+        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")).getText();
+        System.out.println(subscribedSuccessfullyAlert);
+        assertEquals("ABOUT US", subscribedSuccessfullyAlert);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
+    }
 }

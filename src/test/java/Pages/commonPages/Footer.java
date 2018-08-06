@@ -20,7 +20,8 @@ public class Footer {
     WebElement doDna;
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
     WebElement contactLink;
-
+    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")
+    WebElement aboutUS;
 
     //METHODS:
 //napisac metode do wpisania maila i submita
@@ -35,6 +36,10 @@ public class Footer {
 
     public WebElement getContactLink() {
         return contactLink;
+    }
+
+    public WebElement getAboutUS() {
+        return aboutUS;
     }
 
     public WebElement getDoDna() {
