@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class HeaderSearchElement {
 //TODO - verify if headerSearch is same method on all 3 pages: hotels, cars and flights.
         WebDriver driver;
-        public Footer(WebDriver driver) {this.driver = driver;}
+        public HeaderSearchElement(WebDriver driver) {this.driver = driver;}
 
 //headerSearch
     //first field - Hotels
