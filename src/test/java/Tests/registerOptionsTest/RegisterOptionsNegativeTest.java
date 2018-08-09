@@ -45,7 +45,7 @@ public class RegisterOptionsNegativeTest {
 
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}, alert: {6}")
-//TODO alert message jako 6. parametr
+
     public static Collection<Object[]> dataForRegisterOption() {
         return Arrays.asList(new Object[][]{
                 {"", "Moczymorda", "788990333", "j37756@nwytg.com", "M4ki3t9!", "M4ki3t9!",

@@ -1,5 +1,6 @@
 package Pages.navbarTabs;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +42,7 @@ public class RegisterPage {
         PageFactory.initElements(driver, this);
     }
 
-    //TODO change void to class name and return this -> create fluent fill register forms.
+    //change void to class name and return this -> create fluent fill register forms:
 
     public RegisterPage fillFirstName(String typeName) {
         firstName.clear();
@@ -111,6 +112,16 @@ public class RegisterPage {
         String currentURL = driver.getCurrentUrl();
         LOGGER.info("Current URL of Register Page: " + currentURL);
         return currentURL;
+    }
+
+    //method to set random email:
+
+    public RegisterPage typeRandomEmail() {
+        String random = RandomStringUtils.randomAlphabetic(7, 10);
+        String randomEmail = random + "@nwytg.pl";
+        emailAddress.clear();
+        emailAddress.sendKeys(randomEmail);
+        return this;
     }
 
 

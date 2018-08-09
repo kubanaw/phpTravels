@@ -19,7 +19,7 @@ public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy (xpath = "//div[@class='wow fadeIn animated']")
+    @FindBy(xpath = "//div[@class='wow fadeIn animated']")
     private WebElement loginPanel;
     @FindBy(name = "username")
     private WebElement userName;
@@ -101,11 +101,13 @@ public class LoginPage {
 
 
     public void loginDemoUser() {
+        LOGGER.info("Login DemoUser start.");
         fillUserEmailField("user@phptravels.com");
         fillUsersPassword("demouser");
         try {
             wait.until(ExpectedConditions.elementToBeClickable(loginButton));
             loginButton.click();
+            LOGGER.info("Login DemoUser success!");
         } catch (TimeoutException toe) {
             LOGGER.info("Login button is not clickable " + toe);
 
