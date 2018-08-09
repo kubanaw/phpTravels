@@ -15,11 +15,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
-import static org.assertj.core.api.Assertions.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class RegisterOptionsNegativeTest {
@@ -41,7 +41,7 @@ public class RegisterOptionsNegativeTest {
 
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}")
-
+//TODO alert message jako 6. parametr
     public static Collection<Object[]> dataForRegisterOption() {
         return Arrays.asList(new Object[][]{
                 {"", "Moczymorda", "788990333", "j37756@nwytg.com", "M4ki3t9!", "M4ki3t9!"},
@@ -73,20 +73,22 @@ public class RegisterOptionsNegativeTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-        @After
+    @After
     public void CloseBrowser() {
         this.driver.quit();
     }
+
     @Test
     public void whenNecessaryFieldAreFilledIncorrectlyThenShouldNotRegister() {
-        registerPage.fillFirstName(firstName);
-        registerPage.fillLastName(lastName);
-        registerPage.fillMobileNumber(phone);
-        registerPage.fillEmailAddress(email);
-        registerPage.fillPassword(password);
-        registerPage.fillConfirmPassword(confirmPassword);
-        registerPage.clickSubmit();
+        registerPage.fillFirstName(firstName)
+        .fillLastName(lastName)
+        .fillMobileNumber(phone)
+        .fillEmailAddress(email)
+        .fillPassword(password)
+        .fillConfirmPassword(confirmPassword)
+        .clickSubmit();
         assertThat(registerPage.getCurrentUrl())
+                .as("URL of registration page")
                 .isEqualTo(registerPage.getUrl());
         wait.until(ExpectedConditions.visibilityOf(registerPage.getAlert()));
         assertThat(registerPage.getAlertMessage())

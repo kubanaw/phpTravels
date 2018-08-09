@@ -14,8 +14,10 @@ public class RegisterPage {
 
     private static final Logger LOGGER = Logger.getLogger(RegisterPage.class.getName());
     private final String url = "https://www.phptravels.net/register";
+
     private WebDriver driver;
     private WebDriverWait wait;
+
     @FindBy(name = "firstname")
     private WebElement firstName;
     @FindBy(name = "lastname")
@@ -39,43 +41,52 @@ public class RegisterPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillFirstName(String typeName) {
+    //TODO change void to class name and return this -> create fluent fill register forms.
+
+    public RegisterPage fillFirstName(String typeName) {
         firstName.clear();
         firstName.sendKeys(typeName);
+        return this;
     }
 
-    public void fillLastName(String typeLastName) {
+    public RegisterPage fillLastName(String typeLastName) {
         lastName.clear();
         lastName.sendKeys(typeLastName);
+        return this;
     }
 
-    public void fillMobileNumber(String typeMobileNumber) {
+    public RegisterPage fillMobileNumber(String typeMobileNumber) {
         mobileNumber.clear();
         mobileNumber.sendKeys(typeMobileNumber);
+        return this;
     }
 
-    public void fillEmailAddress(String typeEmail) {
+    public RegisterPage fillEmailAddress(String typeEmail) {
         emailAddress.clear();
         emailAddress.sendKeys(typeEmail);
+        return this;
     }
 
-    public void fillPassword(String typePassword) {
+    public RegisterPage fillPassword(String typePassword) {
         password.clear();
         password.sendKeys(typePassword);
+        return this;
     }
 
-    public void fillConfirmPassword(String typeConfirmPassword) {
+    public RegisterPage fillConfirmPassword(String typeConfirmPassword) {
         confirmPassword.clear();
         confirmPassword.sendKeys(typeConfirmPassword);
+        return this;
     }
 
-    public void clickSubmit() {
+    public RegisterPage clickSubmit() {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(submit));
             submit.click();
         } catch (TimeoutException toe) {
             LOGGER.info("Submit button is not clickable " + toe);
         }
+        return this;
     }
 
     public void goToRegisterPage() {

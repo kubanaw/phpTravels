@@ -1,17 +1,12 @@
 package Tests.navbarTest;
 
-import Pages.HomePage;
+import Pages.homePage.HomePage;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -60,7 +55,7 @@ public class DisplayCurrienciesTest {
         this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
 
         //4. zmieniam na walute GBP STARA METODA
-//        Assert.assertEquals("GBP", mainPage.getGBPCurrency().getText());
+//        Assert.assertEquals("GBP", commonPages.getGBPCurrency().getText());
 
         //4. zmieniam na walute GBP
         homePage.setCurrency("GBP");

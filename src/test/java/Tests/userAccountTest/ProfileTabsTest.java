@@ -90,8 +90,10 @@ public class ProfileTabsTest {
         String valueAsHex = Color.fromString(userAccountPage.getWishlistTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
                 .isNotEqualTo(valueAsHex);
-        assertThat(userAccountPage.getBookingDetails().toString())
-                .containsSequence("Booking"); //"Booking ID" doesn't work - why?
+        //TODO assertion for all elements
+        assertThat(userAccountPage.getBookingDetails())
+                .contains("Booking ID"); //"Booking ID" doesn't work - why?
+
 
     }
 

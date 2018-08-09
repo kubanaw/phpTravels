@@ -1,5 +1,6 @@
-package Pages.mainPage;
+package Pages.commonPages;
 
+import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,6 @@ public class NavbarHeader extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
 
     @FindBy(className = "navbar-brand")
     WebElement logoButton;
@@ -80,14 +80,11 @@ public class NavbarHeader extends BasePage {
 //    @FindBy(xpath = "//*[@id=\"en\"]")
 //    WebElement EnglishLanguage;
 
-//METHODS for elements:
+    //METHODS for elements:
     public void openMainPage() {
         driver.get("https://www.phptravels.net/");
     }
-//public static void testLogLevels() {
-//    LOGGER.log(Level.WARNING, "warning message");
-//    LOGGER.log(Level.INFO, "info message");
-//}
+
 
     public void pickHomeElement() {
         home.click();
@@ -140,7 +137,7 @@ public class NavbarHeader extends BasePage {
 //        LOGGER.info("Currency chosen" + text);
 //        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
 //        return currency.getAttribute("value");
-   // }
+    // }
 
 
     //METHODS for currency

@@ -81,13 +81,13 @@ public class RegisterOptionsPositiveTest {
 
     @Test
     public void whenNecessaryFieldAreFilledThenShouldRegister (){
-        registerPage.fillFirstName(firstName);
-        registerPage.fillLastName(lastName);
-        registerPage.fillMobileNumber(phone);
-        registerPage.fillEmailAddress(email);
-        registerPage.fillPassword(password);
-        registerPage.fillConfirmPassword(confirmPassword);
-        registerPage.clickSubmit();
+        registerPage.fillFirstName(firstName)
+        .fillLastName(lastName)
+        .fillMobileNumber(phone)
+        .fillEmailAddress(email)
+        .fillPassword(password)
+        .fillConfirmPassword(confirmPassword)
+        .clickSubmit();
         wait.until(ExpectedConditions.visibilityOf(userAccountPage.getGreetingHeader()));
         assertThat(registerPage.getCurrentUrl())
                 .isEqualTo(userAccountPage.getUrl());

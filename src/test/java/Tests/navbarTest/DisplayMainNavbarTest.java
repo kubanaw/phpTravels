@@ -1,7 +1,8 @@
 package Tests.navbarTest;
 
-import Pages.*;
-import Pages.mainPage.NavbarHeader;
+import Pages.homePage.HomePage;
+import Pages.BasePage;
+import Pages.commonPages.NavbarHeader;
 import Pages.navbarTabs.*;
 import org.junit.After;
 import org.junit.Before;
@@ -27,6 +28,7 @@ public class DisplayMainNavbarTest  {
     private CarsPage carsPage;
     private OffersPage offersPage;
     private BlogPage blogPage;
+    private BasePage basepage;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -40,8 +42,8 @@ public class DisplayMainNavbarTest  {
         // this.driver.get("https://www.phptravels.net/");
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
-       //TODO find solution for loggers in abstractclass
-        // navbarHeader.testLogLevels();
+       //TODO find solution for loggers in abstractclas
+      // Logger.getLogger("otwarto strone glowna");
         hotelspage = new HotelsPage(driver);
         homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
