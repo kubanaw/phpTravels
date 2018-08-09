@@ -1,12 +1,10 @@
 package Tests.userAccountTest;
 
-import Pages.navbarTabs.LoginPage;
-import Pages.account.MyProfilePage;
-import Pages.account.UserAccountPage;
-import org.junit.Assert;
+import Pages.user.LoginPage;
+import Pages.user.account.MyProfilePage;
+import Pages.user.account.UserAccountPage;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

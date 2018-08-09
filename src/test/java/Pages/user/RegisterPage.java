@@ -1,4 +1,4 @@
-package Pages.navbarTabs;
+package Pages.user;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.TimeoutException;

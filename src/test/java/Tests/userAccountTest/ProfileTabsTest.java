@@ -1,8 +1,8 @@
 package Tests.userAccountTest;
 
-import Pages.account.MyProfilePage;
-import Pages.account.UserAccountPage;
-import Pages.navbarTabs.LoginPage;
+import Pages.user.account.MyProfilePage;
+import Pages.user.account.UserAccountPage;
+import Pages.user.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

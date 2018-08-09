@@ -1,6 +1,6 @@
 package Tests.registerOptionsTest;
 
-import Pages.navbarTabs.RegisterPage;
+import Pages.user.RegisterPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

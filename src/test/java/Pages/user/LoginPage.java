@@ -1,4 +1,4 @@
-package Pages.navbarTabs;
+package Pages.user;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;

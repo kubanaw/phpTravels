@@ -1,8 +1,7 @@
 package Tests.registerOptionsTest;
 
-import Pages.navbarTabs.RegisterPage;
-import Pages.account.UserAccountPage;
-import org.apache.commons.lang3.RandomStringUtils;
+import Pages.user.RegisterPage;
+import Pages.user.account.UserAccountPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
