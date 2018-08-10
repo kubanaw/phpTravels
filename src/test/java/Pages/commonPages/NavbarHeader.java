@@ -1,6 +1,7 @@
 package Pages.commonPages;
 
 import Pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -63,6 +64,15 @@ public class NavbarHeader extends BasePage {
 //    WebElement currencyCNY;
 //    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[10]/a")
 //    WebElement currencyTRY;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
+    private WebElement currentCurrency;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
+    private WebElement GBPCurrency;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")
+    private WebElement currencyList;
 
     //LANGUAGE OPTIONS
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
@@ -129,6 +139,17 @@ public class NavbarHeader extends BasePage {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
+
+    public void setCurrency(String currency){
+        currencyList.click();
+        driver.findElement(By.linkText(currency)).click();
+    }
+
+    public WebElement getCurrentCurrency() {
+        return currentCurrency;
+    }
+
+
 //    //METHODS for currency, not sure it works
 //    public String pickCurrency(String text) {
 //        Select currencyList = new Select(currency);
