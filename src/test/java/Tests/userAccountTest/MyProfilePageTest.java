@@ -36,7 +36,7 @@ public class MyProfilePageTest {
         this.myProfilePage = new MyProfilePage(driver);
         this.loginPage = new LoginPage(driver);
         this.userAccountPage = new UserAccountPage(driver);
-        loginPage.goToLoginPage();
+        loginPage.loginPageOpen();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         loginPage.loginDemoUser();
         userAccountPage.goToMyProfileTab();

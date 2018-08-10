@@ -46,7 +46,7 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void goToLoginPage() {
+    public void loginPageOpen() {
         driver.get(url);
     }
 

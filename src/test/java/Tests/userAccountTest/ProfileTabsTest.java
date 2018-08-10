@@ -39,7 +39,7 @@ public class ProfileTabsTest {
         this.loginPage = new LoginPage(driver);
         this.userAccountPage = new UserAccountPage(driver);
         this.myProfilePage = new MyProfilePage(driver);
-        loginPage.goToLoginPage();
+        loginPage.loginPageOpen();
         wait.until(ExpectedConditions.visibilityOf(loginPage.getLoginPanel()));
         loginPage.loginDemoUser();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

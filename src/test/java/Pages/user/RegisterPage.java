@@ -90,7 +90,7 @@ public class RegisterPage {
         return this;
     }
 
-    public void goToRegisterPage() {
+    public void registerPageOpen() {
         driver.get(url);
     }
 

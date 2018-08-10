@@ -82,7 +82,7 @@ public class RegisterOptionsNegativeTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 10);
         registerPage = new RegisterPage(driver);
-        registerPage.goToRegisterPage();
+        registerPage.registerPageOpen();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
