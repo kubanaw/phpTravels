@@ -1,6 +1,7 @@
 package Tests.registerOptionsTest;
-import Pages.navbarTabs.RegisterPage;
-import Pages.account.UserAccountPage;
+
+import Pages.user.RegisterPage;
+import Pages.user.account.UserAccountPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -22,13 +23,8 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
 @RunWith(Parameterized.class)
 public class RegisterOptionsPositiveTest {
-    private WebDriver driver;
-    private RegisterPage registerPage;
-    private WebDriverWait wait;
-    private UserAccountPage userAccountPage;
 
     @Parameter()
     public String firstName;
@@ -37,20 +33,22 @@ public class RegisterOptionsPositiveTest {
     @Parameter(2)
     public String phone;
     @Parameter(3)
-    public String email;
-    @Parameter(4)
     public String password;
-    @Parameter(5)
+    @Parameter(4)
     public String confirmPassword;
+    private WebDriver driver;
+    private RegisterPage registerPage;
+    private WebDriverWait wait;
+    private UserAccountPage userAccountPage;
 
-    @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
-            "E-mail: {3}, Password: {4}, confirm: {5}")
+    @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, Password: {3}, confirm: {4}")
 
     public static Collection<Object[]> dataForRegisterOption() {
+
         return Arrays.asList(new Object[][]{
-                {"Gerwazy", "Moczymord", "788990333", "j36@nwytgfg.com", "M4ki3t9!", "M4ki3t9!"},
-                {"Gerwazy", "Moczymord", "788990333", "j36rty@nwytgfg.com", "M4ki3t", "M4ki3t"},
-                {"Gerwazy", "Moczymord", "", "j3779@nwytgfffg.com", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "M4ki3t9!", "M4ki3t9!"},
+                {"Gerwazy", "Moczymord", "788990333", "M4ki3t", "M4ki3t"},
+                {"Gerwazy", "Moczymord", "", "M4ki3t9!", "M4ki3t9!"},
         });
     }
 
@@ -62,15 +60,13 @@ public class RegisterOptionsPositiveTest {
 
     @Before
     public void setup() {
+
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-
         wait = new WebDriverWait(driver, 5);
-
-
         registerPage = new RegisterPage(driver);
         userAccountPage = new UserAccountPage(driver);
-        registerPage.goToRegisterPage();
+        registerPage.registerPageOpen();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
@@ -80,21 +76,18 @@ public class RegisterOptionsPositiveTest {
     }
 
     @Test
-    public void whenNecessaryFieldAreFilledThenShouldRegister (){
+    public void whenNecessaryFieldAreFilledThenShouldRegister() {
         registerPage.fillFirstName(firstName)
-        .fillLastName(lastName)
-        .fillMobileNumber(phone)
-        .fillEmailAddress(email)
-        .fillPassword(password)
-        .fillConfirmPassword(confirmPassword)
-        .clickSubmit();
+                .fillLastName(lastName)
+                .fillMobileNumber(phone)
+                .typeRandomEmail()
+                .fillPassword(password)
+                .fillConfirmPassword(confirmPassword)
+                .clickSubmit();
         wait.until(ExpectedConditions.visibilityOf(userAccountPage.getGreetingHeader()));
         assertThat(registerPage.getCurrentUrl())
+                .as("Site URL")
                 .isEqualTo(userAccountPage.getUrl());
-
-
-
-
 
     }
 

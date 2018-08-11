@@ -1,5 +1,5 @@
 package Tests.headerSearchTest;
-package Tests.navbarTest;
+
 import Pages.commonPages.Footer;
 import Pages.homePage.HomePage;
 import Pages.BasePage;

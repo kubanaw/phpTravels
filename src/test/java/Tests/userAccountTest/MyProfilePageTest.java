@@ -1,12 +1,10 @@
 package Tests.userAccountTest;
 
-import Pages.navbarTabs.LoginPage;
-import Pages.account.MyProfilePage;
-import Pages.account.UserAccountPage;
-import org.junit.Assert;
+import Pages.user.LoginPage;
+import Pages.user.account.MyProfilePage;
+import Pages.user.account.UserAccountPage;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,7 +36,7 @@ public class MyProfilePageTest {
         this.myProfilePage = new MyProfilePage(driver);
         this.loginPage = new LoginPage(driver);
         this.userAccountPage = new UserAccountPage(driver);
-        loginPage.goToLoginPage();
+        loginPage.loginPageOpen();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         loginPage.loginDemoUser();
         userAccountPage.goToMyProfileTab();

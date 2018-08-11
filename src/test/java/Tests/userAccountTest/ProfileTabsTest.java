@@ -1,8 +1,8 @@
 package Tests.userAccountTest;
 
-import Pages.account.MyProfilePage;
-import Pages.account.UserAccountPage;
-import Pages.navbarTabs.LoginPage;
+import Pages.user.account.MyProfilePage;
+import Pages.user.account.UserAccountPage;
+import Pages.user.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -39,7 +39,7 @@ public class ProfileTabsTest {
         this.loginPage = new LoginPage(driver);
         this.userAccountPage = new UserAccountPage(driver);
         this.myProfilePage = new MyProfilePage(driver);
-        loginPage.goToLoginPage();
+        loginPage.loginPageOpen();
         wait.until(ExpectedConditions.visibilityOf(loginPage.getLoginPanel()));
         loginPage.loginDemoUser();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

@@ -1,4 +1,4 @@
-package Pages.account;
+package Pages.user.account;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +41,7 @@ public class UserAccountPage {
     @FindBy(css = "div.col-md-3>span")
     private List<WebElement> bookingDetails;
     //elements from wishlist tab:
-    @FindBy(css = "div[id*='wishlist']")
+    @FindBy(css = "div[id='wishlist']")
     private List<WebElement> wishlistFavoritesList;
 
 
