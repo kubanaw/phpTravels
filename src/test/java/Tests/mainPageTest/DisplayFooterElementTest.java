@@ -10,12 +10,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.assertEquals;
 
 public class DisplayFooterElementTest {
@@ -38,10 +38,11 @@ public class DisplayFooterElementTest {
         navbarHeader.openMainPage();
         driver.manage().window().maximize();
         //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document" +
-                ".body.scrollHeight,document.documentElement.clientHeight));");
-
+//        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
+        Actions action = new Actions(driver);
+        WebElement hook = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/div[2]/button"));
+        action.moveToElement(hook);
     }
 
     @After
