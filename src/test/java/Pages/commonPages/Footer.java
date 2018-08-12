@@ -1,6 +1,5 @@
 package Pages.commonPages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +27,7 @@ public class Footer {
     WebElement bookingTips;
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")
     WebElement ourPartners;
+
 
     //METHODS:
 //napisac metode do wpisania maila i submita

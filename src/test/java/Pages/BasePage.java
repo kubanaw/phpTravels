@@ -7,4 +7,5 @@ public abstract class BasePage {
 
         protected final static Logger LOGGER = Logger.getLogger(BasePage.class.getName());
 
+
 }

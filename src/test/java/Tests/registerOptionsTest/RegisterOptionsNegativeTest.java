@@ -1,5 +1,6 @@
 package Tests.registerOptionsTest;
 
+import Pages.commonPages.NavbarHeader;
 import Pages.user.RegisterPage;
 import org.junit.After;
 import org.junit.Before;
@@ -42,6 +43,7 @@ public class RegisterOptionsNegativeTest {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
+
 
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}, alert: {6}")
