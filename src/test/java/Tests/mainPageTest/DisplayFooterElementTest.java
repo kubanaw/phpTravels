@@ -9,13 +9,17 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
-
 import java.util.concurrent.TimeUnit;
+<<<<<<< HEAD
 
 import static org.assertj.core.api.Assertions.assertThat;
+=======
+>>>>>>> ad08af6cc51fc10c1fdb4ff3626cdd41497d717b
 import static org.junit.Assert.assertEquals;
 
 public class DisplayFooterElementTest {
@@ -39,9 +43,10 @@ public class DisplayFooterElementTest {
         navbarHeader.openMainPage();
         driver.manage().window().maximize();
         //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document" +
-                ".body.scrollHeight,document.documentElement.clientHeight));");
+
+     JavascriptExecutor jse = (JavascriptExecutor)driver;
+       jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
