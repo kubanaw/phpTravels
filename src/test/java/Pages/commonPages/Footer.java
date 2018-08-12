@@ -1,14 +1,20 @@
 package Pages.commonPages;
 
+import Pages.BasePage;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class Footer {
+public class Footer extends BasePage{
     WebDriver driver;
+    WebDriverWait wait;
     public Footer(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 5);
     }
 //Newsletter:
     @FindBy(id="exampleInputEmail1")
@@ -27,6 +33,9 @@ public class Footer {
     WebElement bookingTips;
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")
     WebElement ourPartners;
+    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")
+    WebElement subscribeMessage;
+
 
 
     //METHODS:
@@ -38,6 +47,11 @@ public class Footer {
 
     public WebElement getSubmitNewsletterButton() {
         return submitNewsletterButton;
+    }
+    public String alreadySuscribedMessage(){
+        wait.until(ExpectedConditions.visibilityOf(subscribeMessage));
+        LOGGER.info("tekst z guzika " +subscribeMessage.getText());
+        return subscribeMessage.getText();
     }
 
     public WebElement getContactLink() {
@@ -62,6 +76,13 @@ public class Footer {
 
     public WebElement getDoDna() {
         return doDna;
+    }
+    public Footer typeRandomEmail() {
+        String random = RandomStringUtils.randomAlphabetic(7, 10);
+        String randomEmail = random + "@nwytg.pl";
+        emailField.clear();
+        emailField.sendKeys(randomEmail);
+        return this;
     }
 
 

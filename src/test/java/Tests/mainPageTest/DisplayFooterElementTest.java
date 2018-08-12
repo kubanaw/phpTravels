@@ -3,7 +3,6 @@ package Tests.mainPageTest;
 import Pages.commonPages.Footer;
 import Pages.commonPages.NavbarHeader;
 import Pages.homePage.HomePage;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,6 +15,7 @@ import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class DisplayFooterElementTest {
@@ -31,6 +31,7 @@ public class DisplayFooterElementTest {
     }
 
     @Before
+
     public void setup() {
         this.driver = new ChromeDriver();
         this.footer = PageFactory.initElements(this.driver, Footer.class);
@@ -41,27 +42,49 @@ public class DisplayFooterElementTest {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document" +
                 ".body.scrollHeight,document.documentElement.clientHeight));");
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        Actions action = new Actions(driver);
+//        WebElement hook = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/div[2]/button"));
+//        action.moveToElement(hook);
     }
 
-    @After
-    public void tearDown() {
-        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
-        driver.quit();
+//    public void setup() {
+//        this.driver = new ChromeDriver();
+//        this.footer = PageFactory.initElements(this.driver, Footer.class);
+//        this.navbarHeader = new NavbarHeader(driver);
+//        navbarHeader.openMainPage();
+//        driver.manage().window().maximize();
+//        //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
+//        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document" +
+//                ".body.scrollHeight,document.documentElement.clientHeight));");
+//
+//    }
 
-    }
+//    @After
+//    public void tearDown() {
+//        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
+//        driver.quit();
+//
+//    }
 
     //zapis na newsletter
     @Test
     public void addEmailToNewsletterList() {
 
-        this.footer.getEmailField().sendKeys("testqwerty3210@gmail.com");
+        this.footer.typeRandomEmail();
         this.footer.getSubmitNewsletterButton().click();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
-        System.out.println(subscribedSuccessfullyAlert);
 
-        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
+        //footer.alreadySuscribedMessage();
+        //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        //String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
+        //System.out.println(subscribedSuccessfullyAlert);
+
+        assertThat(footer.alreadySuscribedMessage()).isEqualToIgnoringCase("Subscribed Successfully");
 
 //      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
 //        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
