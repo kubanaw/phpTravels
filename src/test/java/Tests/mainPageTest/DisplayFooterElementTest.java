@@ -3,6 +3,7 @@ package Tests.mainPageTest;
 import Pages.commonPages.Footer;
 import Pages.commonPages.NavbarHeader;
 import Pages.homePage.HomePage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -66,12 +67,12 @@ public class DisplayFooterElementTest {
 //
 //    }
 
-//    @After
-//    public void tearDown() {
-//        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
-//        driver.quit();
-//
-//    }
+    @After
+    public void tearDown() {
+        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
+        driver.quit();
+
+    }
 
     //zapis na newsletter
     @Test

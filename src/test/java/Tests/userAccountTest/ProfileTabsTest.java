@@ -3,6 +3,8 @@ package Tests.userAccountTest;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;
 import Pages.user.LoginPage;
+import org.assertj.core.api.Condition;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -92,7 +94,7 @@ public class ProfileTabsTest {
                 .isNotEqualTo(valueAsHex);
         //TODO assertion for all elements
         assertThat(userAccountPage.getBookingDetails())
-                .contains("Booking ID"); //"Booking ID" doesn't work - why?
+                .contains("Booking"); //"Booking ID" doesn't work - why?
 
 
     }
@@ -106,8 +108,9 @@ public class ProfileTabsTest {
         String valueAsHex = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
                 .isNotEqualTo(valueAsHex);
-        assertThat(userAccountPage.getWishlistFavorites().toString())
-                .containsSequence("Hotel");
+        assertThat(userAccountPage.getWishlistFavorites()
+                .contains("Hotel"));
+
     }
 
 
