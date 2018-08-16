@@ -15,11 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
 import java.util.concurrent.TimeUnit;
-<<<<<<< HEAD
-
 import static org.assertj.core.api.Assertions.assertThat;
-=======
->>>>>>> ad08af6cc51fc10c1fdb4ff3626cdd41497d717b
 import static org.junit.Assert.assertEquals;
 
 public class DisplayFooterElementTest {
