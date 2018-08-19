@@ -3,7 +3,6 @@ package Tests.mainPageTest;
 import Pages.commonPages.Footer;
 import Pages.commonPages.NavbarHeader;
 import Pages.homePage.HomePage;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -26,6 +26,9 @@ public class DisplayFooterElementTest {
     private Footer footer;
     private HomePage homePage;
     private NavbarHeader navbarHeader;
+    WebDriverWait wait;
+
+
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -38,6 +41,8 @@ public class DisplayFooterElementTest {
         this.driver = new ChromeDriver();
         this.footer = PageFactory.initElements(this.driver, Footer.class);
         this.navbarHeader = new NavbarHeader(driver);
+        this.wait = new WebDriverWait(driver, 5);
+
         navbarHeader.openMainPage();
         driver.manage().window().maximize();
         //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
@@ -137,6 +142,12 @@ public class DisplayFooterElementTest {
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         }
+//        @Test
+//    public void faceBookIconRedirectsToFBloginPage () {
+//        this.footer.getFaceBookicon().click();
+//        wait.until(ExpectedConditions.urlContains("https://www.facebook.com/travelbusiness"));
+//
+//        }
 
         //TODO - in analogy to Tests above it is needed to create test for other links and also create metods and Getters in commonPages/Footer.java
 

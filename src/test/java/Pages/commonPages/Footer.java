@@ -36,6 +36,8 @@ public class Footer extends BasePage{
     @FindBy (xpath = "//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")
     WebElement subscribeMessage;
 
+    @FindBy (xpath = "/html/body/div[7]/div[1]/div[1]/a[1]/img")
+    WebElement faceBookicon;
 
 
     //METHODS:
@@ -84,6 +86,8 @@ public class Footer extends BasePage{
         emailField.sendKeys(randomEmail);
         return this;
     }
+    public WebElement getFaceBookicon()
+    {return faceBookicon;}
 
 
 }
