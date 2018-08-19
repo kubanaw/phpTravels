@@ -3,24 +3,22 @@ package Tests.mainPageTest;
 import Pages.commonPages.Footer;
 import Pages.commonPages.NavbarHeader;
 import Pages.homePage.HomePage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import util.ChromeDrvPathHelper;
+
 import java.util.concurrent.TimeUnit;
-<<<<<<< HEAD
 
 import static org.assertj.core.api.Assertions.assertThat;
-=======
->>>>>>> ad08af6cc51fc10c1fdb4ff3626cdd41497d717b
 import static org.junit.Assert.assertEquals;
+
 
 public class DisplayFooterElementTest {
     //ilona tutaj pisze
@@ -70,12 +68,12 @@ public class DisplayFooterElementTest {
 //
 //    }
 
-//    @After
-//    public void tearDown() {
-//        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
-//        driver.quit();
-//
-//    }
+    @After
+    public void tearDown() {
+        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
+        driver.quit();
+
+    }
 
     //zapis na newsletter
     @Test
