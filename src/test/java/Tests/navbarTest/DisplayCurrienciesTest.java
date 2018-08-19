@@ -1,6 +1,6 @@
 package Tests.navbarTest;
 
-import Pages.homePage.HomePage;
+import Pages.commonPages.NavbarHeader;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,14 +11,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class DisplayCurrienciesTest {
 
     //dolaczam webdriver
     private WebDriver driver;
-    private HomePage homePage;
     private WebDriverWait wait;
+    private NavbarHeader navbarHeader;
 
     //realnie laduje sterownik chromedriver
     @BeforeClass
@@ -32,7 +33,7 @@ public class DisplayCurrienciesTest {
     public void setup() {
         this.driver = new ChromeDriver();
         this.wait = new WebDriverWait(driver, 7);
-        this.homePage = PageFactory.initElements(driver, HomePage.class);
+        this.navbarHeader = PageFactory.initElements(driver, NavbarHeader.class);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -49,58 +50,66 @@ public class DisplayCurrienciesTest {
 
        // 2. sprawdzam domyslna walute
 
-          Assert.assertEquals("USD",homePage.getCurrentCurrency().getText());
+          Assert.assertEquals("USD",navbarHeader.getCurrentCurrency().getText());
 
         //3. klikam na liste w celu rozwiniecia
         this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
 
-        //4. zmieniam na walute GBP STARA METODA
-//        Assert.assertEquals("GBP", commonPages.getGBPCurrency().getText());
 
         //4. zmieniam na walute GBP
-        homePage.setCurrency("GBP");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "GBP"));
-        Assert.assertEquals("GBP",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("GBP");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "GBP"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("GBP");
+//        Assert.assertEquals("GBP",navbarHeader.getCurrentCurrency().getText());
 
         //5. zmieniam na walute SAR
-        homePage.setCurrency("SAR");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "ريال"));
-        Assert.assertEquals("ريال",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("SAR");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "ريال"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("ريال");
 
         //6. zmieniam na walute EUR
-        homePage.setCurrency("EUR");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "EUR"));
-        Assert.assertEquals("EUR",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("EUR");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "EUR"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("EUR");
 
         //7. zmieniam na walute PKR
-        homePage.setCurrency("PKR");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "RS"));
-        Assert.assertEquals("RS",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("PKR");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "RS"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("RS");
 
         //8. zmieniam na walute KWD
-        homePage.setCurrency("KWD");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "KWD"));
-        Assert.assertEquals("KWD",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("KWD");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "KWD"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("KWD");
 
         //9. zmieniam na walute JPY
-        homePage.setCurrency("JPY");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "JPY"));
-        Assert.assertEquals("JPY",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("JPY");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "JPY"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("JPY");
 
         //9. zmieniam na walute INR
-        homePage.setCurrency("INR");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "INR"));
-        Assert.assertEquals("INR",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("INR");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "INR"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("INR");
 
         //10. zmieniam na walute CNY
-        homePage.setCurrency("CNY");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "CNY"));
-        Assert.assertEquals("CNY",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("CNY");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "CNY"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("CNY");
 
         //11. zmieniam na walute TRY
-        homePage.setCurrency("TRY");
-        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getCurrentCurrency(), "TURKISH"));
-        Assert.assertEquals("TURKISH",homePage.getCurrentCurrency().getText());
+        navbarHeader.setCurrency("TRY");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "TURKISH"));
+        assertThat(navbarHeader.getCurrentCurrency().getText())
+                .isEqualTo("TURKISH");
 
         //DELAY Until closing
         try {
