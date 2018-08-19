@@ -66,7 +66,7 @@ public class RegisterOptionsPositiveTest {
         wait = new WebDriverWait(driver, 5);
         registerPage = new RegisterPage(driver);
         userAccountPage = new UserAccountPage(driver);
-        registerPage.goToRegisterPage();
+        registerPage.registerPageOpen();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 

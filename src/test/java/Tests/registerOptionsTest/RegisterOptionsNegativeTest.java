@@ -1,5 +1,6 @@
 package Tests.registerOptionsTest;
 
+import Pages.commonPages.NavbarHeader;
 import Pages.user.RegisterPage;
 import org.junit.After;
 import org.junit.Before;
@@ -43,6 +44,7 @@ public class RegisterOptionsNegativeTest {
     private RegisterPage registerPage;
     private WebDriverWait wait;
 
+
     @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}, alert: {6}")
 
@@ -82,7 +84,7 @@ public class RegisterOptionsNegativeTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 10);
         registerPage = new RegisterPage(driver);
-        registerPage.goToRegisterPage();
+        registerPage.registerPageOpen();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
