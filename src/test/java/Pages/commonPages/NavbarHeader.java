@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.logging.Level;
 
 public class NavbarHeader extends BasePage {
     WebDriver driver;
@@ -150,15 +153,15 @@ public class NavbarHeader extends BasePage {
     }
 
 
-//    //METHODS for currency, not sure it works
-//    public String pickCurrency(String text) {
-//        Select currencyList = new Select(currency);
-//        currencyList.selectByValue(text);
+    //METHODS for currency, not sure it works
+    public String pickCurrency(String text) {
+        Select currencyList = new Select(currency);
+        currencyList.selectByValue(text);
 //
 //        LOGGER.info("Currency chosen" + text);
-//        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
-//        return currency.getAttribute("value");
-    // }
+ LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+      return currency.getAttribute("value");
+     }
 
 
     //METHODS for currency
