@@ -39,12 +39,16 @@ public class NavbarHeader extends BasePage {
     WebElement blog;
 
     //MY ACCOUNT
-    @FindBy(id = "li_myaccount")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav navbar-right']//a[@class='dropdown-toggle go-text-right']")
+//    @FindBy(id = "li_myaccount")
     WebElement myAccountDropdown;
     @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[1]/a")
     WebElement loginFromMyAccountDropdown;
     @FindBy(linkText = "Sign Up")
     WebElement signFromMyAccountDropdown;
+
+    @FindBy (linkText = "Logout")
+    WebElement logOut;
 
     //CURRENCY
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
@@ -142,6 +146,17 @@ public class NavbarHeader extends BasePage {
         myAccountDropdown.click();
         signFromMyAccountDropdown.click();
     }
+
+//    public NavbarHeader selectAccountDropdownOptions (String text){
+//        Select selectAccountOptions = new Select(myAccountDropdown);
+//        selectAccountOptions.selectByVisibleText(text);
+//        return this;
+//    }
+    public void logOut (){
+        myAccountDropdown.click();
+        logOut.click();
+    }
+
 
     public void setCurrency(String currency){
         currencyList.click();

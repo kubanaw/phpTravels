@@ -1,5 +1,6 @@
 package Pages.user;
 
+import Pages.BasePage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.logging.Logger;
 
-public class RegisterPage {
+public class RegisterPage extends BasePage {
 
-    private static final Logger LOGGER = Logger.getLogger(RegisterPage.class.getName());
     private final String url = "https://www.phptravels.net/register";
 
     private WebDriver driver;
@@ -117,8 +117,6 @@ public class RegisterPage {
     //method to set random email:
 
     public RegisterPage typeRandomEmail() {
-        String random = RandomStringUtils.randomAlphabetic(7, 10);
-        String randomEmail = random + "@nwytg.pl";
         emailAddress.clear();
         emailAddress.sendKeys(randomEmail);
         return this;

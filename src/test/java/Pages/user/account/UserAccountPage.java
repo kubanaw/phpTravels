@@ -1,5 +1,6 @@
 package Pages.user.account;
 
+import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class UserAccountPage {
-    //TODO create useraccount tests
+public class UserAccountPage extends BasePage {
 
-    private static final Logger LOGGER = Logger.getLogger(UserAccountPage.class.getName());
     private final String url = "https://www.phptravels.net/account/";
     private WebDriver driver;
     private WebDriverWait wait;
@@ -89,20 +88,20 @@ public class UserAccountPage {
 
     public String getCurrentUrl() {
         String currentURL = driver.getCurrentUrl();
-        LOGGER.info("Current URL of User Account Page: " + currentURL);
+        LOGGER.finer("Current URL of User Account Page: " + currentURL);
         return currentURL;
     }
 
     public String getMyProfileTabCSSStyle(String style) {
         String value = myProfile.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.finer("Current value of " + style + " is: " + value);
         return value;
     }
 
 
     public String getNewsletterTabCSSStyle(String style) {
         String value = newsletter.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.finer("Current value of " + style + " is: " + value);
         return value;
     }
 

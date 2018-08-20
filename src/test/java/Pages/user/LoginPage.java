@@ -56,6 +56,10 @@ public class LoginPage {
         return currentURL;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public WebElement getLoginPanel() {
         return loginPanel;
     }

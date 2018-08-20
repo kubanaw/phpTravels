@@ -1,5 +1,6 @@
 package Pages.user.account;
 
+import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,40 +9,58 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.logging.Logger;
 
-public class MyProfilePage {
+public class MyProfilePage extends BasePage {
 
-    private static final Logger LOGGER = Logger.getLogger(MyProfilePage.class.getName());
+//    private static final Logger LOGGER = Logger.getLogger(MyProfilePage.class.getName());
     private WebDriver driver;
+
     @FindBy(css = "div.form-horizontal")
     private WebElement myProfileForm;
+
     @FindBy(css = "div.panel-default:nth-child(1) div.panel-heading > h3.panel-title.go-text-right")
     private WebElement personalDetailsHeader;
+
     @FindBy(name = "firstname")
     private WebElement firstName;
+
     @FindBy(name = "lastname")
     private WebElement lastName;
+
     @FindBy(name = "phone")
     private WebElement phoneNumber;
+
     @FindBy(css = "input.form-control[name='email']")
     private WebElement email;
+
     @FindBy(name = "password")
     private WebElement password;
+
     @FindBy(name = "confirmpassword")
     private WebElement confirmPassword;
+
     @FindBy(name = "address1")
     private WebElement firstAddress;
+
     @FindBy(name = "address2")
     private WebElement secondAddress;
+
     @FindBy(name = "city")
     private WebElement city;
+
     @FindBy(name = "state")
     private WebElement state;
+
     @FindBy(name = "zip")
     private WebElement zipCode;
+
     @FindBy(name = "country")
     private WebElement countryList;
+
     @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
+
+    @FindBy (css = ".accountresult>.alert")
+    private WebElement alert;
 
     public MyProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -189,4 +208,17 @@ public class MyProfilePage {
         }
         return false;
     }
+
+    public String getAlertMessage (){
+       String alertMessage = alert.getText();
+       LOGGER.finer("Actual alert message is "+alertMessage);
+       return alertMessage;
+    }
+
+    public String getCurrentUrl() {
+        String currentURL = driver.getCurrentUrl();
+        return currentURL;
+    }
+
+
 }
