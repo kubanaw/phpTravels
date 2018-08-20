@@ -10,37 +10,36 @@ import java.util.logging.Logger;
 
 public class MyProfilePage {
 
-    private WebDriver driver;
     private static final Logger LOGGER = Logger.getLogger(MyProfilePage.class.getName());
-
-    @FindBy (css = "div.form-horizontal")
+    private WebDriver driver;
+    @FindBy(css = "div.form-horizontal")
     private WebElement myProfileForm;
-    @FindBy (css = "div.panel-default:nth-child(1) div.panel-heading > h3.panel-title.go-text-right")
+    @FindBy(css = "div.panel-default:nth-child(1) div.panel-heading > h3.panel-title.go-text-right")
     private WebElement personalDetailsHeader;
     @FindBy(name = "firstname")
-    private WebElement firstNameInput;
+    private WebElement firstName;
     @FindBy(name = "lastname")
-    private WebElement lastNameInput;
+    private WebElement lastName;
     @FindBy(name = "phone")
-    private WebElement phoneNumberInput;
+    private WebElement phoneNumber;
     @FindBy(css = "input.form-control[name='email']")
-    private WebElement emailInput;
+    private WebElement email;
     @FindBy(name = "password")
-    private WebElement passwordInput;
+    private WebElement password;
     @FindBy(name = "confirmpassword")
-    private WebElement confirmPasswordInput;
+    private WebElement confirmPassword;
     @FindBy(name = "address1")
-    private WebElement firstAddressInput;
+    private WebElement firstAddress;
     @FindBy(name = "address2")
-    private WebElement secondAddressInput;
+    private WebElement secondAddress;
     @FindBy(name = "city")
-    private WebElement cityInput;
+    private WebElement city;
     @FindBy(name = "state")
-    private WebElement stateInput;
+    private WebElement state;
     @FindBy(name = "zip")
-    private WebElement zipCodeInput;
+    private WebElement zipCode;
     @FindBy(name = "country")
-    private WebElement countryListInput;
+    private WebElement countryList;
     @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
 
@@ -51,120 +50,143 @@ public class MyProfilePage {
 
     //methods
 
-    public void fillFirstName(String firstname) {
-        firstNameInput.clear();
-        firstNameInput.sendKeys(firstname);
+
+    public MyProfilePage fillPhonenumber(String phone) {
+        phoneNumber.clear();
+        phoneNumber.sendKeys(phone);
+        return this;
     }
 
-    public void fillLastName(String lastname) {
-        lastNameInput.clear();
-        lastNameInput.sendKeys(lastname);
+    public MyProfilePage fillEmail(String email) {
+        this.email.clear();
+        this.email.sendKeys(email);
+        return this;
     }
 
-    public void fillPhonenumber(String phone) {
-        phoneNumberInput.clear();
-        phoneNumberInput.sendKeys(phone);
+    public MyProfilePage fillPassword(String password) {
+        this.password.clear();
+        this.password.sendKeys(password);
+        return this;
     }
 
-    public void fillEmail(String email) {
-       emailInput.clear();
-        emailInput.sendKeys(email);
+    public MyProfilePage fillConfirmPassword(String confirmPassword) {
+        this.confirmPassword.clear();
+        this.confirmPassword.sendKeys(confirmPassword);
+        return this;
     }
 
-    public void fillPassword(String password) {
-       passwordInput.clear();
-        passwordInput.sendKeys(password);
+    public MyProfilePage fillFirstAddress(String address1) {
+        firstAddress.clear();
+        firstAddress.sendKeys(address1);
+        return this;
     }
 
-    public void fillConfirmPassword(String confirmPassword) {
-        confirmPasswordInput.clear();
-        confirmPasswordInput.sendKeys(confirmPassword);
+    public MyProfilePage fillSecondAddress(String address2) {
+        secondAddress.clear();
+        secondAddress.sendKeys(address2);
+        return this;
     }
 
-    public void fillFirstAddress(String address1) {
-        firstAddressInput.clear();
-        firstAddressInput.sendKeys(address1);
+    public MyProfilePage fillCity(String city) {
+        this.city.clear();
+        this.city.sendKeys(city);
+        return this;
     }
 
-    public void fillSecondAddress(String address2) {
-        secondAddressInput.clear();
-        secondAddressInput.sendKeys(address2);
+    public MyProfilePage fillState(String state) {
+
+        this.state.clear();
+        this.state.sendKeys(state);
+        return this;
     }
 
-    public void fillCity(String city) {
-        cityInput.clear();
-        cityInput.sendKeys(city);
+    public MyProfilePage fillZipCode(String zip) {
+        zipCode.clear();
+        zipCode.sendKeys(zip);
+        return this;
     }
 
-    public void fillState(String state) {
-
-        stateInput.clear();
-        stateInput.sendKeys(state);
-    }
-
-    public void fillZipCode(String zip) {
-        zipCodeInput.clear();
-        zipCodeInput.sendKeys(zip);
-    }
-
-    public void submitMyProfileUpdate() {
+    public MyProfilePage submitMyProfileUpdate() {
         if (submitUpdateProfileButton.isEnabled())
             submitUpdateProfileButton.click();
+        return this;
     }
 
-    public void selectCountry(String country) {
-        Select selectCountry = new Select(countryListInput);
+
+    public MyProfilePage selectCountry(String country) {
+        Select selectCountry = new Select(countryList);
         selectCountry.selectByVisibleText(country);
+        return this;
     }
 
 
-    public WebElement getFirstNameInput() {
-        return firstNameInput;
-    }
-
-    public WebElement getLastNameInput() {
-        return lastNameInput;
-    }
-
-    public WebElement getPhoneNumberInput() {
-        return phoneNumberInput;
-    }
-
-    public WebElement getEmailInput() {
-        return emailInput;
-    }
-
-    public WebElement getFirstAddressInput() {
-        return firstAddressInput;
-    }
-
-    public WebElement getSecondAddressInput() {
-        return secondAddressInput;
-    }
-
-    public WebElement getCityInput() {
-        return cityInput;
-    }
-
-    public WebElement getStateInput() {
-        return stateInput;
-    }
-
-    public WebElement getZipCodeInput() {
-        return zipCodeInput;
-    }
-
-    public WebElement getCountryListInput() {
-        return countryListInput;
-    }
+//    public WebElement getFirstNameInput() {
+//        return firstName;
+//    }
+//
+//    public WebElement getLastNameInput() {
+//        return lastName;
+//    }
+//
+//    public WebElement getPhoneNumberInput() {
+//        return phoneNumber;
+//    }
+//
+//    public WebElement getEmailInput() {
+//        return email;
+//    }
+//
+//    public WebElement getFirstAddressInput() {
+//        return firstAddress;
+//    }
+//
+//    public WebElement getSecondAddressInput() {
+//        return secondAddress;
+//    }
+//
+//    public WebElement getCityInput() {
+//        return city;
+//    }
+//
+//    public WebElement getStateInput() {
+//        return state;
+//    }
+//
+//    public WebElement getZipCodeInput() {
+//        return zipCode;
+//    }
+//
+//    public WebElement getCountryListInput() {
+//        return countryList;
+//    }
 
     public WebElement getMyProfileForm() {
         return myProfileForm;
     }
 
-    public String getPersonalDetailHeaderText (){
+    public String getPersonalDetailHeaderText() {
         String header = personalDetailsHeader.getText();
-        LOGGER.info("Current personal details header is: "+header);
+        LOGGER.finer("Current personal details header is: " + header);
         return header;
+    }
+
+    public boolean isFirstNameReadOnly() {
+        String state = firstName.getAttribute("readonly");
+        if (state == null) {
+            LOGGER.finer("First name doesn't have attribute readonly!");
+        } else if (state.contains("true")) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isLastNameReadOnly() {
+        String state = lastName.getAttribute("readonly");
+        if (state == null) {
+            LOGGER.finer("Last name doesn't have attribute readonly!");
+        } else if (state.contains("true")) {
+            return true;
+        }
+        return false;
     }
 }
