@@ -3,8 +3,6 @@ package Tests.userAccountTest;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;
 import Pages.user.LoginPage;
-import org.assertj.core.api.Condition;
-import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -35,6 +33,7 @@ public class ProfileTabsTest {
 
     @Before
     public void setup() {
+
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         this.wait = new WebDriverWait(this.driver, 10);
@@ -54,62 +53,91 @@ public class ProfileTabsTest {
 
     @Test
     public void userShouldGoToMyProfileTab() {
+
         userAccountPage.goToMyProfileTab();
+
         assertThat(userAccountPage.getCurrentActiveTabHref())
+                .as("Active link tab is #profile")
                 .isEqualTo("https://www.phptravels.net/account/#profile");
-        //This assertion was created before I found active tab properties
+
         String valueAsHexActive = Color.fromString(userAccountPage.getMyProfileTabCSSStyle("color")).asHex();
         String valueAsHex = Color.fromString(userAccountPage.getBookingsTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
+                .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
-        assertThat(myProfilePage.getMyProfileForm().isDisplayed())
-                .isTrue();
-        assertThat(myProfilePage.getPersonalDetailHeaderText())
-                .isEqualToIgnoringCase("personal details");
 
+        assertThat(myProfilePage.getMyProfileForm().isDisplayed())
+                .as("Personal details form is displayed on the page.")
+                .isTrue();
+
+        assertThat(myProfilePage.getPersonalDetailHeaderText())
+                .as("My Profile Tab has a header 'Personal Details'")
+                .isEqualToIgnoringCase("personal details");
     }
 
     @Test
     public void userShouldGoToNewsletterTab() {
+
         userAccountPage.goToNewsletterTab();
+
         assertThat(userAccountPage.getCurrentActiveTabHref())
+                .as("Active link tab is #newsletter")
                 .isEqualTo("https://www.phptravels.net/account/#newsletter");
+
         String valueAsHexActive = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
         String valueAsHex = Color.fromString(userAccountPage.getBookingsTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
+                .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
-        assertThat(userAccountPage.getNewsletterSubscribeHeader())
-                .isEqualToIgnoringCase("subscribe");
 
+        assertThat(userAccountPage.getNewsletterSubscribeHeader())
+                .as("Newsletter Tab has a header 'Subscribe'")
+                .isEqualToIgnoringCase("subscribe");
     }
 
     @Test
     public void userShouldGoToBookingsTab() {
+
         userAccountPage.goToBookingTab();
+
         assertThat(userAccountPage.getCurrentActiveTabHref())
+                .as("Active tab has a link #bookings")
                 .isEqualTo("https://www.phptravels.net/account/#bookings");
+
         String valueAsHexActive = Color.fromString(userAccountPage.getBookingsTabCSSStyle("color")).asHex();
         String valueAsHex = Color.fromString(userAccountPage.getWishlistTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
+                .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
-        //TODO assertion for all elements
-        assertThat(userAccountPage.getBookingDetails())
-                .contains("Booking"); //"Booking ID" doesn't work - why?
 
+        for (String booking : userAccountPage.getBookingDetails()) {
+            assertThat(booking)
+                    .as("All user's booking from Booking List have 'Booking ID' headers")
+                    .contains("Booking ID");
+        }
 
     }
 
     @Test
     public void userShouldGoToWishlistTab() {
+
         userAccountPage.goToWishlistTab();
+
         assertThat(userAccountPage.getCurrentActiveTabHref())
+                .as("Active tab has a link #wishlist")
                 .isEqualTo("https://www.phptravels.net/account/#wishlist");
+
         String valueAsHexActive = Color.fromString(userAccountPage.getWishlistTabCSSStyle("color")).asHex();
         String valueAsHex = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
         assertThat(valueAsHexActive)
+                .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
-        assertThat(userAccountPage.getWishlistFavorites()
-                .contains("Hotel"));
+
+//        for (String wish : userAccountPage.getWishListFavorites()) {
+//            assertThat(wish)
+//                    .as()
+//                    .contains("Hotel");
+//        }
 
     }
 
