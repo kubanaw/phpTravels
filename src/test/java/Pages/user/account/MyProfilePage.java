@@ -7,11 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.logging.Logger;
 
 public class MyProfilePage extends BasePage {
 
-//    private static final Logger LOGGER = Logger.getLogger(MyProfilePage.class.getName());
     private WebDriver driver;
 
     @FindBy(css = "div.form-horizontal")
@@ -66,8 +64,6 @@ public class MyProfilePage extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    //methods
 
 
     public MyProfilePage fillPhonenumber(String phone) {
@@ -139,14 +135,7 @@ public class MyProfilePage extends BasePage {
     }
 
 
-//    public WebElement getFirstNameInput() {
-//        return firstName;
-//    }
-//
-//    public WebElement getLastNameInput() {
-//        return lastName;
-//    }
-//
+
 //    public WebElement getPhoneNumberInput() {
 //        return phoneNumber;
 //    }
@@ -185,14 +174,14 @@ public class MyProfilePage extends BasePage {
 
     public String getPersonalDetailHeaderText() {
         String header = personalDetailsHeader.getText();
-        LOGGER.finer("Current personal details header is: " + header);
+        LOGGER.debug("Current personal details header is: " + header);
         return header;
     }
 
     public boolean isFirstNameReadOnly() {
         String state = firstName.getAttribute("readonly");
         if (state == null) {
-            LOGGER.finer("First name doesn't have attribute readonly!");
+            LOGGER.debug("First name doesn't have attribute read-only!");
         } else if (state.contains("true")) {
             return true;
         }
@@ -202,7 +191,7 @@ public class MyProfilePage extends BasePage {
     public boolean isLastNameReadOnly() {
         String state = lastName.getAttribute("readonly");
         if (state == null) {
-            LOGGER.finer("Last name doesn't have attribute readonly!");
+            LOGGER.debug("Last name doesn't have attribute read-only!");
         } else if (state.contains("true")) {
             return true;
         }
@@ -211,7 +200,7 @@ public class MyProfilePage extends BasePage {
 
     public String getAlertMessage (){
        String alertMessage = alert.getText();
-       LOGGER.finer("Actual alert message is "+alertMessage);
+       LOGGER.debug("Actual alert message is "+alertMessage);
        return alertMessage;
     }
 

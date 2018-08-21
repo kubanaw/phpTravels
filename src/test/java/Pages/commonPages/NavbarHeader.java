@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.logging.Level;
-
 public class NavbarHeader extends BasePage {
     WebDriver driver;
 
@@ -174,7 +172,7 @@ public class NavbarHeader extends BasePage {
         currencyList.selectByValue(text);
 //
 //        LOGGER.info("Currency chosen" + text);
- LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+ LOGGER.debug( "Currency selected: " + currency.getAttribute("value"));
       return currency.getAttribute("value");
      }
 

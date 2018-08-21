@@ -1,5 +1,6 @@
 package Pages.user;
 
+import Pages.BasePage;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,13 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.logging.Logger;
 
 
-public class LoginPage {
+
+public class LoginPage extends BasePage {
     //TODO create login options tests
 
-    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     private final String url = "https://www.phptravels.net/login";
     private WebDriver driver;
     private WebDriverWait wait;
@@ -52,7 +52,7 @@ public class LoginPage {
 
     public String getCurrentUrl() {
         String currentURL = driver.getCurrentUrl();
-        LOGGER.info("Current URL of Login Page: " + currentURL);
+        LOGGER.debug("Current URL of Login Page: " + currentURL);
         return currentURL;
     }
 
@@ -99,7 +99,7 @@ public class LoginPage {
 
     public String getResetAlertMessage() {
         String alertMessage = resetAlertText.getText();
-        LOGGER.info("Current reset alert: " + alertMessage);
+        LOGGER.debug("Current reset alert: " + alertMessage);
         return alertMessage;
     }
 

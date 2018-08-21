@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 public class UserAccountPage extends BasePage {
 
@@ -77,7 +77,7 @@ public class UserAccountPage extends BasePage {
 
     public String getNewsletterSubscribeHeader() {
         String subscribe = newsletterSubscribeHeader.getText();
-        LOGGER.info("Subscribe header: " + subscribe);
+        LOGGER.debug("Subscribe header: " + subscribe);
         return subscribe;
     }
 
@@ -88,32 +88,32 @@ public class UserAccountPage extends BasePage {
 
     public String getCurrentUrl() {
         String currentURL = driver.getCurrentUrl();
-        LOGGER.finer("Current URL of User Account Page: " + currentURL);
+        LOGGER.debug("Current URL of User Account Page: " + currentURL);
         return currentURL;
     }
 
     public String getMyProfileTabCSSStyle(String style) {
         String value = myProfile.getCssValue(style);
-        LOGGER.finer("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 
 
     public String getNewsletterTabCSSStyle(String style) {
         String value = newsletter.getCssValue(style);
-        LOGGER.finer("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getWishlistTabCSSStyle(String style) {
         String value = wishlist.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getBookingsTabCSSStyle(String style) {
         String value = bookings.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 
@@ -123,7 +123,7 @@ public class UserAccountPage extends BasePage {
         for (WebElement webElement : bookingDetails) {
             details.add(webElement.getText());
         }
-        LOGGER.info("booking: "+details);
+        LOGGER.debug("booking: "+details);
         return details;
     }
 
@@ -132,19 +132,19 @@ public class UserAccountPage extends BasePage {
         for (WebElement webElement : wishlistFavoritesList) {
             details.add(webElement.getText());
         }
-//        LOGGER.info("wishlist favorites" +details);
+        LOGGER.debug("wishlist favorites" +details);
         return details;
     }
 
     public String getCurrentActiveTabHref() {
         String currentTab = activeTab.getAttribute("href");
-        LOGGER.info("Active tab is: " + currentTab);
+        LOGGER.debug("Active tab is: " + currentTab);
         return currentTab;
     }
 
     public String getActiveTabCSSStyle(String style) {
         String value = activeTab.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 

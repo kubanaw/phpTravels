@@ -52,7 +52,7 @@ public class Footer extends BasePage{
     }
     public String alreadySuscribedMessage(){
         wait.until(ExpectedConditions.visibilityOf(subscribeMessage));
-        LOGGER.info("tekst z guzika " +subscribeMessage.getText());
+        LOGGER.debug("tekst z guzika " +subscribeMessage.getText());
         return subscribeMessage.getText();
     }
 
@@ -79,9 +79,8 @@ public class Footer extends BasePage{
     public WebElement getDoDna() {
         return doDna;
     }
+
     public Footer typeRandomEmail() {
-        String random = RandomStringUtils.randomAlphabetic(7, 10);
-        String randomEmail = random + "@nwytg.pl";
         emailField.clear();
         emailField.sendKeys(randomEmail);
         return this;
