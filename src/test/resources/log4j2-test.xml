@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Configuration>
+    <!--<sysproperty key="log4j.configurationFile" value="src/test/java/resources/log4j2-test.xml" />-->
     <Appenders>
         <Console name="Console">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%t]: %logger{36} - %m %n"/>
@@ -9,12 +10,9 @@
         </File>
     </Appenders>
     <Loggers>
-        <Root level="ALL">
+        <Root level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="MyFile"/>
         </Root>
-        <Logger name="Pages" level="DEBUG" additivity="false>">
-            <AppenderRef ref="MyFile"/>
-        </Logger>
     </Loggers>
 </Configuration>

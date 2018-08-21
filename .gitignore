@@ -7,3 +7,4 @@ target/*
 
 /.idea/compiler.xml
 target/
+logs/*
