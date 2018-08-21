@@ -14,5 +14,8 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="MyFile"/>
         </Root>
+        <Logger name="Pages" level="DEBUG" additivity="false">
+            <AppenderRef ref="MyFile"/>
+        </Logger>
     </Loggers>
 </Configuration>
