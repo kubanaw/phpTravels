@@ -44,6 +44,7 @@ public class DisplayFooterElementTest {
         this.navbarHeader = new NavbarHeader(driver);
         this.wait = new WebDriverWait(driver, 5);
 
+
         navbarHeader.openMainPage();
         driver.manage().window().maximize();
         //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:

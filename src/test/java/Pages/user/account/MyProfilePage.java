@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MyProfilePage extends BasePage {
 
@@ -54,10 +57,13 @@ public class MyProfilePage extends BasePage {
     @FindBy(name = "country")
     private WebElement countryList;
 
+    @FindBy(css="input.form-control")
+    private List<WebElement> inputFormList;
+
     @FindBy(className = "updateprofile")
     private WebElement submitUpdateProfileButton;
 
-    @FindBy (css = ".accountresult>.alert")
+    @FindBy(css = ".accountresult>.alert")
     private WebElement alert;
 
     public MyProfilePage(WebDriver driver) {
@@ -72,10 +78,23 @@ public class MyProfilePage extends BasePage {
         return this;
     }
 
+
+    public String fillPhonenumber(int numberOfRandomDigits) {
+        phoneNumber.clear();
+        phoneNumber.sendKeys(getRandomNumber(numberOfRandomDigits));
+        return phoneNumber.getAttribute("value");
+    }
+
     public MyProfilePage fillEmail(String email) {
         this.email.clear();
         this.email.sendKeys(email);
         return this;
+    }
+
+    public String fillEmail() {
+        this.email.clear();
+        this.email.sendKeys(randomEmail);
+        return email.getAttribute("value");
     }
 
     public MyProfilePage fillPassword(String password) {
@@ -96,10 +115,24 @@ public class MyProfilePage extends BasePage {
         return this;
     }
 
+
+    public String fillFirstAddress() {
+        firstAddress.clear();
+        firstAddress.sendKeys(randomString);
+        return firstAddress.getAttribute("value");
+    }
+
     public MyProfilePage fillSecondAddress(String address2) {
         secondAddress.clear();
         secondAddress.sendKeys(address2);
         return this;
+    }
+
+
+    public String fillSecondAddress() {
+        secondAddress.clear();
+        secondAddress.sendKeys(randomString);
+        return secondAddress.getAttribute("value");
     }
 
     public MyProfilePage fillCity(String city) {
@@ -108,17 +141,34 @@ public class MyProfilePage extends BasePage {
         return this;
     }
 
-    public MyProfilePage fillState(String state) {
+    public String fillCity() {
+        this.city.clear();
+        this.city.sendKeys(randomString);
+        return city.getAttribute("value");
+    }
 
+    public MyProfilePage fillState(String state) {
         this.state.clear();
         this.state.sendKeys(state);
         return this;
+    }
+
+    public String fillState() {
+        this.state.clear();
+        this.state.sendKeys(randomString);
+        return state.getAttribute("value");
     }
 
     public MyProfilePage fillZipCode(String zip) {
         zipCode.clear();
         zipCode.sendKeys(zip);
         return this;
+    }
+
+    public String fillZipCode(int numberOfRandomDigits) {
+        zipCode.clear();
+        zipCode.sendKeys(getRandomNumber(numberOfRandomDigits));
+        return zipCode.getAttribute("value");
     }
 
     public MyProfilePage submitMyProfileUpdate() {
@@ -134,39 +184,37 @@ public class MyProfilePage extends BasePage {
         return this;
     }
 
+    public String getTextFromInput(WebElement element) {
+        String textFromElement = element.getAttribute("value");
+        LOGGER.debug("Current text from " + element.getAttribute("placeholder") + " is:" + textFromElement);
+        return textFromElement;
+    }
 
+    public List<String> getTextFromInputList (){
+        List <String> details = new ArrayList<>();
 
-//    public WebElement getPhoneNumberInput() {
-//        return phoneNumber;
-//    }
-//
-//    public WebElement getEmailInput() {
-//        return email;
-//    }
-//
-//    public WebElement getFirstAddressInput() {
-//        return firstAddress;
-//    }
-//
-//    public WebElement getSecondAddressInput() {
-//        return secondAddress;
-//    }
-//
-//    public WebElement getCityInput() {
-//        return city;
-//    }
-//
-//    public WebElement getStateInput() {
-//        return state;
-//    }
-//
-//    public WebElement getZipCodeInput() {
-//        return zipCode;
-//    }
-//
-//    public WebElement getCountryListInput() {
-//        return countryList;
-//    }
+        for(WebElement element: inputFormList){
+            details.add(element.getAttribute("value"));
+        }
+        LOGGER.debug("List of values input form: "+details);
+        return details;
+    }
+
+    public List<String> typeRandomDataListFromInputForm (){
+
+        List<String> random = new ArrayList<>();
+        random.add(fillPhonenumber(8));
+        random.add(fillFirstAddress());
+        random.add(fillSecondAddress());
+        random.add(fillCity());
+        random.add(fillState());
+        random.add(fillZipCode(5));
+        LOGGER.debug("Random data list from input form contains: "+random);
+
+        return random;
+
+    }
+
 
     public WebElement getMyProfileForm() {
         return myProfileForm;
@@ -198,10 +246,10 @@ public class MyProfilePage extends BasePage {
         return false;
     }
 
-    public String getAlertMessage (){
-       String alertMessage = alert.getText();
-       LOGGER.debug("Actual alert message is "+alertMessage);
-       return alertMessage;
+    public String getAlertMessage() {
+        String alertMessage = alert.getText();
+        LOGGER.debug("Actual alert message is " + alertMessage);
+        return alertMessage;
     }
 
     public String getCurrentUrl() {

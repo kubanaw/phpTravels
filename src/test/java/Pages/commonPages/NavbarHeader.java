@@ -2,17 +2,23 @@ package Pages.commonPages;
 
 import Pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NavbarHeader extends BasePage {
-    WebDriver driver;
+    private WebDriver driver;
+    private JavascriptExecutor jse;
+
 
     public NavbarHeader(WebDriver driver) {
         this.driver = driver;
+        jse = (JavascriptExecutor)driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -151,10 +157,17 @@ public class NavbarHeader extends BasePage {
 //        return this;
 //    }
     public void logOut (){
-        myAccountDropdown.click();
-        logOut.click();
+       jse.executeScript("arguments[0].click();", myAccountDropdown);
+        jse.executeScript("arguments[0].click();", logOut );
     }
 
+    public WebElement getMyAccountDropdown() {
+        return myAccountDropdown;
+    }
+
+    public WebElement getLogOut() {
+        return logOut;
+    }
 
     public void setCurrency(String currency){
         currencyList.click();
