@@ -16,6 +16,7 @@ public class UserAccountPage extends BasePage {
     private final String url = "https://www.phptravels.net/account/";
     private WebDriver driver;
     private WebDriverWait wait;
+
     //tabs icons
     @FindBy(css = "a[href='#bookings']")
     private WebElement bookings;
@@ -25,26 +26,32 @@ public class UserAccountPage extends BasePage {
     private WebElement wishlist;
     @FindBy(css = "a[href='#newsletter']")
     private WebElement newsletter;
+
     //active tab icon:
     @FindBy(css = "ul.profile-tabs>li.active>a")
     private WebElement activeTab;
+
     //user greeting panel:
     @FindBy(css = "img.img-thumbnail")
     private WebElement profileImage;
     @FindBy(css = "h3.RTL")
     private WebElement greetingHeader;
+
     //elements from newsletter tab:
     @FindBy(css = "div.pull-left>h4")
     private WebElement newsletterSubscribeHeader;
+
     //elements from bookings tab:
     @FindBy(css = "div.col-md-3>span")
     private List<WebElement> bookingDetails;
+
     //elements from wishlist tab:
     @FindBy(css = "div[id='wishlist']")
     private List<WebElement> wishlistFavoritesList;
 
 
     public UserAccountPage(WebDriver driver) {
+
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 5);
         PageFactory.initElements(driver, this);
@@ -77,7 +84,7 @@ public class UserAccountPage extends BasePage {
 
     public String getNewsletterSubscribeHeader() {
         String subscribe = newsletterSubscribeHeader.getText();
-        LOGGER.debug("Subscribe header: " + subscribe);
+        LOGGER.trace("Subscribe header: " + subscribe);
         return subscribe;
     }
 
@@ -94,26 +101,26 @@ public class UserAccountPage extends BasePage {
 
     public String getMyProfileTabCSSStyle(String style) {
         String value = myProfile.getCssValue(style);
-        LOGGER.debug("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
 
     public String getNewsletterTabCSSStyle(String style) {
         String value = newsletter.getCssValue(style);
-        LOGGER.debug("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getWishlistTabCSSStyle(String style) {
         String value = wishlist.getCssValue(style);
-        LOGGER.debug("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getBookingsTabCSSStyle(String style) {
         String value = bookings.getCssValue(style);
-        LOGGER.debug("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
@@ -123,22 +130,26 @@ public class UserAccountPage extends BasePage {
         for (WebElement webElement : bookingDetails) {
             details.add(webElement.getText());
         }
-        LOGGER.debug("booking: "+details);
+        if (details.isEmpty()) {
+            LOGGER.warn("Booking List is empty!");
+        }
         return details;
     }
 
-    public List<String> getWishlistFavorites() {
+    public List<String> getWishListFavorites() {
         List<String> details = new ArrayList<>();
         for (WebElement webElement : wishlistFavoritesList) {
             details.add(webElement.getText());
         }
-        LOGGER.debug("wishlist favorites" +details);
+        if (details.isEmpty()) {
+            LOGGER.warn("Wish List is empty!");
+        }
         return details;
     }
 
     public String getCurrentActiveTabHref() {
         String currentTab = activeTab.getAttribute("href");
-        LOGGER.debug("Active tab is: " + currentTab);
+        LOGGER.trace("Active tab is: " + currentTab);
         return currentTab;
     }
 
@@ -147,6 +158,5 @@ public class UserAccountPage extends BasePage {
         LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
-
 
 }
