@@ -151,15 +151,33 @@ public class DisplayFooterElementTest extends BasePage{
         }
 
     @Test
+    public void whenClickOnContactUsSubpageOpens() {
+        this.footer.getContactLink().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/contact-us");
+        assertThat(footer.getTitle())
+                .isEqualTo("Contact");
+    }
+
+
+    @Test
     public void faceBookIconRedirectsToFBloginPage() {
         this.footer.getFaceBookicon().click();
         for (String handle : driver.getWindowHandles()) {
         driver.switchTo().window(handle);
         }
         assertThat(driver.getCurrentUrl()).isEqualTo("https://www.facebook.com/travelbusiness");
-
-
     }
+    @Test
+    public void twitterIconRedirectsToFBloginPage() {
+        this.footer.getTwitterIcon().click();
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        assertThat(driver.getCurrentUrl()).isEqualTo("https://twitter.com/phptravels");
+    }
+
+
 
         //todo - in analogy to Tests above it is needed to create test for other links and also create metods and Getters in commonPages/Footer.java
 
