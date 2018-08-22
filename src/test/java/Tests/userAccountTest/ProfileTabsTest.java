@@ -133,11 +133,6 @@ public class ProfileTabsTest {
                 .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
 
-//        for (String wish : userAccountPage.getWishListFavorites()) {
-//            assertThat(wish)
-//                    .as()
-//                    .contains("Hotel");
-//        }
 
     }
 
