@@ -8,3 +8,4 @@ target/*
 /.idea/compiler.xml
 target/
 logs/*
+/src/test/java/resources/
