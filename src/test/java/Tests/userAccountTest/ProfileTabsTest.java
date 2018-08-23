@@ -57,7 +57,7 @@ public class ProfileTabsTest {
         userAccountPage.goToMyProfileTab();
 
         assertThat(userAccountPage.getCurrentActiveTabHref())
-                .as("Active link tab is #profile")
+                .as("Active tab fragment identifier is #profile")
                 .isEqualTo("https://www.phptravels.net/account/#profile");
 
         String valueAsHexActive = Color.fromString(userAccountPage.getMyProfileTabCSSStyle("color")).asHex();
@@ -81,7 +81,7 @@ public class ProfileTabsTest {
         userAccountPage.goToNewsletterTab();
 
         assertThat(userAccountPage.getCurrentActiveTabHref())
-                .as("Active link tab is #newsletter")
+                .as("Active tab fragment identifier is #newsletter")
                 .isEqualTo("https://www.phptravels.net/account/#newsletter");
 
         String valueAsHexActive = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
@@ -101,7 +101,7 @@ public class ProfileTabsTest {
         userAccountPage.goToBookingTab();
 
         assertThat(userAccountPage.getCurrentActiveTabHref())
-                .as("Active tab has a link #bookings")
+                .as("Active tab fragment identifier is #bookings")
                 .isEqualTo("https://www.phptravels.net/account/#bookings");
 
         String valueAsHexActive = Color.fromString(userAccountPage.getBookingsTabCSSStyle("color")).asHex();
@@ -124,7 +124,7 @@ public class ProfileTabsTest {
         userAccountPage.goToWishlistTab();
 
         assertThat(userAccountPage.getCurrentActiveTabHref())
-                .as("Active tab has a link #wishlist")
+                .as("Active tab fragment identifier is #wishlist")
                 .isEqualTo("https://www.phptravels.net/account/#wishlist");
 
         String valueAsHexActive = Color.fromString(userAccountPage.getWishlistTabCSSStyle("color")).asHex();
@@ -133,11 +133,6 @@ public class ProfileTabsTest {
                 .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
 
-//        for (String wish : userAccountPage.getWishListFavorites()) {
-//            assertThat(wish)
-//                    .as()
-//                    .contains("Hotel");
-//        }
 
     }
 

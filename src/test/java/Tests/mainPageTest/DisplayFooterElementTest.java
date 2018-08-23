@@ -79,12 +79,12 @@ public class DisplayFooterElementTest extends BasePage{
 //
 //    }
 
-    @After
-    public void tearDown() {
-        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
-        driver.quit();
-
-    }
+//    @After
+//    public void tearDown() {
+//        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
+//        driver.quit();
+//
+//    }
 
     //zapis na newsletter
     @Test
