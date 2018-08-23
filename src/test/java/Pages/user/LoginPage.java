@@ -1,6 +1,7 @@
 package Pages.user;
 
 import Pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,39 +11,56 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-
-
 public class LoginPage extends BasePage {
+
     //TODO create login options tests
 
     private final String url = "https://www.phptravels.net/login";
+
     private WebDriver driver;
     private WebDriverWait wait;
+    private JavascriptExecutor jse;
 
-    @FindBy(xpath = "//div[@class='wow fadeIn animated']")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav navbar-right']//a[@class='dropdown-toggle go-text-right']")
+    private WebElement myAccountDropdown;
+
+    @FindBy(linkText = "Logout")
+    private WebElement logOut;
+
+    @FindBy(css = "div.panel> div.wow")
     private WebElement loginPanel;
+
     @FindBy(name = "username")
     private WebElement userName;
+
     @FindBy(name = "password")
     private WebElement password;
+
     @FindBy(name = "remember")
     private WebElement rememberMeCheckBox;
+
     @FindBy(className = "loginbtn")
     private WebElement loginButton;
+
     @FindBy(linkText = "Sign Up")
     private WebElement signUpButton;
+
     @FindBy(linkText = "Forget Password")
     private WebElement forgetPasswordButton;
+
     @FindBy(id = "resetemail")
     private WebElement resetPasswordField;
+
     @FindBy(css = "button.btn.btn-primary.resetbtn")
     private WebElement resetButton;
+
     @FindBy(css = " div.alert.alert-danger")
     private WebElement resetAlertText;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 5);
+        jse = (JavascriptExecutor) driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -83,9 +101,6 @@ public class LoginPage extends BasePage {
         signUpButton.click();
     }
 
-    public void clickForgetPassword() {
-        forgetPasswordButton.click();
-    }
 
     public void fillEmailToPasswordReset(String email) {
         resetPasswordField.clear();
@@ -98,6 +113,7 @@ public class LoginPage extends BasePage {
     }
 
     public String getResetAlertMessage() {
+
         String alertMessage = resetAlertText.getText();
         LOGGER.debug("Current reset alert: " + alertMessage);
         return alertMessage;
@@ -105,6 +121,7 @@ public class LoginPage extends BasePage {
 
 
     public void loginDemoUser() {
+
         LOGGER.info("Login DemoUser start.");
         fillUserEmailField("user@phptravels.com");
         fillUsersPassword("demouser");
@@ -116,6 +133,13 @@ public class LoginPage extends BasePage {
             LOGGER.info("Login button is not clickable " + toe);
 
         }
+    }
+
+    public void logOut() {
+
+        jse.executeScript("arguments[0].click();", myAccountDropdown);
+        jse.executeScript("arguments[0].click();", logOut);
+        LOGGER.info("Logout successful!");
     }
 
 

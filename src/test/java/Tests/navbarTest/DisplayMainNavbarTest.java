@@ -39,11 +39,8 @@ public class DisplayMainNavbarTest  {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        // this.driver.get("https://www.phptravels.net/");
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
-       //TODO find solution for loggers in abstractclas
-      // Logger.getLogger("otwarto strone glowna");
         hotelspage = new HotelsPage(driver);
         homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
@@ -61,18 +58,6 @@ public class DisplayMainNavbarTest  {
         this.driver.quit();
     }
 
-
-//Assert Logo exist
-//    WebElement result1 = this.driver.findElement(By.className("navbar-"));
-//    Assert.assertEquals(result1, "navbar-");
-
-    //Assert Home on navbar exist. This assertion checks test, and tries to click object if working, it continues
-    //Fixed removed leading dot "." before xpath pointer - worked.
-
-    public void givenThatHomePageLinkExist() {
-        navbarHeader.pickHomeElement();
-        assertThat(homePage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/");
-    }
 
 //Assert HOTELS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
 

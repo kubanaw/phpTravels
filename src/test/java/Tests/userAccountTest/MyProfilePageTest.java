@@ -77,9 +77,11 @@ public class MyProfilePageTest {
     public void userCouldUpdateAddressForm(){
 
        List<String> random = myProfilePage.typeRandomDataForProfileUpdate();
-        myProfilePage.submitMyProfileUpdate();
+        assertThat(myProfilePage.submitMyProfileUpdate().getAlertMessage())
+                .as("A message confirms profile update.")
+        .isEqualTo("Profile Updated Successfully.");
 
-        navbarHeader.logOut();
+        loginPage.logOut();
         assertThat(myProfilePage.getCurrentUrl())
                 .as("URL of Login Page")
                 .isEqualTo(loginPage.getUrl());

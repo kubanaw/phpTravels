@@ -2,23 +2,19 @@ package Pages.commonPages;
 
 import Pages.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class NavbarHeader extends BasePage {
     private WebDriver driver;
-    private JavascriptExecutor jse;
 
 
     public NavbarHeader(WebDriver driver) {
         this.driver = driver;
-        jse = (JavascriptExecutor)driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -41,18 +37,6 @@ public class NavbarHeader extends BasePage {
     WebElement offers;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[8]/a")
     WebElement blog;
-
-    //MY ACCOUNT
-    @FindBy(xpath = "//ul[@class='nav navbar-nav navbar-right']//a[@class='dropdown-toggle go-text-right']")
-//    @FindBy(id = "li_myaccount")
-    WebElement myAccountDropdown;
-    @FindBy(xpath = "//*[@id=\"li_myaccount\"]/ul/li[1]/a")
-    WebElement loginFromMyAccountDropdown;
-    @FindBy(linkText = "Sign Up")
-    WebElement signFromMyAccountDropdown;
-
-    @FindBy (linkText = "Logout")
-    WebElement logOut;
 
     //CURRENCY
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
@@ -139,35 +123,7 @@ public class NavbarHeader extends BasePage {
         blog.click();
     }
 
-    // METHODS for accountDropdown
-    public void loginToMyAccount() {
-        myAccountDropdown.click();
-        loginFromMyAccountDropdown.click();
 
-    }
-
-    public void SignInMyAccount() {
-        myAccountDropdown.click();
-        signFromMyAccountDropdown.click();
-    }
-
-//    public NavbarHeader selectAccountDropdownOptions (String text){
-//        Select selectAccountOptions = new Select(myAccountDropdown);
-//        selectAccountOptions.selectByVisibleText(text);
-//        return this;
-//    }
-    public void logOut (){
-       jse.executeScript("arguments[0].click();", myAccountDropdown);
-        jse.executeScript("arguments[0].click();", logOut );
-    }
-
-    public WebElement getMyAccountDropdown() {
-        return myAccountDropdown;
-    }
-
-    public WebElement getLogOut() {
-        return logOut;
-    }
 
     public void setCurrency(String currency){
         currencyList.click();
@@ -200,7 +156,6 @@ public class NavbarHeader extends BasePage {
 //        return currency.getAttribute("value");
 //    }
 
-//przerwalam tworzenie, metody rozwijania z listy beda dodane
 }
 
 

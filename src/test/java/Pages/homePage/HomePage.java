@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    //TODO refactor (input homepage) THIS CLASS! Is the same as NavbarHeader -Kuba You must refactor your DisplayCurrenciesTest
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
