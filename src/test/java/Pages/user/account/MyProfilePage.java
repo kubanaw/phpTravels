@@ -109,23 +109,11 @@ public class MyProfilePage extends BasePage {
         return this;
     }
 
-    public MyProfilePage fillFirstAddress(String address1) {
-        firstAddress.clear();
-        firstAddress.sendKeys(address1);
-        return this;
-    }
-
 
     public String fillFirstAddress() {
         firstAddress.clear();
         firstAddress.sendKeys(randomString);
         return firstAddress.getAttribute("value");
-    }
-
-    public MyProfilePage fillSecondAddress(String address2) {
-        secondAddress.clear();
-        secondAddress.sendKeys(address2);
-        return this;
     }
 
 
@@ -135,11 +123,6 @@ public class MyProfilePage extends BasePage {
         return secondAddress.getAttribute("value");
     }
 
-    public MyProfilePage fillCity(String city) {
-        this.city.clear();
-        this.city.sendKeys(city);
-        return this;
-    }
 
     public String fillCity() {
         this.city.clear();
@@ -147,11 +130,6 @@ public class MyProfilePage extends BasePage {
         return city.getAttribute("value");
     }
 
-    public MyProfilePage fillState(String state) {
-        this.state.clear();
-        this.state.sendKeys(state);
-        return this;
-    }
 
     public String fillState() {
         this.state.clear();
@@ -159,11 +137,6 @@ public class MyProfilePage extends BasePage {
         return state.getAttribute("value");
     }
 
-    public MyProfilePage fillZipCode(String zip) {
-        zipCode.clear();
-        zipCode.sendKeys(zip);
-        return this;
-    }
 
     public String fillZipCode(int numberOfRandomDigits) {
         zipCode.clear();
@@ -200,7 +173,7 @@ public class MyProfilePage extends BasePage {
         return details;
     }
 
-    public List<String> typeRandomDataListFromInputForm (){
+    public List<String> typeRandomDataForProfileUpdate(){
 
         List<String> random = new ArrayList<>();
         random.add(fillPhonenumber(8));
@@ -209,10 +182,8 @@ public class MyProfilePage extends BasePage {
         random.add(fillCity());
         random.add(fillState());
         random.add(fillZipCode(5));
-        LOGGER.debug("Random data list from input form contains: "+random);
-
+        LOGGER.debug("Random data list from profile's update form contains: "+random);
         return random;
-
     }
 
 

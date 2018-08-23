@@ -40,7 +40,7 @@ public class MyProfilePageTest {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(this.driver, 2);
+        wait = new WebDriverWait(this.driver, 5);
         myProfilePage = new MyProfilePage(driver);
         loginPage = new LoginPage(driver);
         userAccountPage = new UserAccountPage(driver);
@@ -74,22 +74,22 @@ public class MyProfilePageTest {
     }
 
     @Test
-    public void userCouldChangeAddress(){
+    public void userCouldUpdateAddressForm(){
 
-       List<String> random = myProfilePage.typeRandomDataListFromInputForm();
+       List<String> random = myProfilePage.typeRandomDataForProfileUpdate();
         myProfilePage.submitMyProfileUpdate();
+
         navbarHeader.logOut();
         assertThat(myProfilePage.getCurrentUrl())
                 .as("URL of Login Page")
                 .isEqualTo(loginPage.getUrl());
         loginPage.loginDemoUser();
+
         userAccountPage.goToMyProfileTab();
         assertThat(myProfilePage.getTextFromInputList())
+                .as("List of user's personal data in form")
         .containsAll(random);
     }
-
-
-
 
 
 }

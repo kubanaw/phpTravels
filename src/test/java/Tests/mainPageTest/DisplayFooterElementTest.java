@@ -151,6 +151,7 @@ public class DisplayFooterElementTest {
 //
 //        }
 
+
         //TODO - in analogy to Tests above it is needed to create test for other links and also create metods and Getters in commonPages/Footer.java
 
 }
