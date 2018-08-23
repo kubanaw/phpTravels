@@ -1,8 +1,6 @@
 package Tests.navbarTest;
 
-import Pages.homePage.HomePage;
-import Pages.BasePage;
-import Pages.commonPages.NavbarHeader;
+import Pages.commons.NavbarHeader;
 import Pages.navbarTabs.*;
 import org.junit.After;
 import org.junit.Before;

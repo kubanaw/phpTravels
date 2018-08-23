@@ -16,9 +16,6 @@ public class LoginPage extends BasePage {
     //TODO create login options tests
 
     private final String url = "https://www.phptravels.net/login";
-
-    private WebDriver driver;
-    private WebDriverWait wait;
     private JavascriptExecutor jse;
 
     @FindBy(xpath = "//ul[@class='nav navbar-nav navbar-right']//a[@class='dropdown-toggle go-text-right']")
@@ -58,8 +55,7 @@ public class LoginPage extends BasePage {
     private WebElement resetAlertText;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+        super(driver);
         jse = (JavascriptExecutor) driver;
         PageFactory.initElements(driver, this);
     }

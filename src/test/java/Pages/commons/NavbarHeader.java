@@ -1,4 +1,4 @@
-package Pages.commonPages;
+package Pages.commons;
 
 import Pages.BasePage;
 import org.openqa.selenium.By;
@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.Select;
 
 
 public class NavbarHeader extends BasePage {
-    private WebDriver driver;
+
 
 
     public NavbarHeader(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 

@@ -15,29 +15,32 @@ public class RegisterPage extends BasePage {
 
     private final String url = "https://www.phptravels.net/register";
 
-    private WebDriver driver;
-    private WebDriverWait wait;
-
     @FindBy(name = "firstname")
     private WebElement firstName;
+
     @FindBy(name = "lastname")
     private WebElement lastName;
+
     @FindBy(name = "phone")
     private WebElement mobileNumber;
+
     @FindBy(name = "email")
     private WebElement emailAddress;
+
     @FindBy(name = "password")
     private WebElement password;
+
     @FindBy(name = "confirmpassword")
     private WebElement confirmPassword;
+
     @FindBy(className = "signupbtn")
     private WebElement submit;
+
     @FindBy(className = "alert-danger")
     private WebElement alert;
 
     public RegisterPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 

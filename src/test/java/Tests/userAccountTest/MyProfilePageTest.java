@@ -1,6 +1,6 @@
 package Tests.userAccountTest;
 
-import Pages.commonPages.NavbarHeader;
+import Pages.commons.NavbarHeader;
 import Pages.user.LoginPage;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;

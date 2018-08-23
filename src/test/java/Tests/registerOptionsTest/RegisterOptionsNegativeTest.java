@@ -1,6 +1,5 @@
 package Tests.registerOptionsTest;
 
-import Pages.commonPages.NavbarHeader;
 import Pages.user.RegisterPage;
 import org.junit.After;
 import org.junit.Before;

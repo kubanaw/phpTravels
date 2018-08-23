@@ -1,6 +1,6 @@
 package Tests.navbarTest;
 
-import Pages.commonPages.NavbarHeader;
+import Pages.commons.NavbarHeader;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

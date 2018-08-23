@@ -1,18 +1,8 @@
 package Tests.headerSearchTest;
 
-import Pages.commonPages.Footer;
-import Pages.homePage.HomePage;
-import Pages.BasePage;
-import Pages.commonPages.NavbarHeader;
-import Pages.navbarTabs.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import Pages.commons.Footer;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import util.ChromeDrvPathHelper;
-import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DisplaySearchHotelsFlightsCarsTest {
@@ -20,7 +10,6 @@ public class DisplaySearchHotelsFlightsCarsTest {
 //search is done via different component.
     private WebDriver driver;
     private Footer footer;
-    private HomePage homePage;
 
 
 }

@@ -14,8 +14,7 @@ import java.util.List;
 public class UserAccountPage extends BasePage {
 
     private final String url = "https://www.phptravels.net/account/";
-    private WebDriver driver;
-    private WebDriverWait wait;
+
 
     //tabs icons
     @FindBy(css = "a[href='#bookings']")
@@ -52,8 +51,7 @@ public class UserAccountPage extends BasePage {
 
     public UserAccountPage(WebDriver driver) {
 
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 

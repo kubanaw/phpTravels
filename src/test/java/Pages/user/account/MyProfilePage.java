@@ -13,7 +13,6 @@ import java.util.List;
 
 public class MyProfilePage extends BasePage {
 
-    private WebDriver driver;
 
     @FindBy(css = "div.form-horizontal")
     private WebElement myProfileForm;
@@ -57,7 +56,7 @@ public class MyProfilePage extends BasePage {
     @FindBy(name = "country")
     private WebElement countryList;
 
-    @FindBy(css="input.form-control")
+    @FindBy(css = "input.form-control")
     private List<WebElement> inputFormList;
 
     @FindBy(className = "updateprofile")
@@ -67,7 +66,8 @@ public class MyProfilePage extends BasePage {
     private WebElement alert;
 
     public MyProfilePage(WebDriver driver) {
-        this.driver = driver;
+
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -163,17 +163,17 @@ public class MyProfilePage extends BasePage {
         return textFromElement;
     }
 
-    public List<String> getTextFromInputList (){
-        List <String> details = new ArrayList<>();
+    public List<String> getTextFromInputList() {
+        List<String> details = new ArrayList<>();
 
-        for(WebElement element: inputFormList){
+        for (WebElement element : inputFormList) {
             details.add(element.getAttribute("value"));
         }
-        LOGGER.debug("List of values input form: "+details);
+        LOGGER.debug("List of values input form: " + details);
         return details;
     }
 
-    public List<String> typeRandomDataForProfileUpdate(){
+    public List<String> typeRandomDataForProfileUpdate() {
 
         List<String> random = new ArrayList<>();
         random.add(fillPhonenumber(8));
@@ -182,7 +182,7 @@ public class MyProfilePage extends BasePage {
         random.add(fillCity());
         random.add(fillState());
         random.add(fillZipCode(5));
-        LOGGER.debug("Random data list from profile's update form contains: "+random);
+        LOGGER.debug("Random data list from profile's update form contains: " + random);
         return random;
     }
 

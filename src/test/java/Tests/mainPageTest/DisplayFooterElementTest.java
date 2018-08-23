@@ -1,11 +1,8 @@
 package Tests.mainPageTest;
 
 import Pages.BasePage;
-import Pages.commonPages.Footer;
-import Pages.commonPages.NavbarHeader;
-import Pages.homePage.HomePage;
-import com.sun.media.jfxmedia.logging.Logger;
-import org.junit.After;
+import Pages.commons.Footer;
+import Pages.commons.NavbarHeader;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,22 +11,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 
-public class DisplayFooterElementTest extends BasePage{
+public class DisplayFooterElementTest {
     //ilona tutaj pisze
     private WebDriver driver;
     private Footer footer;
-    private HomePage homePage;
     private NavbarHeader navbarHeader;
     WebDriverWait wait;
 

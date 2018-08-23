@@ -1,20 +1,20 @@
-package Pages.commonPages;
+package Pages.commons;
 
 import Pages.BasePage;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Footer extends BasePage{
-    WebDriver driver;
-    WebDriverWait wait;
+
     public Footer(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+       super(driver);
+        PageFactory.initElements(driver, this);
+
     }
 //Newsletter:
     @FindBy(id="exampleInputEmail1")
