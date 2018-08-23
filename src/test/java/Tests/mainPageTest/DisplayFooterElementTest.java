@@ -152,16 +152,47 @@ public class DisplayFooterElementTest {
         assertThat(footer.getTitle())
                 .isEqualTo("Contact");
     }
-
-
     @Test
-    public void faceBookIconRedirectsToFBloginPage() {
-        this.footer.getFaceBookicon().click();
-        for (String handle : driver.getWindowHandles()) {
-        driver.switchTo().window(handle);
-        }
-        assertThat(driver.getCurrentUrl()).isEqualTo("https://www.facebook.com/travelbusiness");
+    public void whenClickOnAbouttUsSubpageOpens() {
+        this.footer.getAboutUS().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/About-Us");
+        assertThat(footer.getTitle())
+                .isEqualTo("About Us");
     }
+    @Test
+    public void whenClickOnHowToBookSubpageOpens() {
+        this.footer.getHowToBook().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/How-to-Book");
+        assertThat(footer.getTitle())
+                .isEqualTo("How to Book");
+    }
+ @Test
+    public void whenClickOnBookingTipsSubpageOpens() {
+        this.footer.getBookingTips().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Booking-Tips");
+        assertThat(footer.getTitle())
+                .isEqualTo("Booking Tips");
+    }
+    @Test
+    public void whenClickOnBookingTipsSubpageOpens() {
+        this.footer.getBookingTips().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Booking-Tips");
+        assertThat(footer.getTitle())
+                .isEqualTo("Booking Tips");
+    }
+    @Test
+    public void whenClickOnBookingTipsSubpageOpens() {
+        this.footer.getBookingTips().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Booking-Tips");
+        assertThat(footer.getTitle())
+                .isEqualTo("Booking Tips");
+    }
+
     @Test
     public void twitterIconRedirectsToFBloginPage() {
         this.footer.getTwitterIcon().click();
