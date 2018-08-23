@@ -21,14 +21,12 @@ public class DisplayMainNavbarTest  {
     private WebDriver driver;
     private NavbarHeader navbarHeader;
     private HotelsPage hotelspage;
-    private HomePage homePage;
     private FlightsPage flightsPage;
     private ToursPage toursPage;
     private VisaPage visaPage;
     private CarsPage carsPage;
     private OffersPage offersPage;
     private BlogPage blogPage;
-    private BasePage basepage;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -42,7 +40,6 @@ public class DisplayMainNavbarTest  {
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
         hotelspage = new HotelsPage(driver);
-        homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
         toursPage = new ToursPage(driver);
         visaPage = new VisaPage(driver);
