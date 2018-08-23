@@ -38,6 +38,8 @@ public class Footer extends BasePage{
 
     @FindBy (xpath = "/html/body/div[7]/div[1]/div[1]/a[1]/img")
     WebElement faceBookicon;
+    @FindBy (xpath = "/html/body/div[7]/div[1]/div[1]/a[2]/img")
+    WebElement twitterIcon;
 
 
     //METHODS:
@@ -57,7 +59,7 @@ public class Footer extends BasePage{
     }
 
     public WebElement getContactLink() {
-        return contactLink;
+           return contactLink;
     }
 
     public WebElement getAboutUS() {
@@ -87,6 +89,18 @@ public class Footer extends BasePage{
     }
     public WebElement getFaceBookicon()
     {return faceBookicon;}
+    public WebElement getTwitterIcon()
+    {return twitterIcon;}
+    public String getCurrentUrl() {
+        String currentURL = driver.getCurrentUrl();
+        LOGGER.debug("Current URL: " + currentURL);
+        return currentURL;
+    }
+    public String getTitle() {
+        String currentTitle = driver.getTitle();
+        LOGGER.info("current title: "+ currentTitle);
+        return currentTitle;
+    }
 
 
 }

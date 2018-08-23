@@ -1,8 +1,10 @@
 package Tests.mainPageTest;
 
+import Pages.BasePage;
 import Pages.commonPages.Footer;
 import Pages.commonPages.NavbarHeader;
 import Pages.homePage.HomePage;
+import com.sun.media.jfxmedia.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,16 +14,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 
-public class DisplayFooterElementTest {
+public class DisplayFooterElementTest extends BasePage{
     //ilona tutaj pisze
     private WebDriver driver;
     private Footer footer;
@@ -114,6 +118,7 @@ public class DisplayFooterElementTest {
         @Test
         public void givenThatAboutUsLinkExist() {
             String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")).getText();
+
             System.out.println(subscribedSuccessfullyAlert);
             assertEquals("ABOUT US", subscribedSuccessfullyAlert);
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -144,14 +149,34 @@ public class DisplayFooterElementTest {
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         }
-//        @Test
-//    public void faceBookIconRedirectsToFBloginPage () {
-//        this.footer.getFaceBookicon().click();
-//        wait.until(ExpectedConditions.urlContains("https://www.facebook.com/travelbusiness"));
-//
-//        }
+
+    @Test
+    public void whenClickOnContactUsSubpageOpens() {
+        this.footer.getContactLink().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/contact-us");
+        assertThat(footer.getTitle())
+                .isEqualTo("Contact");
+    }
 
 
-        //TODO - in analogy to Tests above it is needed to create test for other links and also create metods and Getters in commonPages/Footer.java
+    @Test
+    public void faceBookIconRedirectsToFBloginPage() {
+        this.footer.getFaceBookicon().click();
+        for (String handle : driver.getWindowHandles()) {
+        driver.switchTo().window(handle);
+        }
+        assertThat(driver.getCurrentUrl()).isEqualTo("https://www.facebook.com/travelbusiness");
+    }
+    @Test
+    public void twitterIconRedirectsToFBloginPage() {
+        this.footer.getTwitterIcon().click();
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        assertThat(driver.getCurrentUrl()).isEqualTo("https://twitter.com/phptravels");
+    }
+
+
 
 }
