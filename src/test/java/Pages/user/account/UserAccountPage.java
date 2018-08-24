@@ -40,6 +40,9 @@ public class UserAccountPage extends BasePage {
     @FindBy(css = "div.pull-left>h4")
     private WebElement newsletterSubscribeHeader;
 
+    @FindBy(css = "input.newsletter")
+    private WebElement newsletterButton;
+
     //elements from bookings tab:
     @FindBy(css = "div.col-md-3>span")
     private List<WebElement> bookingDetails;
@@ -155,6 +158,24 @@ public class UserAccountPage extends BasePage {
         String value = activeTab.getCssValue(style);
         LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
+    }
+
+    public boolean isSubscribeActive() {
+
+        String activeNews = newsletterButton.getAttribute("checked");
+        LOGGER.debug("Is subscribe active: " + activeNews);
+        if (activeNews.equals("true")) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean switchOffSubscribe() {
+
+        if (isSubscribeActive()) {
+            newsletterButton.click();
+        }
+        return true;
     }
 
 }
