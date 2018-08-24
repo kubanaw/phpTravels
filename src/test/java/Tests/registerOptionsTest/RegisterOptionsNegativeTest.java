@@ -22,20 +22,27 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
+
 public class RegisterOptionsNegativeTest {
 
     @Parameter()
     public String firstName;
+
     @Parameter(1)
     public String lastName;
+
     @Parameter(2)
     public String phone;
+
     @Parameter(3)
     public String email;
+
     @Parameter(4)
     public String password;
+
     @Parameter(5)
     public String confirmPassword;
+
     @Parameter(6)
     public String message;
 
@@ -44,11 +51,14 @@ public class RegisterOptionsNegativeTest {
     private WebDriverWait wait;
 
 
-    @Parameters(name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
+    @Parameters
+            (name = "Test {index}: First name: {0}, Last name: {1}, Phone: {2}, " +
             "E-mail: {3}, Password: {4}, confirm: {5}, alert: {6}")
 
     public static Collection<Object[]> dataForRegisterOption() {
+
         return Arrays.asList(new Object[][]{
+
                 {"", "Moczymorda", "788990333", "j37756@nwytg.com", "M4ki3t9!", "M4ki3t9!",
                         "The First name field is required."},
                 {"Gerwazy", "", "788990333", "j3776666@nwytg.com", "M4ki3t9!", "M4ki3t9!",
@@ -94,6 +104,7 @@ public class RegisterOptionsNegativeTest {
 
     @Test
     public void whenNecessaryFieldAreFilledIncorrectlyThenShouldNotRegister() {
+
         registerPage.fillFirstName(firstName)
                 .fillLastName(lastName)
                 .fillMobileNumber(phone)
@@ -101,15 +112,16 @@ public class RegisterOptionsNegativeTest {
                 .fillPassword(password)
                 .fillConfirmPassword(confirmPassword)
                 .clickSubmit();
+
         assertThat(registerPage.getCurrentUrl())
                 .as("URL of registration page")
                 .isEqualTo(registerPage.getUrl());
+
         wait.until(ExpectedConditions.visibilityOf(registerPage.getAlert()));
         assertThat(registerPage.getAlertMessage())
                 .as("Registration alert message")
                 .isNotBlank()
                 .contains(message);
-
     }
 
 
