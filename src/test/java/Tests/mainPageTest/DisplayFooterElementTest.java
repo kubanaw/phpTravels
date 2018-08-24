@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DisplayFooterElementTest {
 
     private WebDriverWait wait;
+
     private WebDriver driver;
     private Footer footer;
     private NavbarHeader navbarHeader;
