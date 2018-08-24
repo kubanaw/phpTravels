@@ -2,6 +2,7 @@ package Tests.mainPageTest;
 
 import Pages.commons.Footer;
 import Pages.commons.NavbarHeader;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,13 +20,11 @@ import static org.junit.Assert.assertEquals;
 
 
 public class DisplayFooterElementTest {
+    WebDriverWait wait;
     //ilona tutaj pisze
     private WebDriver driver;
     private Footer footer;
     private NavbarHeader navbarHeader;
-    WebDriverWait wait;
-
-
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -35,111 +34,42 @@ public class DisplayFooterElementTest {
     @Before
 
     public void setup() {
+
         this.driver = new ChromeDriver();
         this.footer = new Footer(driver);
         this.navbarHeader = new NavbarHeader(driver);
         this.wait = new WebDriverWait(driver, 5);
-
-
-        navbarHeader.openMainPage();
         driver.manage().window().maximize();
-        //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
+        navbarHeader.openMainPage();
 
-     JavascriptExecutor jse = (JavascriptExecutor)driver;
-       jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
+        //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));");
 
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        Actions action = new Actions(driver);
-//        WebElement hook = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/div[2]/button"));
-//        action.moveToElement(hook);
+
     }
 
-//    public void setup() {
-//        this.driver = new ChromeDriver();
-//        this.footer = PageFactory.initElements(this.driver, Footer.class);
-//        this.navbarHeader = new NavbarHeader(driver);
-//        navbarHeader.openMainPage();
-//        driver.manage().window().maximize();
-//        //scrollowanie na dół strony za pomocą skryptu js, żeby uwidocznić element footera:
-//        JavascriptExecutor jse = (JavascriptExecutor)driver;
-//        jse.executeScript("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document" +
-//                ".body.scrollHeight,document.documentElement.clientHeight));");
-//
-//    }
 
-//    @After
-//    public void tearDown() {
-//        driver.manage().timeouts().implicitlyWait(14,TimeUnit.SECONDS);
-//        driver.quit();
-//
-//    }
+    @After
+    public void tearDown() {
+        driver.quit();
+
+    }
 
     //zapis na newsletter
     @Test
     public void addEmailToNewsletterList() {
 
         footer.typeEmailToNewsletter();
-
-        //footer.alreadySubscribedMessage();
-        //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        //String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
-        //System.out.println(subscribedSuccessfullyAlert);
-
-        assertThat(footer.alreadySubscribedMessage()).isEqualToIgnoringCase("Subscribed Successfully");
-
-//      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
-//        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
-//        System.out.println(subscribedSuccessfullyAlert);
-//        assertEquals("ALREADY SUBSCRIBED", subscribedSuccessfullyAlert);
+        assertThat(footer.alreadySubscribedMessage())
+                .isEqualToIgnoringCase("Subscribed Successfully");
     }
-    //TODO refactor test with wait to emement show before assertion
-        @Test
-        public void givenThatContactLinkExist() {
-            this.footer.getContactLink().click();
-            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")).getText();
-            System.out.println(subscribedSuccessfullyAlert);
-            assertEquals("CONTACT", subscribedSuccessfullyAlert);
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
 
-        @Test
-        public void givenThatAboutUsLinkExist() {
-            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")).getText();
-
-            System.out.println(subscribedSuccessfullyAlert);
-            assertEquals("ABOUT US", subscribedSuccessfullyAlert);
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
-
-        @Test
-        public void givenThatHowToBookLinkExist() {
-            this.footer.getHowToBook().click();
-            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")).getText();
-            System.out.println(subscribedSuccessfullyAlert);
-            assertEquals("HOW TO BOOK", subscribedSuccessfullyAlert);
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-        @Test
-        public void givenThatBookingTipsLinkExist() {
-            this.footer.getBookingTips().click();
-            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")).getText();
-            System.out.println(subscribedSuccessfullyAlert);
-            assertEquals("BOOKING TIPS", subscribedSuccessfullyAlert);
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        }
-        @Test
-        public void givenThatOurPartnersLinkExist() {
-            this.footer.getOurPartners().click();
-            String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")).getText();
-            System.out.println(subscribedSuccessfullyAlert);
-            assertEquals("OUR PARTNERS", subscribedSuccessfullyAlert);
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-        }
 
     @Test
     public void whenClickOnContactUsSubpageOpens() {
@@ -149,6 +79,7 @@ public class DisplayFooterElementTest {
         assertThat(footer.getTitle())
                 .isEqualTo("Contact");
     }
+
     @Test
     public void whenClickOnAbouttUsSubpageOpens() {
         this.footer.getAboutUS().click();
@@ -157,6 +88,7 @@ public class DisplayFooterElementTest {
         assertThat(footer.getTitle())
                 .isEqualTo("About Us");
     }
+
     @Test
     public void whenClickOnHowToBookSubpageOpens() {
         this.footer.getHowToBook().click();
@@ -165,7 +97,8 @@ public class DisplayFooterElementTest {
         assertThat(footer.getTitle())
                 .isEqualTo("How to Book");
     }
- @Test
+
+    @Test
     public void whenClickOnBookingTipsSubpageOpens() {
         this.footer.getBookingTips().click();
         assertThat(footer.getCurrentUrl())
@@ -183,7 +116,6 @@ public class DisplayFooterElementTest {
         }
         assertThat(driver.getCurrentUrl()).isEqualTo("https://twitter.com/phptravels");
     }
-
 
 
 }
