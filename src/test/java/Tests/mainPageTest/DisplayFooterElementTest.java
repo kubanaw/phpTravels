@@ -1,6 +1,5 @@
 package Tests.mainPageTest;
 
-import Pages.BasePage;
 import Pages.commons.Footer;
 import Pages.commons.NavbarHeader;
 import org.junit.Before;
@@ -10,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
@@ -38,7 +36,7 @@ public class DisplayFooterElementTest {
 
     public void setup() {
         this.driver = new ChromeDriver();
-        this.footer = PageFactory.initElements(this.driver, Footer.class);
+        this.footer = new Footer(driver);
         this.navbarHeader = new NavbarHeader(driver);
         this.wait = new WebDriverWait(driver, 5);
 
@@ -84,15 +82,14 @@ public class DisplayFooterElementTest {
     @Test
     public void addEmailToNewsletterList() {
 
-        this.footer.typeRandomEmail();
-        this.footer.getSubmitNewsletterButton().click();
+        footer.typeEmailToNewsletter();
 
-        //footer.alreadySuscribedMessage();
+        //footer.alreadySubscribedMessage();
         //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         //String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();
         //System.out.println(subscribedSuccessfullyAlert);
 
-        assertThat(footer.alreadySuscribedMessage()).isEqualToIgnoringCase("Subscribed Successfully");
+        assertThat(footer.alreadySubscribedMessage()).isEqualToIgnoringCase("Subscribed Successfully");
 
 //      Below is negative assertion, when email is known to the page, alert then is: ALREADY SUBSCRIBED
 //        String subscribedSuccessfullyAlert = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")).getText();

@@ -24,6 +24,9 @@ public class LoginPage extends BasePage {
     @FindBy(linkText = "Logout")
     private WebElement logOut;
 
+    @FindBy (linkText = "Account")
+    private WebElement account;
+
     @FindBy(css = "div.panel> div.wow")
     private WebElement loginPanel;
 
@@ -136,6 +139,13 @@ public class LoginPage extends BasePage {
         jse.executeScript("arguments[0].click();", myAccountDropdown);
         jse.executeScript("arguments[0].click();", logOut);
         LOGGER.info("Logout successful!");
+    }
+
+    public void backToUserAccount (){
+        jse.executeScript("arguments[0].click();", myAccountDropdown);
+        jse.executeScript("arguments[0].click();", account);
+        LOGGER.info("Back to User's Account");
+
     }
 
 

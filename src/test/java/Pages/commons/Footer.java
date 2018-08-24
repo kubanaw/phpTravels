@@ -45,14 +45,7 @@ public class Footer extends BasePage{
     //METHODS:
 //napisac metode do wpisania maila i submita
 
-    public WebElement getEmailField() {
-        return emailField;
-    }
-
-    public WebElement getSubmitNewsletterButton() {
-        return submitNewsletterButton;
-    }
-    public String alreadySuscribedMessage(){
+    public String alreadySubscribedMessage(){
         wait.until(ExpectedConditions.visibilityOf(subscribeMessage));
         LOGGER.debug("tekst z guzika " +subscribeMessage.getText());
         return subscribeMessage.getText();
@@ -82,11 +75,25 @@ public class Footer extends BasePage{
         return doDna;
     }
 
-    public Footer typeRandomEmail() {
+
+    public Footer typeEmailToNewsletter(String email){
         emailField.clear();
-        emailField.sendKeys(randomEmail);
+        emailField.sendKeys(email);
+        LOGGER.info("Current email: "+email);
+        submitNewsletterButton.click();
         return this;
     }
+    //method overloading to type random emails
+    public Footer typeEmailToNewsletter(){
+        emailField.clear();
+        emailField.sendKeys(randomEmail);
+        LOGGER.trace("Current email: "+randomEmail);
+        submitNewsletterButton.click();
+        return this;
+    }
+
+
+
     public WebElement getFaceBookicon()
     {return faceBookicon;}
     public WebElement getTwitterIcon()

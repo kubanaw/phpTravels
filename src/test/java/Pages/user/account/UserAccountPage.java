@@ -1,6 +1,7 @@
 package Pages.user.account;
 
 import Pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,8 @@ import java.util.List;
 public class UserAccountPage extends BasePage {
 
     private final String url = "https://www.phptravels.net/account/";
+
+    private JavascriptExecutor jse;
 
 
     //tabs icons
@@ -55,24 +58,29 @@ public class UserAccountPage extends BasePage {
     public UserAccountPage(WebDriver driver) {
 
         super(driver);
+        jse = (JavascriptExecutor) driver;
         PageFactory.initElements(driver, this);
     }
 
 
-    public void goToBookingTab() {
+    public UserAccountPage goToBookingTab() {
         bookings.click();
+        return this;
     }
 
-    public void goToMyProfileTab() {
+    public UserAccountPage goToMyProfileTab() {
         myProfile.click();
+        return this;
     }
 
-    public void goToWishlistTab() {
+    public UserAccountPage goToWishlistTab() {
         wishlist.click();
+        return this;
     }
 
-    public void goToNewsletterTab() {
+    public UserAccountPage goToNewsletterTab() {
         newsletter.click();
+        return this;
     }
 
     public WebElement getProfileImage() {
@@ -164,7 +172,7 @@ public class UserAccountPage extends BasePage {
 
         String activeNews = newsletterButton.getAttribute("checked");
         LOGGER.debug("Is subscribe active: " + activeNews);
-        if (activeNews.equals("true")) {
+        if (activeNews != null) {
             return true;
         }
         return false;
@@ -173,9 +181,14 @@ public class UserAccountPage extends BasePage {
     public boolean switchOffSubscribe() {
 
         if (isSubscribeActive()) {
-            newsletterButton.click();
+            jse.executeScript("arguments[0].click();", newsletterButton);
         }
         return true;
+    }
+
+    public UserAccountPage goToMainPage() {
+        driver.get(BASE_URL);
+        return this;
     }
 
 }
