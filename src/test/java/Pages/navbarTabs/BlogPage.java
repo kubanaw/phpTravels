@@ -8,11 +8,9 @@ public class BlogPage extends BasePage {
 
 
     public BlogPage (WebDriver driver){
+
         super(driver);
-        PageFactory.initElements(driver, this);
     }
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
+
 }
 

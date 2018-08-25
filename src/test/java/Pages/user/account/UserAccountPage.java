@@ -5,9 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +15,16 @@ public class UserAccountPage extends BasePage {
 
     private JavascriptExecutor jse;
 
-
     //tabs icons
     @FindBy(css = "a[href='#bookings']")
     private WebElement bookings;
+
     @FindBy(css = "a[href='#profile']")
     private WebElement myProfile;
+
     @FindBy(css = "a[href='#wishlist']")
     private WebElement wishlist;
+
     @FindBy(css = "a[href='#newsletter']")
     private WebElement newsletter;
 
@@ -36,6 +35,7 @@ public class UserAccountPage extends BasePage {
     //user greeting panel:
     @FindBy(css = "img.img-thumbnail")
     private WebElement profileImage;
+
     @FindBy(css = "h3.RTL")
     private WebElement greetingHeader;
 
@@ -59,26 +59,29 @@ public class UserAccountPage extends BasePage {
 
         super(driver);
         jse = (JavascriptExecutor) driver;
-        PageFactory.initElements(driver, this);
     }
 
 
     public UserAccountPage goToBookingTab() {
+
         bookings.click();
         return this;
     }
 
     public UserAccountPage goToMyProfileTab() {
+
         myProfile.click();
         return this;
     }
 
     public UserAccountPage goToWishlistTab() {
+
         wishlist.click();
         return this;
     }
 
     public UserAccountPage goToNewsletterTab() {
+
         newsletter.click();
         return this;
     }
@@ -92,6 +95,7 @@ public class UserAccountPage extends BasePage {
     }
 
     public String getNewsletterSubscribeHeader() {
+
         String subscribe = newsletterSubscribeHeader.getText();
         LOGGER.trace("Subscribe header: " + subscribe);
         return subscribe;
@@ -102,13 +106,10 @@ public class UserAccountPage extends BasePage {
         return url;
     }
 
-    public String getCurrentUrl() {
-        String currentURL = driver.getCurrentUrl();
-        LOGGER.debug("Current URL of User Account Page: " + currentURL);
-        return currentURL;
-    }
+
 
     public String getMyProfileTabCSSStyle(String style) {
+
         String value = myProfile.getCssValue(style);
         LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
@@ -116,24 +117,28 @@ public class UserAccountPage extends BasePage {
 
 
     public String getNewsletterTabCSSStyle(String style) {
+
         String value = newsletter.getCssValue(style);
         LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getWishlistTabCSSStyle(String style) {
+
         String value = wishlist.getCssValue(style);
         LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getBookingsTabCSSStyle(String style) {
+
         String value = bookings.getCssValue(style);
         LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public List<String> getBookingDetails() {
+
         List<String> details = new ArrayList<>();
 
         for (WebElement webElement : bookingDetails) {
@@ -146,6 +151,7 @@ public class UserAccountPage extends BasePage {
     }
 
     public List<String> getWishListFavorites() {
+
         List<String> details = new ArrayList<>();
         for (WebElement webElement : wishlistFavoritesList) {
             details.add(webElement.getText());
@@ -157,12 +163,14 @@ public class UserAccountPage extends BasePage {
     }
 
     public String getCurrentActiveTabHref() {
+
         String currentTab = activeTab.getAttribute("href");
         LOGGER.trace("Active tab is: " + currentTab);
         return currentTab;
     }
 
     public String getActiveTabCSSStyle(String style) {
+
         String value = activeTab.getCssValue(style);
         LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
@@ -187,6 +195,7 @@ public class UserAccountPage extends BasePage {
     }
 
     public UserAccountPage goToMainPage() {
+
         driver.get(BASE_URL);
         return this;
     }

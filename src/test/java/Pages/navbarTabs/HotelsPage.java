@@ -9,15 +9,13 @@ public class HotelsPage extends BasePage {
    private String hotelsSubPageUrl = "https://www.phptravels.net/hotels";
 
     public HotelsPage (WebDriver driver){
+
         super(driver);
-        PageFactory.initElements(driver, this);
     }
     public void openHotelsSubpage() {
         driver.get(hotelsSubPageUrl);
     }
 
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
+
 
 }

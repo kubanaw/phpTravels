@@ -9,11 +9,9 @@ public class OffersPage extends BasePage {
 
     public OffersPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
+
     }
 
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
+
 }
 

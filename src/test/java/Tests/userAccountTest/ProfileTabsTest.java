@@ -43,21 +43,24 @@ public class ProfileTabsTest {
         this.userAccountPage = new UserAccountPage(driver);
         this.myProfilePage = new MyProfilePage(driver);
         this.footer = new Footer(driver);
-        loginPage.loginPageOpen();
-        wait.until(ExpectedConditions.visibilityOf(loginPage.getLoginPanel()));
-        loginPage.loginDemoUser();
+        loginPage
+                .loginPageOpen()
+                .loginDemoUser();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-//    @After
-//    public void CloseBrowser() {
-//        this.driver.quit();
-//    }
+    @After
+    public void CloseBrowser() {
+        this.driver.quit();
+    }
 
     @Test
     public void userShouldGoToMyProfileTab() {
 
-        assertThat(userAccountPage.goToMyProfileTab().getCurrentActiveTabHref())
+        assertThat(
+                userAccountPage
+                        .goToMyProfileTab()
+                        .getCurrentActiveTabHref())
                 .as("Active tab fragment identifier is #profile")
                 .isEqualTo("https://www.phptravels.net/account/#profile");
 
@@ -67,7 +70,10 @@ public class ProfileTabsTest {
                 .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
 
-        assertThat(myProfilePage.getMyProfileForm().isDisplayed())
+        assertThat(
+                myProfilePage
+                        .getMyProfileForm()
+                        .isDisplayed())
                 .as("Personal details form is displayed on the page.")
                 .isTrue();
 
@@ -79,7 +85,10 @@ public class ProfileTabsTest {
     @Test
     public void userShouldGoToNewsletterTab() {
 
-        assertThat(userAccountPage.goToNewsletterTab().getCurrentActiveTabHref())
+        assertThat(
+                userAccountPage
+                        .goToNewsletterTab()
+                        .getCurrentActiveTabHref())
                 .as("Active tab fragment identifier is #newsletter")
                 .isEqualTo("https://www.phptravels.net/account/#newsletter");
 
@@ -97,7 +106,10 @@ public class ProfileTabsTest {
     @Test
     public void userShouldGoToBookingsTab() {
 
-        assertThat(userAccountPage.goToBookingTab().getCurrentActiveTabHref())
+        assertThat(
+                userAccountPage
+                        .goToBookingTab()
+                        .getCurrentActiveTabHref())
                 .as("Active tab fragment identifier is #bookings")
                 .isEqualTo("https://www.phptravels.net/account/#bookings");
 
@@ -108,6 +120,7 @@ public class ProfileTabsTest {
                 .isNotEqualTo(valueAsHex);
 
         for (String booking : userAccountPage.getBookingDetails()) {
+
             assertThat(booking)
                     .as("All user's booking from Booking List have 'Booking ID' headers")
                     .contains("Booking ID");
@@ -118,12 +131,16 @@ public class ProfileTabsTest {
     @Test
     public void userShouldGoToWishlistTab() {
 
-        assertThat(userAccountPage.goToWishlistTab().getCurrentActiveTabHref())
+        assertThat(
+                userAccountPage
+                        .goToWishlistTab()
+                        .getCurrentActiveTabHref())
                 .as("Active tab fragment identifier is #wishlist")
                 .isEqualTo("https://www.phptravels.net/account/#wishlist");
 
         String valueAsHexActive = Color.fromString(userAccountPage.getWishlistTabCSSStyle("color")).asHex();
         String valueAsHex = Color.fromString(userAccountPage.getNewsletterTabCSSStyle("color")).asHex();
+
         assertThat(valueAsHexActive)
                 .as("Active tab has different color than any other")
                 .isNotEqualTo(valueAsHex);
@@ -132,17 +149,25 @@ public class ProfileTabsTest {
     }
 
     @Test
-    public void whenUserAddEmailToNewsletterThenSubscribeIsActive (){
+    public void whenUserAddEmailToNewsletterThenSubscribeIsActive() {
 
-       assertThat(userAccountPage.goToNewsletterTab().switchOffSubscribe())
-               .as("Checked is subscribe switch off")
-               .isTrue();
-       userAccountPage.goToMainPage();
-       footer.typeEmailToNewsletter("user@phptravels.com");
-       loginPage.backToUserAccount();
-       assertThat(userAccountPage.goToNewsletterTab().isSubscribeActive())
-               .as("Subscribe is active.")
-               .isTrue();
+        assertThat(
+                userAccountPage
+                        .goToNewsletterTab()
+                        .switchOffSubscribe())
+                .as("Checked is subscribe switch off")
+                .isTrue();
+
+        userAccountPage.goToMainPage();
+        footer.typeEmailToNewsletter("user@phptravels.com");
+
+        assertThat(
+                loginPage
+                        .backToUserAccount()
+                        .goToNewsletterTab()
+                        .isSubscribeActive())
+                .as("Subscribe is active.")
+                .isTrue();
 
 
     }

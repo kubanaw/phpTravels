@@ -29,7 +29,6 @@ public class MyProfilePageTest {
     private JavascriptExecutor jse;
 
 
-
     @BeforeClass
     public static void ustawSciezke() {
         //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
@@ -74,23 +73,25 @@ public class MyProfilePageTest {
     }
 
     @Test
-    public void userCouldUpdateAddressForm(){
+    public void userCouldUpdateAddressForm() {
 
-       List<String> random = myProfilePage.typeRandomDataForProfileUpdate();
+        List<String> random = myProfilePage.typeRandomDataAddressForProfileUpdate();
         assertThat(myProfilePage.submitMyProfileUpdate().getAlertMessage())
                 .as("A message confirms profile update.")
-        .isEqualTo("Profile Updated Successfully.");
+                .isEqualTo("Profile Updated Successfully.");
 
-        loginPage.logOut();
-        assertThat(myProfilePage.getCurrentUrl())
+        assertThat(loginPage
+                .logOut()
+                .getCurrentUrl())
                 .as("URL of Login Page")
                 .isEqualTo(loginPage.getUrl());
+
         loginPage.loginDemoUser();
 
         userAccountPage.goToMyProfileTab();
         assertThat(myProfilePage.getTextFromInputList())
                 .as("List of user's personal data in form")
-        .containsAll(random);
+                .containsAll(random);
     }
 
 

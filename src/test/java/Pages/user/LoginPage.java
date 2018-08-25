@@ -1,14 +1,13 @@
 package Pages.user;
 
 import Pages.BasePage;
+import Pages.user.account.UserAccountPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPage extends BasePage {
@@ -24,7 +23,7 @@ public class LoginPage extends BasePage {
     @FindBy(linkText = "Logout")
     private WebElement logOut;
 
-    @FindBy (linkText = "Account")
+    @FindBy(linkText = "Account")
     private WebElement account;
 
     @FindBy(css = "div.panel> div.wow")
@@ -58,50 +57,59 @@ public class LoginPage extends BasePage {
     private WebElement resetAlertText;
 
     public LoginPage(WebDriver driver) {
+
         super(driver);
         jse = (JavascriptExecutor) driver;
-        PageFactory.initElements(driver, this);
-    }
-
-    public void loginPageOpen() {
-        driver.get(url);
-    }
-
-    public String getCurrentUrl() {
-        String currentURL = driver.getCurrentUrl();
-        LOGGER.debug("Current URL of Login Page: " + currentURL);
-        return currentURL;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public WebElement getLoginPanel() {
-        return loginPanel;
+    public LoginPage loginPageOpen() {
+
+        driver.get(url);
+
+        try {
+            wait.until(ExpectedConditions.visibilityOf(loginPanel));
+            LOGGER.debug("Login Panel is displayed");
+        } catch (TimeoutException toe) {
+            LOGGER.info("Login Panel is not visible " + toe);
+        }
+        return this;
     }
 
-    public void fillUserEmailField(String userEmail) {
+    public LoginPage loginUser(String userEmail, String pass) {
+
+        LOGGER.info("Login User start.");
         userName.clear();
         userName.sendKeys(userEmail);
-    }
-
-    public void fillUsersPassword(String pass) {
         password.clear();
         password.sendKeys(pass);
+
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+            loginButton.click();
+            LOGGER.info("Login User success!");
+
+        } catch (TimeoutException toe) {
+            LOGGER.info("Login button is not clickable " + toe);
+        }
+
+        return this;
+
     }
 
+
     public void checkRememberMe() {
+
         if (!rememberMeCheckBox.isSelected())
             rememberMeCheckBox.click();
     }
 
-    public void clickSignUp() {
-        signUpButton.click();
-    }
-
 
     public void fillEmailToPasswordReset(String email) {
+
         resetPasswordField.clear();
         resetPasswordField.sendKeys(email);
 
@@ -119,33 +127,27 @@ public class LoginPage extends BasePage {
     }
 
 
-    public void loginDemoUser() {
+    public LoginPage loginDemoUser() {
 
-        LOGGER.info("Login DemoUser start.");
-        fillUserEmailField("user@phptravels.com");
-        fillUsersPassword("demouser");
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(loginButton));
-            loginButton.click();
-            LOGGER.info("Login DemoUser success!");
-        } catch (TimeoutException toe) {
-            LOGGER.info("Login button is not clickable " + toe);
+        loginUser("user@phptravels.com", "demouser");
 
-        }
+        return this;
     }
 
-    public void logOut() {
+    public LoginPage logOut() {
 
         jse.executeScript("arguments[0].click();", myAccountDropdown);
         jse.executeScript("arguments[0].click();", logOut);
         LOGGER.info("Logout successful!");
+        return this;
     }
 
-    public void backToUserAccount (){
+    public UserAccountPage backToUserAccount() {
+
         jse.executeScript("arguments[0].click();", myAccountDropdown);
         jse.executeScript("arguments[0].click();", account);
         LOGGER.info("Back to User's Account");
-
+        return new UserAccountPage(driver);
     }
 
 

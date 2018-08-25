@@ -8,10 +8,8 @@ public class FlightsPage extends BasePage {
 
 
     public FlightsPage (WebDriver driver){
+
        super(driver);
-        PageFactory.initElements(driver, this);
     }
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
+
 }

@@ -20,7 +20,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DisplayFooterElementTest {
 
     private WebDriverWait wait;
-
     private WebDriver driver;
     private Footer footer;
     private NavbarHeader navbarHeader;
@@ -110,7 +109,7 @@ public class DisplayFooterElementTest {
 
 //windows handle - przekierowanie otwiera sie w nowym oknie:
     @Test
-    public void twitterIconRedirectsToFBloginPage() {
+    public void twitterIconRedirectsToTwitLoginPage() {
 
         this.footer.getTwitterIcon().click();
         for (String handle : driver.getWindowHandles()) {

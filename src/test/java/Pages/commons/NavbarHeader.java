@@ -5,18 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 
 public class NavbarHeader extends BasePage {
 
-
-
-    public NavbarHeader(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(className = "navbar-brand")
     WebElement logoButton;
@@ -37,29 +30,12 @@ public class NavbarHeader extends BasePage {
     WebElement offers;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[8]/a")
     WebElement blog;
-
     //CURRENCY
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
     WebElement currency;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
-//    WebElement currencyGBP;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")
-//    WebElement currencySAR;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[4]/a")
-//    WebElement currencyEUR;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[5]/a")
-//    WebElement currencyPKR;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[6]/a")
-//    WebElement currencyKWD;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[7]/a")
-//    WebElement currencyJPY;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[8]/a")
-//    WebElement currencyINR;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[9]/a")
-//    WebElement currencyCNY;
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[10]/a")
-//    WebElement currencyTRY;
-
+    //LANGUAGE OPTIONS
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
+    WebElement language;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
     private WebElement currentCurrency;
 
@@ -69,21 +45,10 @@ public class NavbarHeader extends BasePage {
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")
     private WebElement currencyList;
 
-    //LANGUAGE OPTIONS
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
-    WebElement language;
-//    @FindBy(xpath = "//*[@id=\"ar\"]")
-//    WebElement ArabicLanguage;
-//    @FindBy(xpath = "//*[@id=\"tr\"]")
-//    WebElement TurkishLanguage;
-//    @FindBy(xpath = "//*[@id=\"fr\"]")
-//    WebElement FrenchLanguage;
-//    @FindBy(xpath = "//*[@id=\"es\"]")
-//    WebElement SpanishLanguage;
-//    @FindBy(xpath = "//*[@id=\"ru\"]")
-//    WebElement RussianLanguage;
-//    @FindBy(xpath = "//*[@id=\"en\"]")
-//    WebElement EnglishLanguage;
+    public NavbarHeader(WebDriver driver) {
+
+        super(driver);
+    }
 
     //METHODS for elements:
     public void openMainPage() {
@@ -124,8 +89,7 @@ public class NavbarHeader extends BasePage {
     }
 
 
-
-    public void setCurrency(String currency){
+    public void setCurrency(String currency) {
         currencyList.click();
         driver.findElement(By.linkText(currency)).click();
     }
@@ -141,9 +105,9 @@ public class NavbarHeader extends BasePage {
         currencyList.selectByValue(text);
 //
 //        LOGGER.info("Currency chosen" + text);
- LOGGER.debug( "Currency selected: " + currency.getAttribute("value"));
-      return currency.getAttribute("value");
-     }
+        LOGGER.debug("Currency selected: " + currency.getAttribute("value"));
+        return currency.getAttribute("value");
+    }
 
 
     //METHODS for currency

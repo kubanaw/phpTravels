@@ -8,11 +8,9 @@ public class CarsPage extends BasePage {
 
 
     public CarsPage (WebDriver driver){
+
         super(driver);
-        PageFactory.initElements(driver, this);
     }
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
+
 }
 

@@ -110,11 +110,6 @@ public class RegisterPage extends BasePage {
         return alertMessage;
     }
 
-    public String getCurrentUrl() {
-        String currentURL = driver.getCurrentUrl();
-        LOGGER.debug("Current URL of Register Page: " + currentURL);
-        return currentURL;
-    }
 
     //method to set random email:
 

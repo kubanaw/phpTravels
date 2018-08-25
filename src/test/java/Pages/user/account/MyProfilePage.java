@@ -4,9 +4,7 @@ import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,11 +66,11 @@ public class MyProfilePage extends BasePage {
     public MyProfilePage(WebDriver driver) {
 
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
 
     public MyProfilePage fillPhonenumber(String phone) {
+
         phoneNumber.clear();
         phoneNumber.sendKeys(phone);
         return this;
@@ -80,30 +78,35 @@ public class MyProfilePage extends BasePage {
 
 
     public String fillPhonenumber(int numberOfRandomDigits) {
+
         phoneNumber.clear();
         phoneNumber.sendKeys(getRandomNumber(numberOfRandomDigits));
         return phoneNumber.getAttribute("value");
     }
 
     public MyProfilePage fillEmail(String email) {
+
         this.email.clear();
         this.email.sendKeys(email);
         return this;
     }
 
     public String fillEmail() {
+
         this.email.clear();
         this.email.sendKeys(randomEmail);
         return email.getAttribute("value");
     }
 
     public MyProfilePage fillPassword(String password) {
+
         this.password.clear();
         this.password.sendKeys(password);
         return this;
     }
 
     public MyProfilePage fillConfirmPassword(String confirmPassword) {
+
         this.confirmPassword.clear();
         this.confirmPassword.sendKeys(confirmPassword);
         return this;
@@ -111,6 +114,7 @@ public class MyProfilePage extends BasePage {
 
 
     public String fillFirstAddress() {
+
         firstAddress.clear();
         firstAddress.sendKeys(randomString);
         return firstAddress.getAttribute("value");
@@ -118,6 +122,7 @@ public class MyProfilePage extends BasePage {
 
 
     public String fillSecondAddress() {
+
         secondAddress.clear();
         secondAddress.sendKeys(randomString);
         return secondAddress.getAttribute("value");
@@ -125,6 +130,7 @@ public class MyProfilePage extends BasePage {
 
 
     public String fillCity() {
+
         this.city.clear();
         this.city.sendKeys(randomString);
         return city.getAttribute("value");
@@ -139,12 +145,14 @@ public class MyProfilePage extends BasePage {
 
 
     public String fillZipCode(int numberOfRandomDigits) {
+
         zipCode.clear();
         zipCode.sendKeys(getRandomNumber(numberOfRandomDigits));
         return zipCode.getAttribute("value");
     }
 
     public MyProfilePage submitMyProfileUpdate() {
+
         if (submitUpdateProfileButton.isEnabled())
             submitUpdateProfileButton.click();
         return this;
@@ -152,18 +160,21 @@ public class MyProfilePage extends BasePage {
 
 
     public MyProfilePage selectCountry(String country) {
+
         Select selectCountry = new Select(countryList);
         selectCountry.selectByVisibleText(country);
         return this;
     }
 
     public String getTextFromInput(WebElement element) {
+
         String textFromElement = element.getAttribute("value");
         LOGGER.debug("Current text from " + element.getAttribute("placeholder") + " is:" + textFromElement);
         return textFromElement;
     }
 
     public List<String> getTextFromInputList() {
+
         List<String> details = new ArrayList<>();
 
         for (WebElement element : inputFormList) {
@@ -173,7 +184,7 @@ public class MyProfilePage extends BasePage {
         return details;
     }
 
-    public List<String> typeRandomDataForProfileUpdate() {
+    public List<String> typeRandomDataAddressForProfileUpdate() {
 
         List<String> random = new ArrayList<>();
         random.add(fillPhonenumber(8));
@@ -192,12 +203,14 @@ public class MyProfilePage extends BasePage {
     }
 
     public String getPersonalDetailHeaderText() {
+
         String header = personalDetailsHeader.getText();
         LOGGER.debug("Current personal details header is: " + header);
         return header;
     }
 
     public boolean isFirstNameReadOnly() {
+
         String state = firstName.getAttribute("readonly");
         if (state == null) {
             LOGGER.debug("First name doesn't have attribute read-only!");
@@ -208,6 +221,7 @@ public class MyProfilePage extends BasePage {
     }
 
     public boolean isLastNameReadOnly() {
+
         String state = lastName.getAttribute("readonly");
         if (state == null) {
             LOGGER.debug("Last name doesn't have attribute read-only!");
@@ -218,14 +232,10 @@ public class MyProfilePage extends BasePage {
     }
 
     public String getAlertMessage() {
+
         String alertMessage = alert.getText();
         LOGGER.debug("Actual alert message is " + alertMessage);
         return alertMessage;
-    }
-
-    public String getCurrentUrl() {
-        String currentURL = driver.getCurrentUrl();
-        return currentURL;
     }
 
 

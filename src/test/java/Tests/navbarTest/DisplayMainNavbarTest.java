@@ -35,6 +35,7 @@ public class DisplayMainNavbarTest  {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
+        driver.manage().window().maximize();
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
         hotelspage = new HotelsPage(driver);
