@@ -120,5 +120,16 @@ public class DisplayFooterElementTest {
                 .isEqualTo("https://twitter.com/phptravels");
     }
 
+    @Test
+    public void faceBookIconRedirectsToFBloginPage() {
+
+        this.footer.getFaceBookicon().click();
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        assertThat(driver.getCurrentUrl())
+                .isEqualTo("https://www.facebook.com/travelbusiness");
+    }
+
 
 }

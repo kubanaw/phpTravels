@@ -28,6 +28,11 @@ public abstract class BasePage {
                 String randomNumber = RandomStringUtils.randomNumeric(numberOfDigits);
                 return randomNumber;
         }
+        public String getCurrentUrl() {
+                String currentURL = driver.getCurrentUrl();
+                LOGGER.debug("Current URL: " + currentURL);
+                return currentURL;
+        }
 
 
 

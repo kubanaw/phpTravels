@@ -97,11 +97,8 @@ public class Footer extends BasePage{
     {return faceBookicon;}
     public WebElement getTwitterIcon()
     {return twitterIcon;}
-    public String getCurrentUrl() {
-        String currentURL = driver.getCurrentUrl();
-        LOGGER.debug("Current URL: " + currentURL);
-        return currentURL;
-    }
+
+
     public String getTitle() {
         String currentTitle = driver.getTitle();
         LOGGER.info("current title: "+ currentTitle);
