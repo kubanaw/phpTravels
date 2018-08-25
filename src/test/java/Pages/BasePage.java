@@ -34,7 +34,4 @@ public abstract class BasePage {
                 return currentURL;
         }
 
-
-
-
 }

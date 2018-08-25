@@ -108,7 +108,7 @@ public class DisplayFooterElementTest {
                 .isEqualTo("Booking Tips");
     }
 
-
+//windows handle - przekierowanie otwiera sie w nowym oknie:
     @Test
     public void twitterIconRedirectsToFBloginPage() {
 
