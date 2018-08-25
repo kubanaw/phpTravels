@@ -1,5 +1,7 @@
 package Pages.user.account;
 
+import Pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,15 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-public class UserAccountPage {
-    //TODO create useraccount tests
 
-    private static final Logger LOGGER = Logger.getLogger(UserAccountPage.class.getName());
+public class UserAccountPage extends BasePage {
+
     private final String url = "https://www.phptravels.net/account/";
-    private WebDriver driver;
-    private WebDriverWait wait;
+
+    private JavascriptExecutor jse;
+
+
     //tabs icons
     @FindBy(css = "a[href='#bookings']")
     private WebElement bookings;
@@ -26,46 +28,59 @@ public class UserAccountPage {
     private WebElement wishlist;
     @FindBy(css = "a[href='#newsletter']")
     private WebElement newsletter;
+
     //active tab icon:
     @FindBy(css = "ul.profile-tabs>li.active>a")
     private WebElement activeTab;
+
     //user greeting panel:
     @FindBy(css = "img.img-thumbnail")
     private WebElement profileImage;
     @FindBy(css = "h3.RTL")
     private WebElement greetingHeader;
+
     //elements from newsletter tab:
     @FindBy(css = "div.pull-left>h4")
     private WebElement newsletterSubscribeHeader;
+
+    @FindBy(css = "input.newsletter")
+    private WebElement newsletterButton;
+
     //elements from bookings tab:
     @FindBy(css = "div.col-md-3>span")
     private List<WebElement> bookingDetails;
+
     //elements from wishlist tab:
     @FindBy(css = "div[id='wishlist']")
     private List<WebElement> wishlistFavoritesList;
 
 
     public UserAccountPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+
+        super(driver);
+        jse = (JavascriptExecutor) driver;
         PageFactory.initElements(driver, this);
     }
 
 
-    public void goToBookingTab() {
+    public UserAccountPage goToBookingTab() {
         bookings.click();
+        return this;
     }
 
-    public void goToMyProfileTab() {
+    public UserAccountPage goToMyProfileTab() {
         myProfile.click();
+        return this;
     }
 
-    public void goToWishlistTab() {
+    public UserAccountPage goToWishlistTab() {
         wishlist.click();
+        return this;
     }
 
-    public void goToNewsletterTab() {
+    public UserAccountPage goToNewsletterTab() {
         newsletter.click();
+        return this;
     }
 
     public WebElement getProfileImage() {
@@ -78,7 +93,7 @@ public class UserAccountPage {
 
     public String getNewsletterSubscribeHeader() {
         String subscribe = newsletterSubscribeHeader.getText();
-        LOGGER.info("Subscribe header: " + subscribe);
+        LOGGER.trace("Subscribe header: " + subscribe);
         return subscribe;
     }
 
@@ -89,32 +104,32 @@ public class UserAccountPage {
 
     public String getCurrentUrl() {
         String currentURL = driver.getCurrentUrl();
-        LOGGER.info("Current URL of User Account Page: " + currentURL);
+        LOGGER.debug("Current URL of User Account Page: " + currentURL);
         return currentURL;
     }
 
     public String getMyProfileTabCSSStyle(String style) {
         String value = myProfile.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
 
     public String getNewsletterTabCSSStyle(String style) {
         String value = newsletter.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getWishlistTabCSSStyle(String style) {
         String value = wishlist.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
     public String getBookingsTabCSSStyle(String style) {
         String value = bookings.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.trace("Current value of " + style + " is: " + value);
         return value;
     }
 
@@ -124,30 +139,56 @@ public class UserAccountPage {
         for (WebElement webElement : bookingDetails) {
             details.add(webElement.getText());
         }
-        LOGGER.info("booking: "+details);
+        if (details.isEmpty()) {
+            LOGGER.warn("Booking List is empty!");
+        }
         return details;
     }
 
-    public List<String> getWishlistFavorites() {
+    public List<String> getWishListFavorites() {
         List<String> details = new ArrayList<>();
         for (WebElement webElement : wishlistFavoritesList) {
             details.add(webElement.getText());
         }
-//        LOGGER.info("wishlist favorites" +details);
+        if (details.isEmpty()) {
+            LOGGER.warn("Wish List is empty!");
+        }
         return details;
     }
 
     public String getCurrentActiveTabHref() {
         String currentTab = activeTab.getAttribute("href");
-        LOGGER.info("Active tab is: " + currentTab);
+        LOGGER.trace("Active tab is: " + currentTab);
         return currentTab;
     }
 
     public String getActiveTabCSSStyle(String style) {
         String value = activeTab.getCssValue(style);
-        LOGGER.info("Current value of " + style + " is: " + value);
+        LOGGER.debug("Current value of " + style + " is: " + value);
         return value;
     }
 
+    public boolean isSubscribeActive() {
+
+        String activeNews = newsletterButton.getAttribute("checked");
+        LOGGER.debug("Is subscribe active: " + activeNews);
+        if (activeNews != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean switchOffSubscribe() {
+
+        if (isSubscribeActive()) {
+            jse.executeScript("arguments[0].click();", newsletterButton);
+        }
+        return true;
+    }
+
+    public UserAccountPage goToMainPage() {
+        driver.get(BASE_URL);
+        return this;
+    }
 
 }

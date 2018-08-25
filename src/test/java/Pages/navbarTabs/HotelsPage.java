@@ -1,14 +1,15 @@
 package Pages.navbarTabs;
 
+import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class HotelsPage {
-    WebDriver driver;
+public class HotelsPage extends BasePage {
+
    private String hotelsSubPageUrl = "https://www.phptravels.net/hotels";
 
     public HotelsPage (WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
     public void openHotelsSubpage() {

@@ -1,8 +1,6 @@
 package Tests.navbarTest;
 
-import Pages.homePage.HomePage;
-import Pages.BasePage;
-import Pages.commonPages.NavbarHeader;
+import Pages.commons.NavbarHeader;
 import Pages.navbarTabs.*;
 import org.junit.After;
 import org.junit.Before;
@@ -21,14 +19,12 @@ public class DisplayMainNavbarTest  {
     private WebDriver driver;
     private NavbarHeader navbarHeader;
     private HotelsPage hotelspage;
-    private HomePage homePage;
     private FlightsPage flightsPage;
     private ToursPage toursPage;
     private VisaPage visaPage;
     private CarsPage carsPage;
     private OffersPage offersPage;
     private BlogPage blogPage;
-    private BasePage basepage;
 
     @BeforeClass
     public static void ustawSciezke() {
@@ -39,13 +35,9 @@ public class DisplayMainNavbarTest  {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        // this.driver.get("https://www.phptravels.net/");
         navbarHeader = new NavbarHeader(driver);
         navbarHeader.openMainPage();
-       //TODO find solution for loggers in abstractclas
-      // Logger.getLogger("otwarto strone glowna");
         hotelspage = new HotelsPage(driver);
-        homePage = new HomePage(driver);
         flightsPage = new FlightsPage(driver);
         toursPage = new ToursPage(driver);
         visaPage = new VisaPage(driver);
@@ -61,18 +53,6 @@ public class DisplayMainNavbarTest  {
         this.driver.quit();
     }
 
-
-//Assert Logo exist
-//    WebElement result1 = this.driver.findElement(By.className("navbar-"));
-//    Assert.assertEquals(result1, "navbar-");
-
-    //Assert Home on navbar exist. This assertion checks test, and tries to click object if working, it continues
-    //Fixed removed leading dot "." before xpath pointer - worked.
-
-    public void givenThatHomePageLinkExist() {
-        navbarHeader.pickHomeElement();
-        assertThat(homePage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/");
-    }
 
 //Assert HOTELS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
 

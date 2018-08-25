@@ -1,0 +1,164 @@
+package Pages.commons;
+
+import Pages.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class NavbarHeader extends BasePage {
+
+
+
+    public NavbarHeader(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(className = "navbar-brand")
+    WebElement logoButton;
+    @FindBy(xpath = "//a[text()='Home']")
+    WebElement home;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[2]/a")
+    WebElement hotels;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[3]/a")
+    WebElement flights;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[4]/a")
+    WebElement tours;
+    @FindBy(xpath = ".//*[@id=\"collapse\"]/ul[1]/li[5]/a")
+    WebElement cars;
+    //TODO changed from ".// to "//*[@id=\"collapse\"]/ul[1]/li[6]/a" - cars test works
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[6]/a")
+    WebElement visa;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[7]/a")
+    WebElement offers;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[8]/a")
+    WebElement blog;
+
+    //CURRENCY
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
+    WebElement currency;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
+//    WebElement currencyGBP;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[3]/a")
+//    WebElement currencySAR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[4]/a")
+//    WebElement currencyEUR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[5]/a")
+//    WebElement currencyPKR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[6]/a")
+//    WebElement currencyKWD;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[7]/a")
+//    WebElement currencyJPY;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[8]/a")
+//    WebElement currencyINR;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[9]/a")
+//    WebElement currencyCNY;
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[10]/a")
+//    WebElement currencyTRY;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
+    private WebElement currentCurrency;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
+    private WebElement GBPCurrency;
+
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")
+    private WebElement currencyList;
+
+    //LANGUAGE OPTIONS
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
+    WebElement language;
+//    @FindBy(xpath = "//*[@id=\"ar\"]")
+//    WebElement ArabicLanguage;
+//    @FindBy(xpath = "//*[@id=\"tr\"]")
+//    WebElement TurkishLanguage;
+//    @FindBy(xpath = "//*[@id=\"fr\"]")
+//    WebElement FrenchLanguage;
+//    @FindBy(xpath = "//*[@id=\"es\"]")
+//    WebElement SpanishLanguage;
+//    @FindBy(xpath = "//*[@id=\"ru\"]")
+//    WebElement RussianLanguage;
+//    @FindBy(xpath = "//*[@id=\"en\"]")
+//    WebElement EnglishLanguage;
+
+    //METHODS for elements:
+    public void openMainPage() {
+        driver.get("https://www.phptravels.net/");
+    }
+
+
+    public void pickHomeElement() {
+        home.click();
+    }
+
+    public void pickHotelsElement() {
+        hotels.click();
+    }
+
+    public void pickFlightsElement() {
+        flights.click();
+    }
+
+    public void pickToursElement() {
+        tours.click();
+    }
+
+    public void pickCarsElement() {
+        cars.click();
+    }
+
+    public void pickVisaElement() {
+        visa.click();
+    }
+
+    public void pickHOffersElement() {
+        offers.click();
+    }
+
+    public void pickBlogElement() {
+        blog.click();
+    }
+
+
+
+    public void setCurrency(String currency){
+        currencyList.click();
+        driver.findElement(By.linkText(currency)).click();
+    }
+
+    public WebElement getCurrentCurrency() {
+        return currentCurrency;
+    }
+
+
+    //METHODS for currency, not sure it works
+    public String pickCurrency(String text) {
+        Select currencyList = new Select(currency);
+        currencyList.selectByValue(text);
+//
+//        LOGGER.info("Currency chosen" + text);
+ LOGGER.debug( "Currency selected: " + currency.getAttribute("value"));
+      return currency.getAttribute("value");
+     }
+
+
+    //METHODS for currency
+//    public String pickCurrency(String text) {
+//        Select currencyList = new Select(currency());
+//        currencyList.selectByValue(text);
+
+//        LOGGER.info("Currency chosen" + text);
+//        LOGGER.log(Level.INFO, "Currency selected: " + currency.getAttribute("value"));
+//        return currency.getAttribute("value");
+//    }
+
+}
+
+
+
+
+
