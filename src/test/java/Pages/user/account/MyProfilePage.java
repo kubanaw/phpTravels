@@ -69,14 +69,6 @@ public class MyProfilePage extends BasePage {
     }
 
 
-    public MyProfilePage fillPhonenumber(String phone) {
-
-        phoneNumber.clear();
-        phoneNumber.sendKeys(phone);
-        return this;
-    }
-
-
     public String fillPhonenumber(int numberOfRandomDigits) {
 
         phoneNumber.clear();
@@ -84,10 +76,11 @@ public class MyProfilePage extends BasePage {
         return phoneNumber.getAttribute("value");
     }
 
-    public MyProfilePage fillEmail(String email) {
+    public MyProfilePage emailUpdate(String email) {
 
         this.email.clear();
         this.email.sendKeys(email);
+        submitMyProfileUpdate();
         return this;
     }
 
@@ -98,17 +91,13 @@ public class MyProfilePage extends BasePage {
         return email.getAttribute("value");
     }
 
-    public MyProfilePage fillPassword(String password) {
+    public MyProfilePage changePassword(String password, String confirmPassword) {
 
         this.password.clear();
         this.password.sendKeys(password);
-        return this;
-    }
-
-    public MyProfilePage fillConfirmPassword(String confirmPassword) {
-
         this.confirmPassword.clear();
         this.confirmPassword.sendKeys(confirmPassword);
+        submitMyProfileUpdate();
         return this;
     }
 

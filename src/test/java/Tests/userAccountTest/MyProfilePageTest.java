@@ -31,12 +31,14 @@ public class MyProfilePageTest {
 
     @BeforeClass
     public static void ustawSciezke() {
+
         //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
         ChromeDrvPathHelper.setChromeDrvPath();
     }
 
     @Before
     public void setup() {
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(this.driver, 5);
@@ -60,6 +62,7 @@ public class MyProfilePageTest {
 
     @Test
     public void userShouldNotBeAllowedToChangeFirstNameField() {
+
         assertThat(myProfilePage.isFirstNameReadOnly())
                 .as("First name field is read-only")
                 .isTrue();
@@ -67,16 +70,20 @@ public class MyProfilePageTest {
 
     @Test
     public void userShouldNotBeAllowedToChangeLastNameField() {
+
         assertThat(myProfilePage.isLastNameReadOnly())
                 .as("Last name field is read-only")
                 .isTrue();
     }
 
     @Test
-    public void userCouldUpdateAddressForm() {
+    public void userCanUpdateAddressForm() {
 
+        myProfilePage.selectCountry("Poland");
         List<String> random = myProfilePage.typeRandomDataAddressForProfileUpdate();
-        assertThat(myProfilePage.submitMyProfileUpdate().getAlertMessage())
+        assertThat(myProfilePage
+                .submitMyProfileUpdate()
+                .getAlertMessage())
                 .as("A message confirms profile update.")
                 .isEqualTo("Profile Updated Successfully.");
 
@@ -92,6 +99,63 @@ public class MyProfilePageTest {
         assertThat(myProfilePage.getTextFromInputList())
                 .as("List of user's personal data in form")
                 .containsAll(random);
+    }
+
+    @Test
+    public void userShouldNotBeAllowedToUpdateWithTooShortPassword() {
+
+        assertThat(
+                myProfilePage
+                        .changePassword("abcd1", "abcd1")
+                        .getAlertMessage())
+                .as("Change password with length less than 6 characters.")
+                .contains("The Password field must be at least 6 characters in length.");
+
+    }
+
+    @Test
+    public void userShouldNotBeAllowedToUpdateWithWrongPasswordConfirmation() {
+
+        assertThat(
+                myProfilePage
+                        .changePassword("abcdef1", "abcdef12")
+                        .getAlertMessage())
+                .as("Change password with mismatch password confirmation.")
+                .contains("Passwords not matching.");
+    }
+
+    @Test
+    public void userShouldNotBeAllowedToUpdateWithEmptyPasswordConfirmation() {
+        assertThat(
+                myProfilePage
+                        .changePassword("abcdef1", "")
+                        .getAlertMessage())
+                .as("Change password without fill a confirmation field.")
+                .contains("The Password field is required.");
+
+    }
+
+    //A bug on page:
+
+    @Test
+    public void userShouldNotBeAllowedToUpdateWhenOnlyConfirmPasswordIsTyping() {
+        assertThat(
+                myProfilePage
+                        .changePassword("", "abcdef123")
+                        .getAlertMessage())
+                .as("Change password with empty password field and typing password confirmation only.")
+                .contains("The Password field is required.");
+
+    }
+
+    @Test
+    public void userShouldNotBeAllowedToUpdateWhenInvalidEmailIsTyping() {
+
+        assertThat(
+                myProfilePage.emailUpdate("phptravels.com")
+                        .getAlertMessage())
+                .as("Type invalid email form without @")
+                .contains("The Email field must contain a valid email address.");
     }
 
 
