@@ -32,43 +32,35 @@ public class DisplayCurrienciesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.wait = new WebDriverWait(driver, 7);
+        this.wait = new WebDriverWait(driver, 15);
         this.navbarHeader = PageFactory.initElements(driver, NavbarHeader.class);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
-        navbarHeader.setCurrency("USD");
-        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "USD"));
-
 
     }
 
     @After
     public void CloseBrowser() {
-//        driver.get("chrome://settings/clearBrowserData");
-//        driver.findElement(By.id("clearBrowsingDataConfirm")).click();
+
+        navbarHeader.setCurrency("USD");
         this.driver.quit();
     }
 
     @Test
     public void givenThatPageOpens() {
-        //1. wchodze na strone phptravels
-//        this.driver.get("https://www.phptravels.net/");
+        // 2. sprawdzam domyslna walute
 
-       // 2. sprawdzam domyslna walute
-
-          Assert.assertEquals("USD",navbarHeader.getCurrentCurrency().getText());
+        Assert.assertEquals("USD", navbarHeader.getCurrentCurrency().getText());
 
         //3. klikam na liste w celu rozwiniecia
         this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
-
 
         //4. zmieniam na walute GBP
         navbarHeader.setCurrency("GBP");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "GBP"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
                 .isEqualTo("GBP");
-//        Assert.assertEquals("GBP",navbarHeader.getCurrentCurrency().getText());
 
         //5. zmieniam na walute SAR
         navbarHeader.setCurrency("SAR");
