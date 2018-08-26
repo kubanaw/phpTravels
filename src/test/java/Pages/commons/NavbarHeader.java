@@ -38,9 +38,6 @@ public class NavbarHeader extends BasePage {
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
     private WebElement currentCurrency;
 
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul/li[2]/a")
-    private WebElement GBPCurrency;
-
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")
     private WebElement currencyList;
 
