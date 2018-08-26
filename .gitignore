@@ -9,5 +9,5 @@ target/*
 target/
 logs/*
 
-/src/test/java/resources/
+/src/test/java/resources/*
 
