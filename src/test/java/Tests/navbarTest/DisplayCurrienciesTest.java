@@ -48,73 +48,67 @@ public class DisplayCurrienciesTest {
     }
 
     @Test
-    public void givenThatPageOpens() {
-        // 2. sprawdzam domyslna walute
+    public void givenThatSelectCurrencyIsDisplayed() {
 
-        Assert.assertEquals("USD", navbarHeader.getCurrentCurrency().getText());
 
-        //3. klikam na liste w celu rozwiniecia
-        this.driver.findElement(By.xpath("//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")).click();
-
-        //4. zmieniam na walute GBP
         navbarHeader.setCurrency("GBP");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "GBP"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to GBP")
                 .isEqualTo("GBP");
 
-        //5. zmieniam na walute SAR
         navbarHeader.setCurrency("SAR");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "ريال"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to SAR")
                 .isEqualTo("ريال");
 
-        //6. zmieniam na walute EUR
         navbarHeader.setCurrency("EUR");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "EUR"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to EUR")
                 .isEqualTo("EUR");
 
-        //7. zmieniam na walute PKR
         navbarHeader.setCurrency("PKR");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "RS"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to PKR")
                 .isEqualTo("RS");
 
-        //8. zmieniam na walute KWD
+
         navbarHeader.setCurrency("KWD");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "KWD"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to KWD")
                 .isEqualTo("KWD");
 
-        //9. zmieniam na walute JPY
+
         navbarHeader.setCurrency("JPY");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "JPY"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to JPY")
                 .isEqualTo("JPY");
 
-        //9. zmieniam na walute INR
+
         navbarHeader.setCurrency("INR");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "INR"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to INR")
                 .isEqualTo("INR");
 
-        //10. zmieniam na walute CNY
+
         navbarHeader.setCurrency("CNY");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "CNY"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to CNY")
                 .isEqualTo("CNY");
 
-        //11. zmieniam na walute TRY
+
         navbarHeader.setCurrency("TRY");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "TURKISH"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
+                .as("change currency to TRY")
                 .isEqualTo("TURKISH");
 
-        //DELAY Until closing
-        try {
-            Thread.sleep(2700);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

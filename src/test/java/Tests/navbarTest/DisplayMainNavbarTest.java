@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DisplayMainNavbarTest  {
+public class DisplayMainNavbarTest {
 
     private WebDriver driver;
     private NavbarHeader navbarHeader;
@@ -60,49 +60,49 @@ public class DisplayMainNavbarTest  {
     @Test
     public void givenThatHotelsLinkExist() {
         navbarHeader.pickHotelsElement();
-        assertThat(hotelspage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/hotels");
+        assertThat(hotelspage.getCurrentUrl()).isEqualTo(hotelspage.getUrl());
     }
 
     //Assert FLIGHTS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatFlightsLinkExist() {
         navbarHeader.pickFlightsElement();
-        assertThat(flightsPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/flights");
+        assertThat(flightsPage.getCurrentUrl()).isEqualTo(flightsPage.getUrl());
     }
 
     //Assert TOURS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatToursLinkExist() {
         navbarHeader.pickToursElement();
-        assertThat(toursPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/tours");
-        }
+        assertThat(toursPage.getCurrentUrl()).isEqualTo(toursPage.getUrl());
+    }
 
     //Assert CARS link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatCarsLinkExist() {
         navbarHeader.pickCarsElement();
-        assertThat(carsPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/cars");
+        assertThat(carsPage.getCurrentUrl()).isEqualTo(carsPage.getUrl());
     }
 
     //Assert VISA link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatVisaLinkExist() {
         navbarHeader.pickVisaElement();
-        assertThat(visaPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/ivisa");
+        assertThat(visaPage.getCurrentUrl()).isEqualTo(visaPage.getUrl());
     }
 
     //Assert Offers link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatOffersPageExist() {
         navbarHeader.pickHOffersElement();
-        assertThat(offersPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/offers");
+        assertThat(offersPage.getCurrentUrl()).isEqualTo(offersPage.getUrl());
     }
 
     //Assert BLOG link on navbar exist. This assertion checks test, and tries to click object if working, it continues
     @Test
     public void givenThatBlogPageExist() {
         navbarHeader.pickBlogElement();
-        assertThat(blogPage.getCurrentUrl()).isEqualTo("https://www.phptravels.net/blog");
+        assertThat(blogPage.getCurrentUrl()).isEqualTo(blogPage.getUrl());
     }
-  }
+}
 

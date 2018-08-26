@@ -17,7 +17,8 @@ public class LoginPage extends BasePage {
     private final String url = "https://www.phptravels.net/login";
     private JavascriptExecutor jse;
 
-    @FindBy(xpath = "//ul[@class='nav navbar-nav navbar-right']//a[@class='dropdown-toggle go-text-right']")
+
+    @FindBy(xpath = "//div[@id='collapse']/ul/ul/li[1]/a[1]")
     private WebElement myAccountDropdown;
 
     @FindBy(linkText = "Logout")

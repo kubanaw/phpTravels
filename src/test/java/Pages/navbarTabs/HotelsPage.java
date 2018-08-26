@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HotelsPage extends BasePage {
 
-   private String hotelsSubPageUrl = "https://www.phptravels.net/hotels";
+   private final String hotelsSubPageUrl = "https://www.phptravels.net/hotels";
 
     public HotelsPage (WebDriver driver){
 
@@ -14,6 +14,10 @@ public class HotelsPage extends BasePage {
     }
     public void openHotelsSubpage() {
         driver.get(hotelsSubPageUrl);
+    }
+
+    public String getUrl (){
+        return hotelsSubPageUrl;
     }
 
 

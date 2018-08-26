@@ -122,7 +122,7 @@ public class DisplayFooterElementTest {
     @Test
     public void faceBookIconRedirectsToFBloginPage() {
 
-        this.footer.getFaceBookicon().click();
+        this.footer.getFaceBookIcon().click();
         for (String handle : driver.getWindowHandles()) {
             driver.switchTo().window(handle);
         }

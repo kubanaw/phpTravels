@@ -16,7 +16,7 @@ public class MyProfilePage extends BasePage {
     @FindBy(css = "div.form-horizontal")
     private WebElement myProfileForm;
 
-    @FindBy(css = "div.panel-default:nth-child(1) div.panel-heading > h3.panel-title.go-text-right")
+    @FindBy(xpath = "//h3[contains(text(), 'Personal ')]")
     private WebElement personalDetailsHeader;
 
     @FindBy(name = "firstname")

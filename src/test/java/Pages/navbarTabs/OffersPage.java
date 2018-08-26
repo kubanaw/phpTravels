@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class OffersPage extends BasePage {
+    private final String url = "https://www.phptravels.net/offers";
 
 
     public OffersPage(WebDriver driver) {
@@ -12,6 +13,8 @@ public class OffersPage extends BasePage {
 
     }
 
-
+    public String getUrl() {
+        return url;
+    }
 }
 

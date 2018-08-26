@@ -12,31 +12,38 @@ public class Footer extends BasePage {
     //Newsletter:
     @FindBy(id = "exampleInputEmail1")
     private WebElement emailField;
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/div[2]/button")
+    //    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/div[2]/button")
+    @FindBy(css = "button.sub_newsletter")
     private WebElement submitNewsletterButton;
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/h2")
-    private WebElement doDna;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
     private WebElement contactLink;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")
     private WebElement aboutUS;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")
     private WebElement howToBook;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")
     private WebElement bookingTips;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")
     private WebElement ourPartners;
+
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")
     private WebElement subscribeMessage;
+
     @FindBy(xpath = "/html/body/div[7]/div[1]/div[1]/a[1]/img")
-    private WebElement faceBookicon;
+    private WebElement faceBookIcon;
+
     @FindBy(xpath = "/html/body/div[7]/div[1]/div[1]/a[2]/img")
     private WebElement twitterIcon;
+
     public Footer(WebDriver driver) {
         super(driver);
 
     }
-
 
     //METHODS:
 
@@ -66,10 +73,6 @@ public class Footer extends BasePage {
         return ourPartners;
     }
 
-    public WebElement getDoDna() {
-        return doDna;
-    }
-
 
     public Footer typeEmailToNewsletter(String email) {
         emailField.clear();
@@ -89,8 +92,8 @@ public class Footer extends BasePage {
     }
 
 
-    public WebElement getFaceBookicon() {
-        return faceBookicon;
+    public WebElement getFaceBookIcon() {
+        return faceBookIcon;
     }
 
     public WebElement getTwitterIcon() {
