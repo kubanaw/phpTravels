@@ -2,14 +2,13 @@ package Tests.navbarTest;
 
 import Pages.commons.NavbarHeader;
 import Pages.navbarTabs.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import util.ChromeDrvPathHelper;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,9 +26,9 @@ public class DisplayMainNavbarTest {
     private BlogPage blogPage;
 
     @BeforeClass
-    public static void ustawSciezke() {
-        //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
-        ChromeDrvPathHelper.setChromeDrvPath();
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+
     }
 
     @Before

@@ -4,6 +4,7 @@ package Tests.mainPageTest;
 import Pages.commons.Footer;
 import Pages.commons.NavbarHeader;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,8 +13,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.ChromeDrvPathHelper;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -25,9 +24,10 @@ public class DisplayFooterElementTest {
     private NavbarHeader navbarHeader;
 
     @BeforeClass
-    public static void ustawSciezke() {
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
 
-        ChromeDrvPathHelper.setChromeDrvPath();
+
     }
 
     @Before
@@ -54,6 +54,8 @@ public class DisplayFooterElementTest {
 
     @After
     public void tearDown() {
+
+        if (driver != null)
         driver.quit();
     }
 

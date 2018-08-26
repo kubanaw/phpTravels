@@ -1,6 +1,7 @@
 package Tests.navbarTest;
 
 import Pages.commons.NavbarHeader;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,19 +16,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DisplayCurrienciesTest {
 
-    //dolaczam webdriver
     private WebDriver driver;
     private WebDriverWait wait;
     private NavbarHeader navbarHeader;
 
-    //realnie laduje sterownik chromedriver
     @BeforeClass
-    public static void pathSetup() {
-        //CHANGE PATH TO THE CHROMEDRIVER AS NEEDED - AND RE-RUN TESTS
-        System.setProperty("webdriver.chrome.driver", "./src/test/java/resources/chromedriver");
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+
     }
 
-    //nowy obiekt chromedriver'a
     @Before
     public void setup() {
         this.driver = new ChromeDriver();

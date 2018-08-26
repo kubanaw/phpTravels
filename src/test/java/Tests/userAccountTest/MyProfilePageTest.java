@@ -4,6 +4,7 @@ import Pages.commons.NavbarHeader;
 import Pages.user.LoginPage;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,8 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.ChromeDrvPathHelper;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -32,10 +31,9 @@ public class MyProfilePageTest {
 
 
     @BeforeClass
-    public static void ustawSciezke() {
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
 
-        //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
-        ChromeDrvPathHelper.setChromeDrvPath();
     }
 
     @Before

@@ -2,6 +2,7 @@ package Tests.registerOptionsTest;
 
 import Pages.user.RegisterPage;
 import Pages.user.account.UserAccountPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -14,8 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.ChromeDrvPathHelper;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -53,9 +52,10 @@ public class RegisterOptionsPositiveTest {
     }
 
     @BeforeClass
-    public static void ustawSciezke() {
-        //PATH WILL CHANGE BASED ON OS through: util/ChromeDrvPathHelper
-        ChromeDrvPathHelper.setChromeDrvPath();
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+
+
     }
 
     @Before

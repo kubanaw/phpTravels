@@ -4,6 +4,7 @@ import Pages.commons.Footer;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;
 import Pages.user.LoginPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.ChromeDrvPathHelper;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,8 +30,9 @@ public class ProfileTabsTest {
     private Footer footer;
 
     @BeforeClass
-    public static void ustawSciezke() {
-        ChromeDrvPathHelper.setChromeDrvPath();
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+
     }
 
     @Before
