@@ -40,6 +40,8 @@ public class DisplayCurrienciesTest {
 
     @After
     public void CloseBrowser() {
+//        driver.get("chrome://settings/clearBrowserData");
+//        driver.findElement(By.id("clearBrowsingDataConfirm")).click();
         this.driver.quit();
     }
 
