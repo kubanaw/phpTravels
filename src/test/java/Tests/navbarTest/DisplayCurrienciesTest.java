@@ -32,13 +32,13 @@ public class DisplayCurrienciesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.wait = new WebDriverWait(driver, 7);
+        this.wait = new WebDriverWait(driver, 15);
         this.navbarHeader = PageFactory.initElements(driver, NavbarHeader.class);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
-        navbarHeader.setCurrency("USD");
-        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "USD"));
+        //navbarHeader.setCurrency("USD");
+       // wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "USD"));
 
 
     }
@@ -47,6 +47,7 @@ public class DisplayCurrienciesTest {
     public void CloseBrowser() {
 //        driver.get("chrome://settings/clearBrowserData");
 //        driver.findElement(By.id("clearBrowsingDataConfirm")).click();
+        navbarHeader.setCurrency("USD");
         this.driver.quit();
     }
 
@@ -84,7 +85,7 @@ public class DisplayCurrienciesTest {
 
         //7. zmieniam na walute PKR
         navbarHeader.setCurrency("PKR");
-        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "PKR"));
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "RS"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
                 .isEqualTo("RS");
 
