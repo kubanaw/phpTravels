@@ -36,6 +36,11 @@ public class DisplayCurrienciesTest {
         this.navbarHeader = PageFactory.initElements(driver, NavbarHeader.class);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        navbarHeader.openMainPage();
+        navbarHeader.setCurrency("USD");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "USD"));
+
+
     }
 
     @After
@@ -48,7 +53,7 @@ public class DisplayCurrienciesTest {
     @Test
     public void givenThatPageOpens() {
         //1. wchodze na strone phptravels
-        this.driver.get("https://www.phptravels.net/");
+//        this.driver.get("https://www.phptravels.net/");
 
        // 2. sprawdzam domyslna walute
 
@@ -79,7 +84,7 @@ public class DisplayCurrienciesTest {
 
         //7. zmieniam na walute PKR
         navbarHeader.setCurrency("PKR");
-        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "RS"));
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "PKR"));
         assertThat(navbarHeader.getCurrentCurrency().getText())
                 .isEqualTo("RS");
 
