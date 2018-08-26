@@ -4,12 +4,14 @@ import Pages.commons.NavbarHeader;
 import Pages.user.LoginPage;
 import Pages.user.account.MyProfilePage;
 import Pages.user.account.UserAccountPage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ChromeDrvPathHelper;
 
@@ -41,6 +43,7 @@ public class MyProfilePageTest {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         wait = new WebDriverWait(this.driver, 5);
         myProfilePage = new MyProfilePage(driver);
         loginPage = new LoginPage(driver);
@@ -48,16 +51,23 @@ public class MyProfilePageTest {
         navbarHeader = new NavbarHeader(driver);
         jse = (JavascriptExecutor) driver;
         loginPage.loginPageOpen();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        loginPage.loginDemoUser();
-        userAccountPage.goToMyProfileTab();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+        try {
+            loginPage.loginDemoUser();
+            userAccountPage.goToMyProfileTab();
+//            Thread.sleep(5000);
+        }
+        catch (Exception e){}
+
+        wait.until(ExpectedConditions.elementToBeClickable(myProfilePage.getSubmitUpdateProfileButton()));
+
+//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
-//    @After
-//    public void CloseBrowser() {
-//        this.driver.quit();
-//    }
+    @After
+    public void CloseBrowser() {
+        this.driver.quit();
+    }
 
 
     @Test

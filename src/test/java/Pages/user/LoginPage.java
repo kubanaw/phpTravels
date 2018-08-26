@@ -81,6 +81,8 @@ public class LoginPage extends BasePage {
 
     public LoginPage loginUser(String userEmail, String pass) {
 
+        wait.until(ExpectedConditions.visibilityOf(password));
+
         LOGGER.info("Login User start.");
         userName.clear();
         userName.sendKeys(userEmail);

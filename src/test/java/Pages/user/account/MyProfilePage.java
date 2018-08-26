@@ -4,6 +4,7 @@ import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,7 @@ public class MyProfilePage extends BasePage {
     @FindBy(css = ".accountresult>.alert")
     private WebElement alert;
 
+
     public MyProfilePage(WebDriver driver) {
 
         super(driver);
@@ -92,6 +94,7 @@ public class MyProfilePage extends BasePage {
     }
 
     public MyProfilePage changePassword(String password, String confirmPassword) {
+
 
         this.password.clear();
         this.password.sendKeys(password);
@@ -227,5 +230,7 @@ public class MyProfilePage extends BasePage {
         return alertMessage;
     }
 
-
+    public WebElement getSubmitUpdateProfileButton() {
+        return submitUpdateProfileButton;
+    }
 }
