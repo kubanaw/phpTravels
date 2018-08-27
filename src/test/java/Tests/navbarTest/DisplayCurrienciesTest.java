@@ -34,13 +34,14 @@ public class DisplayCurrienciesTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
+        navbarHeader.setCurrency("USD");
 
     }
 
     @After
     public void CloseBrowser() {
 
-        navbarHeader.setCurrency("USD");
+
         this.driver.quit();
     }
 
