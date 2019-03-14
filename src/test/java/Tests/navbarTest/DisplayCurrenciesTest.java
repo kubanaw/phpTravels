@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class DisplayCurrienciesTest {
+public class DisplayCurrenciesTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -23,7 +23,6 @@ public class DisplayCurrienciesTest {
     @BeforeClass
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
-
     }
 
     @Before
@@ -35,19 +34,15 @@ public class DisplayCurrienciesTest {
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
         navbarHeader.setCurrency("USD");
-
     }
 
     @After
     public void CloseBrowser() {
-
-
         this.driver.quit();
     }
 
     @Test
     public void givenThatSelectCurrencyIsDisplayed() {
-
 
         navbarHeader.setCurrency("GBP");
         wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentCurrency(), "GBP"));

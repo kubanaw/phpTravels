@@ -26,8 +26,6 @@ public class DisplayFooterElementTest {
     @BeforeClass
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
-
-
     }
 
     @Before
@@ -49,16 +47,13 @@ public class DisplayFooterElementTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     @After
     public void tearDown() {
-
         if (driver != null)
         driver.quit();
     }
-
 
     @Test
     public void addEmailToNewsletterList() {
@@ -67,7 +62,6 @@ public class DisplayFooterElementTest {
         assertThat(footer.alreadySubscribedMessage())
                 .isEqualToIgnoringCase("Subscribed Successfully");
     }
-
 
     @Test
     public void whenClickOnContactUsSubpageOpens() {
@@ -80,7 +74,7 @@ public class DisplayFooterElementTest {
     }
 
     @Test
-    public void whenClickOnAbouttUsSubpageOpens() {
+    public void whenClickOnAboutUsSubpageOpens() {
 
         this.footer.getAboutUS().click();
         assertThat(footer.getCurrentUrl())
@@ -131,6 +125,4 @@ public class DisplayFooterElementTest {
         assertThat(driver.getCurrentUrl())
                 .isEqualTo("https://www.facebook.com/travelbusiness");
     }
-
-
 }

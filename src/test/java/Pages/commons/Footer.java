@@ -34,15 +34,14 @@ public class Footer extends BasePage {
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")
     private WebElement subscribeMessage;
 
-    @FindBy(xpath = "/html/body/div[7]/div[1]/div[1]/a[1]/img")
+    @FindBy(xpath = "/html/body/div[8]/div[1]/div[1]/a[1]/img")
     private WebElement faceBookIcon;
 
-    @FindBy(xpath = "/html/body/div[7]/div[1]/div[1]/a[2]/img")
+    @FindBy(xpath = "/html/body/div[8]/div[1]/div[1]/a[2]/img")
     private WebElement twitterIcon;
 
     public Footer(WebDriver driver) {
         super(driver);
-
     }
 
     //METHODS:
@@ -100,12 +99,9 @@ public class Footer extends BasePage {
         return twitterIcon;
     }
 
-
     public String getTitle() {
         String currentTitle = driver.getTitle();
         LOGGER.info("current title: " + currentTitle);
         return currentTitle;
     }
-
-
 }
