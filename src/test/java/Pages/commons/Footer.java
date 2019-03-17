@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Footer extends BasePage {
 
-    //Newsletter:
     @FindBy(id = "exampleInputEmail1")
     private WebElement emailField;
-    //    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/div[2]/button")
+
     @FindBy(css = "button.sub_newsletter")
+    //*[@id="footer"]/div/div[1]/div/div[2]/button
     private WebElement submitNewsletterButton;
 
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
@@ -39,6 +39,18 @@ public class Footer extends BasePage {
 
     @FindBy(xpath = "/html/body/div[8]/div[1]/div[1]/a[2]/img")
     private WebElement twitterIcon;
+
+    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[2]/a")
+    private WebElement privacyPolicy;
+
+    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[3]/a")
+    private WebElement termsOfUse;
+
+    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[4]/ul/li[1]/a")
+    private WebElement FAQ;
+
+    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[4]/ul/li[2]/a")
+    private WebElement supplierLogin;
 
     public Footer(WebDriver driver) {
         super(driver);
@@ -72,6 +84,19 @@ public class Footer extends BasePage {
         return ourPartners;
     }
 
+    public WebElement getPrivacyPolicy() {
+        return privacyPolicy;
+    }
+
+    public WebElement getTermsOfUse() {
+        return termsOfUse;
+    }
+
+    public WebElement getFAQ() {
+        return FAQ;
+    }
+
+    public WebElement getSupplierLogin() { return supplierLogin; }
 
     public Footer typeEmailToNewsletter(String email) {
         emailField.clear();
@@ -89,7 +114,6 @@ public class Footer extends BasePage {
         submitNewsletterButton.click();
         return this;
     }
-
 
     public WebElement getFaceBookIcon() {
         return faceBookIcon;

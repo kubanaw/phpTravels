@@ -22,7 +22,8 @@ public class DisplayCurrenciesTest {
 
     @BeforeClass
     public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().version("73");
+        //WebDriverManager.chromedriver().setup();
     }
 
     @Before

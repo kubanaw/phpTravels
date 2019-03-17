@@ -13,8 +13,6 @@ public class RegisterAPITest {
 
         RestAssured.baseURI = "https://www.phptravels.net";
         RestAssured.port = 443;
-
-
     }
 
     @Test

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class NavbarHeader extends BasePage {
 
-
     @FindBy(className = "navbar-brand")
     private WebElement logoButton;
     @FindBy(xpath = "//a[text()='Home']")
@@ -38,11 +37,10 @@ public class NavbarHeader extends BasePage {
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
     private WebElement currentCurrency;
 
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a")
+    @FindBy(xpath = "//*[@id=\"sidebar_left\"]/div/div/ul/li[2]/a/strong")
     private WebElement currencyList;
 
     public NavbarHeader(WebDriver driver) {
-
         super(driver);
     }
 
@@ -50,7 +48,6 @@ public class NavbarHeader extends BasePage {
     public void openMainPage() {
         driver.get(BASE_URL);
     }
-
 
     public void pickHomeElement() {
         home.click();

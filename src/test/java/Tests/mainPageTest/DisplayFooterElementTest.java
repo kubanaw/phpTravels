@@ -25,7 +25,8 @@ public class DisplayFooterElementTest {
 
     @BeforeClass
     public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().version("73");
+        //WebDriverManager.chromedriver().setup();
     }
 
     @Before
@@ -55,6 +56,8 @@ public class DisplayFooterElementTest {
         driver.quit();
     }
 
+    //NEWSLETTER
+
     @Test
     public void addEmailToNewsletterList() {
 
@@ -62,6 +65,8 @@ public class DisplayFooterElementTest {
         assertThat(footer.alreadySubscribedMessage())
                 .isEqualToIgnoringCase("Subscribed Successfully");
     }
+
+    //COMPANY
 
     @Test
     public void whenClickOnContactUsSubpageOpens() {
@@ -103,6 +108,8 @@ public class DisplayFooterElementTest {
                 .isEqualTo("Booking Tips");
     }
 
+    //ICONS
+
 //windows handle - przekierowanie otwiera sie w nowym oknie:
     @Test
     public void twitterIconRedirectsToTwitLoginPage() {
@@ -125,4 +132,55 @@ public class DisplayFooterElementTest {
         assertThat(driver.getCurrentUrl())
                 .isEqualTo("https://www.facebook.com/travelbusiness");
     }
+
+    //SUPPORT
+
+    @Test
+    public void whenClickOnOurPartnersSubpageOpens() {
+        this.footer.getOurPartners().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Our-Partners");
+        assertThat(footer.getTitle())
+                .isEqualTo("Our Partners");
+    }
+
+    @Test
+    public void whenClickOnPrivacyPolicySubpageOpens() {
+        this.footer.getPrivacyPolicy().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Privacy-Policy");
+        assertThat(footer.getTitle())
+                .isEqualTo("PHPTRAVELS | Travel Technology Partner");
+    }
+
+    @Test
+    public void whenClickOnTermsOfUseSubPageOpens() {
+        this.footer.getTermsOfUse().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/Terms-of-Use");
+        assertThat(footer.getTitle())
+                .isEqualTo("Terms of Use");
+    }
+
+    //BUSINESS
+
+    @Test
+    public void whenClickOnFaqSubPageOpens() {
+        this.footer.getFAQ().click();
+        assertThat(footer.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/FAQ");
+        assertThat(footer.getTitle())
+                .isEqualTo("FAQ");
+    }
+
+    @Test
+
+    public void whenClickOnSupplierLoginNewLoginPageOpens() {
+        this.footer.getSupplierLogin().click();
+            assertThat(footer.getCurrentUrl())
+                    .isEqualTo("https://www.phptravels.net/supplier");
+            assertThat(footer.getTitle())
+                    .isEqualTo("Supplier Login");
+    }
+
 }
