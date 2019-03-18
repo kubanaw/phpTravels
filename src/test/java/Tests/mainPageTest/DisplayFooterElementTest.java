@@ -132,7 +132,6 @@ public class DisplayFooterElementTest {
         assertThat(driver.getCurrentUrl())
                 .isEqualTo("https://www.facebook.com/travelbusiness");
     }
-
     //SUPPORT
 
     @Test
@@ -150,7 +149,7 @@ public class DisplayFooterElementTest {
         assertThat(footer.getCurrentUrl())
                 .isEqualTo("https://www.phptravels.net/Privacy-Policy");
         assertThat(footer.getTitle())
-                .isEqualTo("PHPTRAVELS | Travel Technology Partner");
+                .isEqualTo("Privacy Policy");
     }
 
     @Test
@@ -174,13 +173,12 @@ public class DisplayFooterElementTest {
     }
 
     @Test
-
     public void whenClickOnSupplierLoginNewLoginPageOpens() {
         this.footer.getSupplierLogin().click();
-            assertThat(footer.getCurrentUrl())
-                    .isEqualTo("https://www.phptravels.net/supplier");
-            assertThat(footer.getTitle())
-                    .isEqualTo("Supplier Login");
+        for (String handle : driver.getWindowHandles()) {
+            driver.switchTo().window(handle);
+        }
+        assertThat(driver.getCurrentUrl())
+                .isEqualTo("https://www.phptravels.net/supplier");
     }
-
 }
