@@ -19,7 +19,7 @@ public class Footer extends BasePage {
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
     private WebElement contactLink;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[2]/a")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[1]/ul/li[2]/a")
     private WebElement aboutUS;
 
     @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")
