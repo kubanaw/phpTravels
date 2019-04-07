@@ -12,45 +12,44 @@ public class Footer extends BasePage {
     @FindBy(id = "exampleInputEmail1")
     private WebElement emailField;
 
-    @FindBy(css = "button.sub_newsletter")
-    //*[@id="footer"]/div/div[1]/div/div[2]/button
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[2]/div/div[1]/div/div/div[2]/button")
     private WebElement submitNewsletterButton;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[1]/ul/li[1]/a")
     private WebElement contactLink;
 
     @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[1]/ul/li[2]/a")
     private WebElement aboutUS;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[3]/a")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[1]/ul/li[3]/a")
     private WebElement howToBook;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[2]/ul/li[4]/a")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[1]/ul/li[4]/a")
     private WebElement bookingTips;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[1]/a")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[2]/ul/li[1]/a")
     private WebElement ourPartners;
 
-    @FindBy(xpath = "//*[@id=\"footer\"]/div/div[1]/div/ul/li/a/div")
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[2]/div/div[1]/div/div/ul/li/a/div")
     private WebElement subscribeMessage;
 
-    @FindBy(xpath = "/html/body/div[8]/div[1]/div[1]/a[1]/img")
-    private WebElement faceBookIcon;
-
-    @FindBy(xpath = "/html/body/div[8]/div[1]/div[1]/a[2]/img")
-    private WebElement twitterIcon;
-
-    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[2]/a")
+    @FindBy (xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[2]/ul/li[2]/a")
     private WebElement privacyPolicy;
 
-    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[3]/ul/li[3]/a")
+    @FindBy (xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[2]/ul/li[3]/a")
     private WebElement termsOfUse;
 
-    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[4]/ul/li[1]/a")
+    @FindBy (xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[3]/ul/li[1]/a")
     private WebElement FAQ;
 
-    @FindBy (xpath = "//*[@id=\"footer\"]/div/div[4]/ul/li[2]/a")
+    @FindBy (xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[1]/div[1]/div/div[3]/ul/li[2]/a")
     private WebElement supplierLogin;
+
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[2]/div/div[2]/div[1]/div/ul/li[1]/a/img")
+    private WebElement faceBookIcon;
+
+    @FindBy(xpath = "//*[@id=\"footer\"]/aside/div/div/div/div[2]/div/div[2]/div[1]/div/ul/li[2]/a/img")
+    private WebElement twitterIcon;
 
     public Footer(WebDriver driver) {
         super(driver);
