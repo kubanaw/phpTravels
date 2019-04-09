@@ -6,8 +6,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,9 +31,9 @@ public class DisplayLanguagesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.wait = new WebDriverWait(driver, 10);
+        this.wait = new WebDriverWait(driver, 20);
         this.navbarHeader = new NavbarHeader(driver);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
     }
@@ -42,10 +45,22 @@ public class DisplayLanguagesTest {
 
     @Test
     public void changeToRussianLanguage() {
-        this.navbarHeader.getRussianLanguage().click();
-        assertThat(navbarHeader.getCurrentUrl())
-                .isEqualTo("https://www.phptravels.net/ru");
-        assertThat(navbarHeader.getTitle())
-                .isEqualTo("Russian");
+        Actions actions = new Actions(driver);
+        WebElement menu = driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/ul/li/a"));
+        actions.moveToElement(menu);
+
+        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"ru\"]"));
+        actions.moveToElement(submenu);
+        actions.click().build().perform();
+
+        WebElement submenu2 = driver.findElement(By.xpath("//*[@id=\"fa\"]"));
+        actions.moveToElement(submenu2);
+        actions.click().build().perform();
+
+//        this.navbarHeader.getRussianLanguage().click();
+//        assertThat(navbarHeader.getCurrentUrl())
+//                .isEqualTo("https://www.phptravels.net/ru");
+//        assertThat(navbarHeader.getTitle())
+//                .isEqualTo("Russian");
     }
 }
