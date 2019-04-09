@@ -61,7 +61,7 @@ public class DisplayFooterElementTest {
     @Test
     public void addEmailToNewsletterList() {
 
-        footer.typeEmailToNewsletter();
+        this.footer.typeEmailToNewsletter();
         assertThat(footer.alreadySubscribedMessage())
                 .isEqualToIgnoringCase("Subscribed Successfully");
     }

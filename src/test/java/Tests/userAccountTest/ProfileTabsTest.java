@@ -32,7 +32,6 @@ public class ProfileTabsTest {
     @BeforeClass
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
-
     }
 
     @Before

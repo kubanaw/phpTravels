@@ -95,7 +95,9 @@ public class Footer extends BasePage {
         return FAQ;
     }
 
-    public WebElement getSupplierLogin() { return supplierLogin; }
+    public WebElement getSupplierLogin() {
+        return supplierLogin;
+    }
 
     public Footer typeEmailToNewsletter(String email) {
         emailField.clear();

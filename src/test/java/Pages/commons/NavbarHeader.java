@@ -28,17 +28,23 @@ public class NavbarHeader extends BasePage {
     private WebElement offers;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[1]/li[8]/a")
     private WebElement blog;
+
     //CURRENCY
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
     private WebElement currency;
-    //LANGUAGE OPTIONS
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
-    private WebElement language;
     @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
     private WebElement currentCurrency;
 
     @FindBy(xpath = "//*[@id=\"sidebar_left\"]/div/div/ul/li[2]/a/strong")
     private WebElement currencyList;
+
+    //LANGUAGE OPTIONS
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
+    private WebElement language;
+    @FindBy(xpath = "//*[@id=\"ru\"]")
+    private WebElement russian;
+
+
 
     public NavbarHeader(WebDriver driver) {
         super(driver);
@@ -91,6 +97,15 @@ public class NavbarHeader extends BasePage {
         return currentCurrency;
     }
 
+    public WebElement getRussianLanguage() {
+        return russian;
+    }
+
+    public String getTitle() {
+        String currentTitle = driver.getTitle();
+        LOGGER.info("current title: " + currentTitle);
+        return currentTitle;
+    }
 
 }
 
