@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,6 +37,7 @@ public class DisplayLanguagesTest {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
+        navbarHeader.setLanguage("English");
     }
 
     @After
@@ -49,18 +51,25 @@ public class DisplayLanguagesTest {
         WebElement menu = driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/ul/li/a"));
         actions.moveToElement(menu);
 
-        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"ru\"]"));
-        actions.moveToElement(submenu);
-        actions.click().build().perform();
+//        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"ru\"]"));
+//        actions.moveToElement(submenu);
+//        actions.click().build().perform();
 
-        WebElement submenu2 = driver.findElement(By.xpath("//*[@id=\"fa\"]"));
-        actions.moveToElement(submenu2);
-        actions.click().build().perform();
+        navbarHeader.setLanguage("Russian");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentLanguage(), "Russian"));
+        assertThat(navbarHeader.getCurrentLanguage().getText())
+                .as("change language to Russian")
+                .isEqualTo("Russian");
 
-//        this.navbarHeader.getRussianLanguage().click();
-//        assertThat(navbarHeader.getCurrentUrl())
-//                .isEqualTo("https://www.phptravels.net/ru");
-//        assertThat(navbarHeader.getTitle())
-//                .isEqualTo("Russian");
+        actions.moveToElement(menu);
+
+        navbarHeader.setLanguage("Farsi");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentLanguage(), "Farsi"));
+        assertThat(navbarHeader.getCurrentLanguage().getText())
+                .as("change language to Farsi")
+                .isEqualTo("Farsi");
+
+
+
     }
 }

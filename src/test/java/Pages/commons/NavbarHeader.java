@@ -30,20 +30,21 @@ public class NavbarHeader extends BasePage {
     private WebElement blog;
 
     //CURRENCY
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
-    private WebElement currency;
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/a/strong")
+//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
+//    private WebElement currency;
+    @FindBy(xpath = "/html/body/nav/div/div[2]/ul[2]/ul/li[2]/ul/li[1]/a")
     private WebElement currentCurrency;
 
-    @FindBy(xpath = "//*[@id=\"sidebar_left\"]/div/div/ul/li[2]/a/strong")
+    @FindBy(xpath = "/html/body/nav/div/div[2]/ul[2]/ul/li[2]/a/strong")
     private WebElement currencyList;
 
     //LANGUAGE OPTIONS
-    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/ul/li/ul")
-    private WebElement language;
+    @FindBy(xpath = "/html/body/nav/div/div[2]/ul[2]/ul/ul/li/a")
+    private WebElement languageList;
+    @FindBy(xpath = "//*[@id=\"en\"]")
+    private WebElement currentLanguage;
     @FindBy(xpath = "//*[@id=\"ru\"]")
     private WebElement russian;
-
 
 
     public NavbarHeader(WebDriver driver) {
@@ -93,12 +94,17 @@ public class NavbarHeader extends BasePage {
         driver.findElement(By.linkText(currency)).click();
     }
 
+    public void setLanguage(String language) {
+        languageList.click();
+        driver.findElement(By.linkText(language)).click();
+    }
+
     public WebElement getCurrentCurrency() {
         return currentCurrency;
     }
 
-    public WebElement getRussianLanguage() {
-        return russian;
+    public WebElement getCurrentLanguage() {
+        return currentLanguage;
     }
 
     public String getTitle() {
