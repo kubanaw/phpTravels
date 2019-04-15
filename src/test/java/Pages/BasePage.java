@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
 
         protected final static Logger LOGGER = LogManager.getLogger(BasePage.class);
-        protected final static String BASE_URL = "https://www.phptravels.net/";
+        protected final static String BASE_URL = "http://www.dorabiajprzezinternet.pl/";
         protected WebDriver driver;
         protected WebDriverWait wait;
 
