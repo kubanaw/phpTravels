@@ -30,8 +30,8 @@ public class NavbarHeader extends BasePage {
     private WebElement blog;
 
     //CURRENCY
-//    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
-//    private WebElement currency;
+    @FindBy(xpath = "//*[@id=\"collapse\"]/ul[2]/ul/li[2]/ul")
+    private WebElement currency;
     @FindBy(xpath = "/html/body/nav/div/div[2]/ul[2]/ul/li[2]/ul/li[1]/a")
     private WebElement currentCurrency;
 
@@ -39,12 +39,12 @@ public class NavbarHeader extends BasePage {
     private WebElement currencyList;
 
     //LANGUAGE OPTIONS
-    @FindBy(css = "#menu > div.menu_right > ul > li:nth-child(1) > a")
+    @FindBy(xpath = "/html/body/nav/div/div[2]/ul[2]/ul/ul/li/a")
     private WebElement languageList;
-    @FindBy(xpath = "//*[@id=\"menu\"]/div[1]/ul/li[1]/ul/li[1]/a")
-    private WebElement oBlogu;
-    @FindBy(xpath = "//*[@id=\"menu\"]/div[1]/ul/li[1]/ul/li[2]/a")
-    private WebElement my;
+    @FindBy(xpath = "//*[@id=\"en\"]")
+    private WebElement currentLanguage;
+    @FindBy(xpath = "//*[@id=\"ru\"]")
+    private WebElement russian;
 
 
     public NavbarHeader(WebDriver driver) {
@@ -101,6 +101,10 @@ public class NavbarHeader extends BasePage {
 
     public WebElement getCurrentCurrency() {
         return currentCurrency;
+    }
+
+    public WebElement getCurrentLanguage() {
+        return currentLanguage;
     }
 
 

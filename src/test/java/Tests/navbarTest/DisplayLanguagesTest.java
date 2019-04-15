@@ -32,11 +32,12 @@ public class DisplayLanguagesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.wait = new WebDriverWait(driver, 5);
+        this.wait = new WebDriverWait(driver, 20);
         this.navbarHeader = new NavbarHeader(driver);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
+        navbarHeader.setLanguage("English");
     }
 
     @After
@@ -45,26 +46,20 @@ public class DisplayLanguagesTest {
     }
 
     @Test
-    public void changeToAboutUs() {
+    public void changeToRussianLanguage() {
         Actions actions = new Actions(driver);
-        WebElement menu = driver.findElement(By.cssSelector("#menu > div.menu_right > ul > li:nth-child(1) > a"));
+        WebElement menu = driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/ul/li/a"));
         actions.moveToElement(menu);
 
-        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"menu\"]/div[1]/ul/li[1]/ul/li[1]/a"));
-        actions.moveToElement(submenu);
-        actions.click().build().perform();
+//        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"ru\"]"));
+//        actions.moveToElement(submenu);
+//        actions.click().build().perform();
+
+        navbarHeader.setLanguage("Russian");
+        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentLanguage(), "Russian"));
+        assertThat(navbarHeader.getCurrentLanguage().getText())
+                .as("change language to Russian")
+                .isEqualTo("Russian");
 
     }
-
-    @Test
-    public void changeToMy(){
-        Actions actions = new Actions(driver);
-        WebElement menu = driver.findElement(By.cssSelector("#menu > div.menu_right > ul > li:nth-child(1) > a"));
-        actions.moveToElement(menu);
-
-        WebElement submenu = driver.findElement(By.xpath("//*[@id=\"menu\"]/div[1]/ul/li[1]/ul/li[2]/a"));
-        actions.moveToElement(submenu);
-        actions.click().build().perform();
-    }
-
 }
