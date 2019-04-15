@@ -32,9 +32,9 @@ public class DisplayLanguagesTest {
     @Before
     public void setup() {
         this.driver = new ChromeDriver();
-        this.wait = new WebDriverWait(driver, 20);
+        this.wait = new WebDriverWait(driver, 5);
         this.navbarHeader = new NavbarHeader(driver);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         navbarHeader.openMainPage();
         navbarHeader.setLanguage("English");
@@ -61,15 +61,13 @@ public class DisplayLanguagesTest {
                 .as("change language to Russian")
                 .isEqualTo("Russian");
 
-        actions.moveToElement(menu);
-
-        navbarHeader.setLanguage("Farsi");
-        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentLanguage(), "Farsi"));
-        assertThat(navbarHeader.getCurrentLanguage().getText())
-                .as("change language to Farsi")
-                .isEqualTo("Farsi");
-
-
+//        actions.moveToElement(menu);
+//
+//        navbarHeader.setLanguage("Farsi");
+//        wait.until(ExpectedConditions.textToBePresentInElement(navbarHeader.getCurrentLanguage(), "Farsi"));
+//        assertThat(navbarHeader.getCurrentLanguage().getText())
+//                .as("change language to Farsi")
+//                .isEqualTo("Farsi");
 
     }
 }
